@@ -8,69 +8,16 @@
 [![Tests: 100% Passed](https://img.shields.io/badge/pytest-passed-brightgreen.svg)](tests/)
 
 PharmaPath is an end-to-end, multi-omics network-pharmacology pipeline and Graph Neural Network (GNN) discovery platform. It models how diverse pharmacological agents perturb the human Protein-Protein Interaction (PPI) interactome scaffold to address four fundamental questions:
+
 1. **Subnetwork & Pathway Perturbation**: Which interactome modules and signaling pathways does a drug perturb?
 2. **Disease Module Localization**: Is the drug topologically proximate to its corresponding disease module?
 3. **Topological Role Identification**: Which hub and bottleneck proteins mediate efficacy, resistance, or toxicity?
 4. **Leak-Free Link Prediction**: Can inductive Graph Neural Networks predict novel drug-protein targets and off-target repurposing leads without data leakage?
 
 The platform investigates two canonical pharmacological archetypes:
+
 - **Metformin**: An indirect, multi-target metabolic regulator prescribed for **Type 2 Diabetes (T2D)** (targeting Mitochondrial Complex I and AMPK subunits; 61 targets in PPI LCC).
 - **Imatinib (Gleevec)**: A precision oncogenic tyrosine kinase inhibitor prescribed for **Chronic Myeloid Leukemia (CML)** (targeting BCR-ABL1, KIT, PDGFRA, PDGFRB; 10 targets in PPI LCC).
-
----
-
-## Deploy to Vercel from GitHub
-
-This repository is pre-configured with `vercel.json` and `.vercelignore` for zero-configuration deployment to Vercel.
-
-### Step 1: Initialize Git and Push to GitHub
-
-In your project directory, run:
-
-```bash
-# Initialize git repository
-git init
-
-# Add all files (large raw PPI data is automatically excluded via .gitignore)
-git add .
-
-# Create initial commit
-git commit -m "feat: initial commit for PharmaPath discovery platform"
-
-# Rename branch to main
-git branch -M main
-
-# Link to your GitHub repository (replace with your repo URL)
-git remote add origin https://github.com/<your-username>/PharmaPath.git
-
-# Push to GitHub
-git push -u origin main
-```
-
-### Step 2: Import Repository on Vercel
-
-1. Log in to [Vercel](https://vercel.com).
-2. Click **Add New...** $\to$ **Project**.
-3. Select your GitHub account and click **Import** next to `PharmaPath`.
-4. In the **Configure Project** window:
-   - **Framework Preset**: Select `Other` (or leave default).
-   - **Root Directory**: Leave as `./` (the included `vercel.json` automatically routes traffic to `/website/`). Alternatively, you may select `website` as the root directory.
-   - **Build and Output Settings**: Leave empty (no build step is required for static assets).
-5. Click **Deploy**.
-
-Your interactive discovery platform will be live within seconds at `https://<your-project>.vercel.app`.
-
-### Alternative: Direct CLI Deployment via Vercel CLI
-
-You can also deploy directly from your local terminal using `npx vercel`:
-
-```bash
-# Deploy to preview
-npx vercel
-
-# Deploy directly to production
-npx vercel --prod
-```
 
 ---
 
@@ -115,26 +62,33 @@ npx vercel --prod
 ## Summary of Experimental Results
 
 ### 1. PPI Interactome Scaffold (STRING v12, Homo sapiens)
+
 - **High-confidence physical interactome**: `combined_score >= 700`
 - **Protein-to-gene mapping loss rate**: **0.0000%** (19,699 / 19,699 mapped)
 - **Largest Connected Component (LCC)**: **15,882 nodes (98.03% of proteome)** and **236,712 unique undirected edges** (density = $0.001877$).
 
 ### 2. Subnetwork Extraction & Graph Density
+
 - **Metformin**: RWR subnetwork density = **0.4377** (4,891 edges across 150 nodes; $2.5\times$ enrichment over 2-hop).
 - **Imatinib**: RWR subnetwork density = **0.2464** (2,754 edges across 150 nodes; $1.4\times$ enrichment over 2-hop).
 
 ### 3. Pathway Over-Representation Analysis (KEGG 2021 & Reactome 2022)
-- **Metformin Sanity Audit**: **PASSED** ($FDR < 0.05$ across *AMPK signaling*, *mTOR signaling*, *Insulin signaling*, *FoxO signaling*, and *Oxidative Phosphorylation* $p_{adj} = 1.26 \times 10^{-153}$).
-- **Imatinib Sanity Audit**: **PASSED** ($FDR < 0.05$ across *Receptor Tyrosine Kinases*, *SCF-KIT*, *PDGFRA*, *PI3K-Akt*, and *Chronic Myeloid Leukemia* $p_{adj} = 1.25 \times 10^{-24}$).
+
+- **Metformin Sanity Audit**: **PASSED** ($FDR < 0.05$ across _AMPK signaling_, _mTOR signaling_, _Insulin signaling_, _FoxO signaling_, and _Oxidative Phosphorylation_ $p_{adj} = 1.26 \times 10^{-153}$).
+- **Imatinib Sanity Audit**: **PASSED** ($FDR < 0.05$ across _Receptor Tyrosine Kinases_, _SCF-KIT_, _PDGFRA_, _PI3K-Akt_, and _Chronic Myeloid Leukemia_ $p_{adj} = 1.25 \times 10^{-24}$).
 
 ### 4. Disease Proximity (Guney et al., 2016 Nature Communications)
-*Tested against 1,000 degree-matched random node set permutations:*
+
+_Tested against 1,000 degree-matched random node set permutations:_
+
 - **Metformin -> Type 2 Diabetes**: Observed $d_c = 0.213$, Null Mean = $1.012 \pm 0.044$, **$z = -18.28$**, **$p = 0.0010$** (Highly Significant Proximity).
 - **Imatinib -> Chronic Myeloid Leukemia**: Observed $d_c = 0.400$, Null Mean = $1.228 \pm 0.114$, **$z = -7.25$**, **$p = 0.0010$** (Highly Significant Proximity).
 - **Negative Controls**: Metformin $\to$ CML ($z = +18.32, p = 1.0000$); Imatinib $\to$ T2D ($z = +1.18, p = 0.9650$).
 
 ### 5. Inductive GNN Link Prediction Benchmark (Zero Data Leakage)
-*Evaluated on 23,671 held-out test edges:*
+
+_Evaluated on 23,671 held-out test edges:_
+
 - **Node2Vec + Logistic Regression Baseline**: Test AUROC = 0.5000, Test AP = 0.5000.
 - **GraphSAGE (2-layer inductive message passing)**: **Test AUROC = 0.8865**, **Test AP = 0.9008**.
 - **Graph Autoencoder (GAE)**: **Test AUROC = 0.8832**, **Test AP = 0.8958**.
@@ -143,6 +97,7 @@ npx vercel --prod
   - Imatinib: Hidden target `CSF1R` ranked **#85 out of 15,882 candidates** (Hits@100 = 50.0%).
 
 ### 6. Two-Drug Interactome Separation (Menche et al., 2015 Science)
+
 - Direct target overlap: $0$ shared targets (Jaccard = $0.0000$).
 - Target Separation: $s_{AB}^{\text{closest}} = \mathbf{+1.3503}$ ($s_{AB} > 0$ indicates distinct direct target modules).
 - **Cross-Talk Infrastructure**: 347 shared nodes within 2-hop interactome scaffold (Jaccard = 0.5314), including **22 shared hubs** (AKT1, TP53, MAPK1, STAT3, SRC).
@@ -153,10 +108,12 @@ npx vercel --prod
 ## Local Installation & Execution
 
 ### 1. Prerequisites
+
 - Python 3.10 or 3.11
 - Git
 
 ### 2. Environment Setup
+
 ```bash
 # Clone the repository
 git clone https://github.com/<your-username>/PharmaPath.git
@@ -174,19 +131,25 @@ pip install -r requirements.txt
 ```
 
 ### 3. Run the Web Application Locally
+
 Launch the local web server:
+
 ```bash
 python website/server.py
 ```
+
 Open `http://localhost:8080` in your browser.
 
 ### 4. Run the Full End-to-End Computational Pipeline
+
 Execute the master runner to reproduce every analytical module sequentially:
+
 ```bash
 python scripts/run_all.py
 ```
 
 ### 5. Run Individual Pipeline Scripts
+
 ```bash
 python scripts/01_build_graph.py          # Phase 1: Ingestion & PPI LCC Scaffold (M1)
 python scripts/02_extract_subnetworks.py   # Phase 2: RWR & 2-Hop Subnetworks (M2)
@@ -198,11 +161,13 @@ python scripts/07_validation.py           # Phase 7: Automated Validation Audit 
 ```
 
 ### 6. Run Unit Test Suite
+
 ```bash
 pytest tests/ -v
 ```
 
 ### 7. Run Browser Verification Test Suite (Playwright)
+
 ```bash
 python scripts/test_website_playwright.py
 ```
@@ -264,9 +229,6 @@ PharmaPath/
 │   ├── test_mapping.py                 # ENSP gene symbol mapping tests
 │   ├── test_proximity.py               # Guney proximity & separation tests
 │   └── test_leakage.py                 # Verifies zero data leakage in GNN splits
-├── docs/                               # Detailed technical documentation
-│   ├── WEBSITE_ARCHITECTURE_AND_HOW_IT_WORKS.md
-│   └── DATA_INTERPRETATION_REAL_WORLD_IMPACT_AND_VIVA_QA.md
 └── reports/
     ├── final_report.md                 # Full academic project report
     ├── presentation_outline.md         # Slide defense outline
@@ -285,13 +247,13 @@ PharmaPath/
 
 ## Citations & References
 
-- Guney, E., et al. (2016). *Network-based in silico drug efficacy screening.* Nature Communications, 7, 10331.
-- Menche, J., et al. (2015). *Uncovering disease-disease relationships through the incomplete interactome.* Science, 347(6224), 1257601.
-- Szklarczyk, D., et al. (2023). *The STRING database in 2023.* Nucleic Acids Research, 51(D1), D638-D646.
-- Hamilton, W. L., et al. (2017). *Inductive representation learning on large graphs.* NeurIPS 2017.
-- Kipf, T. N., & Welling, M. (2016). *Variational graph auto-encoders.* arXiv:1611.07308.
-- Subramanian, A., et al. (2017). *A next generation connectivity map: L1000 platform.* Cell, 171(6), 1437-1452.
-- Ochoa, D., et al. (2023). *Open Targets Platform.* Nucleic Acids Research, 51(D1), D1281-D1289.
+- Guney, E., et al. (2016). _Network-based in silico drug efficacy screening._ Nature Communications, 7, 10331.
+- Menche, J., et al. (2015). _Uncovering disease-disease relationships through the incomplete interactome._ Science, 347(6224), 1257601.
+- Szklarczyk, D., et al. (2023). _The STRING database in 2023._ Nucleic Acids Research, 51(D1), D638-D646.
+- Hamilton, W. L., et al. (2017). _Inductive representation learning on large graphs._ NeurIPS 2017.
+- Kipf, T. N., & Welling, M. (2016). _Variational graph auto-encoders._ arXiv:1611.07308.
+- Subramanian, A., et al. (2017). _A next generation connectivity map: L1000 platform._ Cell, 171(6), 1437-1452.
+- Ochoa, D., et al. (2023). _Open Targets Platform._ Nucleic Acids Research, 51(D1), D1281-D1289.
 
 ---
 
