@@ -1,0 +1,52 @@
+# PharmaPath Drugs Configuration
+# Modifying or adding entries here allows seamless pipeline extension without modifying codebase.
+
+metformin:
+  name: "Metformin"
+  chembl_id: "CHEMBL1431"
+  mechanism_type: "multi-target, indirect"
+  seed_targets:
+    - "PRKAA1"
+    - "PRKAA2"
+    - "PRKAB1"
+    - "PRKAG1"
+    - "GPD2"
+  include_nduf_subunits: true
+  disease:
+    name: "Type 2 Diabetes"
+    code: "T2D"
+    efo_id: "EFO_0001360"
+    mondo_id: "MONDO_0005148"
+  expected_hallmark_pathways:
+    - "AMPK signaling"
+    - "mTOR signaling"
+    - "Insulin signaling"
+    - "FoxO signaling"
+    - "Glycolysis / Gluconeogenesis"
+
+imatinib:
+  name: "Imatinib"
+  chembl_id: "CHEMBL941"
+  mechanism_type: "targeted kinase inhibitor"
+  seed_targets:
+    - "ABL1"
+    - "BCR"
+    - "KIT"
+    - "PDGFRA"
+    - "PDGFRB"
+    - "CSF1R"
+    - "DDR1"
+    - "NQO2"
+  include_nduf_subunits: false
+  disease:
+    name: "Chronic Myeloid Leukemia"
+    code: "CML"
+    efo_id: "EFO_0000339"
+    mondo_id: "MONDO_0011996"
+  expected_hallmark_pathways:
+    - "Tyrosine kinase"
+    - "BCR-ABL"
+    - "KIT"
+    - "PDGFR"
+    - "PI3K-Akt signaling"
+    - "Chronic myeloid leukemia"

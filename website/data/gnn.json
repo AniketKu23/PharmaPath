@@ -1,0 +1,471 @@
+{
+  "ppi_metrics": [
+    {
+      "Model": "Node2Vec + Logistic Regression (Baseline)",
+      "Test AUROC": 0.5,
+      "Test Average Precision": 0.5
+    },
+    {
+      "Model": "GraphSAGE (Inductive GNN)",
+      "Test AUROC": 0.8865,
+      "Test Average Precision": 0.9008
+    },
+    {
+      "Model": "Graph Autoencoder (GAE)",
+      "Test AUROC": 0.8832,
+      "Test Average Precision": 0.8958
+    }
+  ],
+  "recovery_metrics": [
+    {
+      "Drug": "Metformin",
+      "Candidate Proteome Size": 15882,
+      "Train Targets Count": 59,
+      "Hidden Test Targets": "NDUFS7, NDUFAF8",
+      "Hidden Targets Ranks": "{'NDUFS7': 15, 'NDUFAF8': 10998}",
+      "Mean Reciprocal Rank (MRR)": 0.0334,
+      "Hits@10": "0.0%",
+      "Hits@20": "50.0%",
+      "Hits@50": "50.0%"
+    },
+    {
+      "Drug": "Imatinib",
+      "Candidate Proteome Size": 15882,
+      "Train Targets Count": 8,
+      "Hidden Test Targets": "CSF1R, DDR1",
+      "Hidden Targets Ranks": "{'CSF1R': 85, 'DDR1': 8005}",
+      "Mean Reciprocal Rank (MRR)": 0.0059,
+      "Hits@10": "0.0%",
+      "Hits@20": "0.0%",
+      "Hits@50": "0.0%"
+    }
+  ],
+  "literature_table": [
+    {
+      "Drug": "Metformin",
+      "Candidate Rank": 1,
+      "Candidate Protein": "NDC80",
+      "Model Confidence Score": 1.0,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Kinetochore complex subunit. Metformin exhibits anti-proliferative effects in cancer via mitotic arrest and spindle checkpoint modulation.",
+      "Literature Cross-Check Status": "Candidate indirect phenotypic modulator (mitotic regulation). Not confirmed direct binding target.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22metformin%22%5BTitle%2FAbstract%5D+OR+%22metformin%22%29+AND+%28%22NDC80%22%5BTitle%2FAbstract%5D+OR+%22NDC80%22%29"
+    },
+    {
+      "Drug": "Metformin",
+      "Candidate Rank": 2,
+      "Candidate Protein": "UQCR11",
+      "Model Confidence Score": 0.9999,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Subunit of Mitochondrial Complex III (ubiquinol-cytochrome c reductase). Closely couples with Complex I (NDUF) in the mitochondrial respiratory supercomplex.",
+      "Literature Cross-Check Status": "Functional neighbor in respiratory chain; potential secondary metabolic perturbation target.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22metformin%22%5BTitle%2FAbstract%5D+OR+%22metformin%22%29+AND+%28%22UQCR11%22%5BTitle%2FAbstract%5D+OR+%22UQCR11%22%29"
+    },
+    {
+      "Drug": "Metformin",
+      "Candidate Rank": 3,
+      "Candidate Protein": "PMPCB",
+      "Model Confidence Score": 0.9999,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Mitochondrial-processing peptidase subunit beta. Cleaves transit peptides of imported mitochondrial precursor proteins (including Complex I/III subunits).",
+      "Literature Cross-Check Status": "Mitochondrial proteostasis associate; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22metformin%22%5BTitle%2FAbstract%5D+OR+%22metformin%22%29+AND+%28%22PMPCB%22%5BTitle%2FAbstract%5D+OR+%22PMPCB%22%29"
+    },
+    {
+      "Drug": "Metformin",
+      "Candidate Rank": 4,
+      "Candidate Protein": "UQCRH",
+      "Model Confidence Score": 0.9999,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Hinge protein of Mitochondrial Complex III. Part of the electron transfer chain physically juxtaposed with Complex I.",
+      "Literature Cross-Check Status": "Electron transport chain neighbor; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22metformin%22%5BTitle%2FAbstract%5D+OR+%22metformin%22%29+AND+%28%22UQCRH%22%5BTitle%2FAbstract%5D+OR+%22UQCRH%22%29"
+    },
+    {
+      "Drug": "Metformin",
+      "Candidate Rank": 5,
+      "Candidate Protein": "KIF2C",
+      "Model Confidence Score": 0.9999,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Kinesin family member 2C / MCAK. Regulates microtubule depolymerization at kinetochores; altered in response to AMPK-mediated energy stress in tumor models.",
+      "Literature Cross-Check Status": "Mitotic spindle regulator; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22metformin%22%5BTitle%2FAbstract%5D+OR+%22metformin%22%29+AND+%28%22KIF2C%22%5BTitle%2FAbstract%5D+OR+%22KIF2C%22%29"
+    },
+    {
+      "Drug": "Imatinib",
+      "Candidate Rank": 1,
+      "Candidate Protein": "ATP5F1D",
+      "Model Confidence Score": 0.9994,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Mitochondrial ATP synthase subunit delta. Implicated in TKI-induced metabolic rewiring and oxidative phosphorylation alterations in CML.",
+      "Literature Cross-Check Status": "Metabolic phenotype correlate; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22imatinib%22%5BTitle%2FAbstract%5D+OR+%22imatinib%22%29+AND+%28%22ATP5F1D%22%5BTitle%2FAbstract%5D+OR+%22ATP5F1D%22%29"
+    },
+    {
+      "Drug": "Imatinib",
+      "Candidate Rank": 2,
+      "Candidate Protein": "CHUK",
+      "Model Confidence Score": 0.9994,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Conserved helix-loop-helix ubiquitous kinase (IKK-alpha). Central kinase in NF-kB signaling; cross-talks with BCR-ABL-induced survival pathways.",
+      "Literature Cross-Check Status": "Downstream signaling node in BCR-ABL resistance pathways; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22imatinib%22%5BTitle%2FAbstract%5D+OR+%22imatinib%22%29+AND+%28%22CHUK%22%5BTitle%2FAbstract%5D+OR+%22CHUK%22%29"
+    },
+    {
+      "Drug": "Imatinib",
+      "Candidate Rank": 3,
+      "Candidate Protein": "NEDD8",
+      "Model Confidence Score": 0.9993,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Ubiquitin-like protein essential for cullin-RING E3 ligase activation. Neddylation inhibitors sensitize BCR-ABL-positive cells to imatinib.",
+      "Literature Cross-Check Status": "Synergistic pathway component in leukemogenesis; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22imatinib%22%5BTitle%2FAbstract%5D+OR+%22imatinib%22%29+AND+%28%22NEDD8%22%5BTitle%2FAbstract%5D+OR+%22NEDD8%22%29"
+    },
+    {
+      "Drug": "Imatinib",
+      "Candidate Rank": 4,
+      "Candidate Protein": "TRRAP",
+      "Model Confidence Score": 0.9993,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Transformation/transcription domain-associated protein. Component of histone acetyltransferase complexes; implicated in MYC-driven leukemic transformation.",
+      "Literature Cross-Check Status": "Transcriptional co-activator in oncogenesis; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22imatinib%22%5BTitle%2FAbstract%5D+OR+%22imatinib%22%29+AND+%28%22TRRAP%22%5BTitle%2FAbstract%5D+OR+%22TRRAP%22%29"
+    },
+    {
+      "Drug": "Imatinib",
+      "Candidate Rank": 5,
+      "Candidate Protein": "CHEK2",
+      "Model Confidence Score": 0.9993,
+      "Classification": "Computational Hypothesis (Unverified Direct Binding)",
+      "Biological Interactome Context": "Checkpoint kinase 2 (Chk2). Critical DNA damage checkpoint mediator activated upon ABL1 kinase inhibition and genotoxic stress in leukemic cells.",
+      "Literature Cross-Check Status": "DNA damage response mediator linked to TKI-induced apoptosis; computational hypothesis.",
+      "PubMed Search Link": "https://pubmed.ncbi.nlm.nih.gov/?term=%28%22imatinib%22%5BTitle%2FAbstract%5D+OR+%22imatinib%22%29+AND+%28%22CHEK2%22%5BTitle%2FAbstract%5D+OR+%22CHEK2%22%29"
+    }
+  ],
+  "hypotheses": {
+    "metformin": [
+      {
+        "rank": 1,
+        "drug": "Metformin",
+        "candidate_protein": "NDC80",
+        "confidence_score": 1.0,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 2,
+        "drug": "Metformin",
+        "candidate_protein": "UQCR11",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 3,
+        "drug": "Metformin",
+        "candidate_protein": "PMPCB",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 4,
+        "drug": "Metformin",
+        "candidate_protein": "UQCRH",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 5,
+        "drug": "Metformin",
+        "candidate_protein": "KIF2C",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 6,
+        "drug": "Metformin",
+        "candidate_protein": "CXCR5",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 7,
+        "drug": "Metformin",
+        "candidate_protein": "MCM10",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 8,
+        "drug": "Metformin",
+        "candidate_protein": "ATP5PD",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 9,
+        "drug": "Metformin",
+        "candidate_protein": "HNRNPM",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 10,
+        "drug": "Metformin",
+        "candidate_protein": "MCM6",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 11,
+        "drug": "Metformin",
+        "candidate_protein": "ZWINT",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 12,
+        "drug": "Metformin",
+        "candidate_protein": "CCR6",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 13,
+        "drug": "Metformin",
+        "candidate_protein": "COX6A2",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 14,
+        "drug": "Metformin",
+        "candidate_protein": "COX7A1",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 15,
+        "drug": "Metformin",
+        "candidate_protein": "COX6B1",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 16,
+        "drug": "Metformin",
+        "candidate_protein": "RPA2",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 17,
+        "drug": "Metformin",
+        "candidate_protein": "NCAPG",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 18,
+        "drug": "Metformin",
+        "candidate_protein": "EIF2AK2",
+        "confidence_score": 0.9999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 19,
+        "drug": "Metformin",
+        "candidate_protein": "COX6C",
+        "confidence_score": 0.9998,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 20,
+        "drug": "Metformin",
+        "candidate_protein": "MCM7",
+        "confidence_score": 0.9998,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      }
+    ],
+    "imatinib": [
+      {
+        "rank": 1,
+        "drug": "Imatinib",
+        "candidate_protein": "ATP5F1D",
+        "confidence_score": 0.9994,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 2,
+        "drug": "Imatinib",
+        "candidate_protein": "CHUK",
+        "confidence_score": 0.9994,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 3,
+        "drug": "Imatinib",
+        "candidate_protein": "NEDD8",
+        "confidence_score": 0.9993,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 4,
+        "drug": "Imatinib",
+        "candidate_protein": "TRRAP",
+        "confidence_score": 0.9993,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 5,
+        "drug": "Imatinib",
+        "candidate_protein": "CHEK2",
+        "confidence_score": 0.9993,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 6,
+        "drug": "Imatinib",
+        "candidate_protein": "RNF2",
+        "confidence_score": 0.9993,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 7,
+        "drug": "Imatinib",
+        "candidate_protein": "IRS1",
+        "confidence_score": 0.9992,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 8,
+        "drug": "Imatinib",
+        "candidate_protein": "RBBP7",
+        "confidence_score": 0.9992,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 9,
+        "drug": "Imatinib",
+        "candidate_protein": "SHC1",
+        "confidence_score": 0.9992,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 10,
+        "drug": "Imatinib",
+        "candidate_protein": "MCM2",
+        "confidence_score": 0.9992,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 11,
+        "drug": "Imatinib",
+        "candidate_protein": "RB1",
+        "confidence_score": 0.9992,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 12,
+        "drug": "Imatinib",
+        "candidate_protein": "CDKN1B",
+        "confidence_score": 0.9991,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 13,
+        "drug": "Imatinib",
+        "candidate_protein": "IL1A",
+        "confidence_score": 0.9991,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 14,
+        "drug": "Imatinib",
+        "candidate_protein": "SUMO1",
+        "confidence_score": 0.9991,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 15,
+        "drug": "Imatinib",
+        "candidate_protein": "FOXO3",
+        "confidence_score": 0.9991,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 16,
+        "drug": "Imatinib",
+        "candidate_protein": "FOXP3",
+        "confidence_score": 0.999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 17,
+        "drug": "Imatinib",
+        "candidate_protein": "YBX1",
+        "confidence_score": 0.999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 18,
+        "drug": "Imatinib",
+        "candidate_protein": "XAB2",
+        "confidence_score": 0.999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 19,
+        "drug": "Imatinib",
+        "candidate_protein": "HJURP",
+        "confidence_score": 0.999,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      },
+      {
+        "rank": 20,
+        "drug": "Imatinib",
+        "candidate_protein": "NCOR1",
+        "confidence_score": 0.9989,
+        "status": "Computational Hypothesis",
+        "evidence_type": "GNN Topological Embedding Cosine Proximity"
+      }
+    ]
+  }
+}

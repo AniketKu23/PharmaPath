@@ -1,0 +1,4 @@
+Model,Test AUROC,Test Average Precision
+Node2Vec + Logistic Regression (Baseline),0.5,0.5
+GraphSAGE (Inductive GNN),0.8865,0.9008
+Graph Autoencoder (GAE),0.8832,0.8958

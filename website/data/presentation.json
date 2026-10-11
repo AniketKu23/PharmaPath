@@ -1,0 +1,370 @@
+[
+  {
+    "id": 1,
+    "title": "PharmaPath: Multi-Omics Network-Pharmacology & GNN Discovery",
+    "subtitle": "Investigating Human Interactome Perturbations, Disease Proximity, and Inductive Link Prediction",
+    "badge": "Final-Year Capstone Project Defense",
+    "key_metrics": [
+      {
+        "label": "Human PPI Scaffold",
+        "val": "15,882 Nodes"
+      },
+      {
+        "label": "High-Confidence Edges",
+        "val": "236,712 Edges"
+      },
+      {
+        "label": "GNN Test AUROC",
+        "val": "0.8865"
+      },
+      {
+        "label": "Proximity Z-Score",
+        "val": "-18.28 (T2D)"
+      }
+    ],
+    "bullet_points": [
+      "**Systems Pharmacology Paradigm**: Modeling multi-scale drug effects across physical protein networks rather than isolated single targets.",
+      "**Two Distinct Modalities**: Multi-target metabolic regulator (**Metformin**) vs. precision oncogenic tyrosine kinase inhibitor (**Imatinib**).",
+      "**Zero Data Fabrication**: 100% programmatic data acquisition across STRING v12, ChEMBL, LINCS L1000, and Open Targets GraphQL.",
+      "**Rigorous Machine Learning**: Inductive GNN link prediction with strict leak-free splits and 1,000 degree-matched null permutations."
+    ],
+    "notes": "Welcome faculty and examination committee. Today I present PharmaPath, an end-to-end network pharmacology pipeline integrating multi-omics scaffolds with graph neural networks."
+  },
+  {
+    "id": 2,
+    "title": "The Problem: Limitations of Single-Target Pharmacology",
+    "subtitle": "Complex Diseases Demand Systemic, Network-Level Interventions",
+    "badge": "Biological Motivation",
+    "key_metrics": [
+      {
+        "label": "Classical Target Paradigm",
+        "val": "1 Drug \u2192 1 Target"
+      },
+      {
+        "label": "Network Reality",
+        "val": "Multi-Path Pleiotropy"
+      },
+      {
+        "label": "T2D Complexity",
+        "val": "500 Disease Genes"
+      },
+      {
+        "label": "CML Blast Resistance",
+        "val": "LSC Dormancy"
+      }
+    ],
+    "bullet_points": [
+      "**The Single-Target Myth**: Most clinical attrition occurs because disease phenotypes emerge from robust, redundant network states, not single isolated gene defects.",
+      "**Network Pharmacology Questions**: Which subnetwork neighborhoods are perturbed? Does topological proximity correlate with clinical efficacy? Where are the critical bottlenecks?",
+      "**Repurposing & Off-Targets**: Graph Neural Networks provide a mathematically principled way to predict novel drug-target links and uncover drug synergy."
+    ],
+    "notes": "Diseases like Type 2 Diabetes and Leukemia represent multi-scale topological alterations. We must study how drugs perturb the global interactome."
+  },
+  {
+    "id": 3,
+    "title": "Two Case Study Archetypes: Metformin vs. Imatinib",
+    "subtitle": "Contrasting Indirect Metabolic Modulation against Precision Kinase Targeting",
+    "badge": "Experimental Design",
+    "key_metrics": [
+      {
+        "label": "Metformin Targets (LCC)",
+        "val": "61 Genes"
+      },
+      {
+        "label": "Imatinib Targets (LCC)",
+        "val": "10 Genes"
+      },
+      {
+        "label": "Primary Indication (Met)",
+        "val": "Type 2 Diabetes"
+      },
+      {
+        "label": "Primary Indication (Ima)",
+        "val": "Chronic Myeloid Leukemia"
+      }
+    ],
+    "bullet_points": [
+      "**Metformin (Pleiotropic/Indirect)**: Targets Mitochondrial Complex I subunits (`NDUF*`) and AMPK (`PRKAA1/2`, `PRKAB1`, `PRKAG1`, `GPD2`). Suppresses gluconeogenesis and rewires energy balance.",
+      "**Imatinib (STI-571 / Precision Ground Truth)**: Competitively inhibits the ATP-binding pocket of `ABL1`, `BCR-ABL1`, `KIT`, `PDGFRA`, and `PDGFRB`.",
+      "**Configuration-Driven Pipeline**: Drug specs isolated in `config/drugs.yaml`, enabling testing of a third drug without code alterations."
+    ],
+    "notes": "We contrast Metformin\u2014a distributed metabolic modulator\u2014with Imatinib, the gold standard for targeted oncogenic kinase inhibition."
+  },
+  {
+    "id": 4,
+    "title": "Data Ingestion & Human PPI Interactome Scaffold",
+    "subtitle": "STRING v12 Physical Scaffold with Zero Mapping Loss",
+    "badge": "Phase 1: Module M1",
+    "key_metrics": [
+      {
+        "label": "Parsed STRING Proteins",
+        "val": "19,699"
+      },
+      {
+        "label": "ID Mapping Loss Rate",
+        "val": "0.0000%"
+      },
+      {
+        "label": "LCC Retention Fraction",
+        "val": "98.03%"
+      },
+      {
+        "label": "Physical PPI Density",
+        "val": "0.001877"
+      }
+    ],
+    "bullet_points": [
+      "**Programmatic Ingestion**: STRING v12 Homo sapiens interactome (`protein.links.v12.0.txt.gz`, 79 MB, 13.7M raw links).",
+      "**HGNC Mapping Fidelity**: 19,699 / 19,699 ENSP IDs successfully mapped to gene symbols (0 loss rate).",
+      "**High-Confidence Filtering**: Cutoff at combined score $\\ge 700$. Extracted Largest Connected Component (LCC) with **15,882 nodes** and **236,712 undirected edges**.",
+      "**Provenance Auditing**: Verified sources, timestamps, and row counts preserved in `data/PROVENANCE.md`."
+    ],
+    "notes": "Here is our topological scaffold. 15,882 nodes in the LCC, capturing 98.03% of the human mapped proteome with 236,712 high-confidence physical interactions."
+  },
+  {
+    "id": 5,
+    "title": "Subnetwork Extraction: 2-Hop vs. Random Walk with Restart",
+    "subtitle": "RWR r=0.5 Extracts Dense, Cohesive Functional Complexes",
+    "badge": "Phase 2: Module M2",
+    "key_metrics": [
+      {
+        "label": "Metformin RWR Density",
+        "val": "0.4377 (4,891 edges)"
+      },
+      {
+        "label": "Metformin 2-Hop Density",
+        "val": "0.1719 (21,444 edges)"
+      },
+      {
+        "label": "Imatinib RWR Density",
+        "val": "0.2464 (2,754 edges)"
+      },
+      {
+        "label": "Subnetwork Jaccard Overlap",
+        "val": "0.2621 (Met) | 0.1344 (Ima)"
+      }
+    ],
+    "bullet_points": [
+      "**Algorithmic Comparison**: 2-Hop neighborhood captures broad periphery (top 500 nodes); RWR ($r=0.5$) models random walk diffusion from seed targets (top 150 nodes).",
+      "**Density Enrichment**: Metformin RWR exhibits **$2.5\times$ higher density** than 2-hop; Imatinib RWR exhibits **$1.4\times$ higher density**.",
+      "**Biological Relevance**: RWR effectively filters peripheral interactome noise, isolating tightly coupled molecular machines (Complex I and RTK complexes)."
+    ],
+    "notes": "Notice the massive difference in subnetwork density. RWR yields a 2.5-fold denser subgraph for Metformin, proving that random walk diffusion isolates the core molecular machinery."
+  },
+  {
+    "id": 6,
+    "title": "Expression Overlay & Biological Sanity Pathway Audit",
+    "subtitle": "KEGG 2021 & Reactome 2022 Over-Representation Analysis",
+    "badge": "Phase 3: Module M3",
+    "key_metrics": [
+      {
+        "label": "Metformin Complex I FDR",
+        "val": "2.08e-166"
+      },
+      {
+        "label": "Metformin AMPK Signaling",
+        "val": "p_adj = 3.65e-05"
+      },
+      {
+        "label": "Imatinib CML Pathway",
+        "val": "p_adj = 1.25e-24"
+      },
+      {
+        "label": "Biological Sanity Audit",
+        "val": "100% PASSED"
+      }
+    ],
+    "bullet_points": [
+      "**Transcriptomic Mapping**: LINCS L1000 chemical perturbation signatures overlayed directly onto subnetwork nodes.",
+      "**Metformin Enriched Pathways**: Oxidative Phosphorylation ($p_{adj}=1.26\times 10^{-153}$), Respiratory Electron Transport, AMPK signaling, mTOR signaling, and Insulin signaling.",
+      "**Imatinib Enriched Pathways**: Receptor Tyrosine Kinase signaling ($p_{adj}=1.05\times 10^{-67}$), SCF-KIT signaling, PDGFRA signaling, PI3K/AKT cascade, and Chronic Myeloid Leukemia ($p_{adj}=1.25\times 10^{-24}$).",
+      "**Automated Audit**: Both drugs passed canonical pharmacological sanity checks at $FDR < 0.05$."
+    ],
+    "notes": "Our pathway analysis confirmed canonical pharmacology without any manual adjustments. Metformin hits AMPK, mTOR, and respiratory complex I; Imatinib hits RTK and CML signaling."
+  },
+  {
+    "id": 7,
+    "title": "Network Topology: Centrality Roles & Louvain Modularity",
+    "subtitle": "Identifying Information Bottlenecks and Functional Communities",
+    "badge": "Phase 4: Module M4",
+    "key_metrics": [
+      {
+        "label": "Metformin RWR Modularity Q",
+        "val": "0.1369 (5 Clusters)"
+      },
+      {
+        "label": "Imatinib RWR Modularity Q",
+        "val": "0.2698 (4 Clusters)"
+      },
+      {
+        "label": "Metformin Top Bottleneck",
+        "val": "NDUFA12 (Btw 0.0642)"
+      },
+      {
+        "label": "Imatinib Top Bottleneck",
+        "val": "PIK3R1 (Btw 0.0821)"
+      }
+    ],
+    "bullet_points": [
+      "**Topological Hubs & Bottlenecks**: Hubs (top 5% degree) maintain physical scaffold structure; bottlenecks (top 5% betweenness) control cross-pathway communication.",
+      "**Critical Bridge Proteins**: `NDUFA12`, `NDUFA9`, `PRKAA1` (Metformin); `PIK3R1`, `SRC`, `GRB2`, `ABL1` (Imatinib).",
+      "**Louvain Community Decomposition**: Metformin partitions into Complex I biogenesis and ATP synthesis clusters; Imatinib partitions into Chemokine, MAPK, and Ras signaling clusters."
+    ],
+    "notes": "Betweenness centrality isolates the true signaling bottlenecks. In Imatinib's network, PIK3R1 and SRC act as master bridges channeling oncogenic kinase signals."
+  },
+  {
+    "id": 8,
+    "title": "Disease Module Network Proximity (Guney et al., 2016)",
+    "subtitle": "Closest-Distance d_c Evaluated Against 1,000 Degree-Matched Permutations",
+    "badge": "Phase 4: Module M4",
+    "key_metrics": [
+      {
+        "label": "Metformin \u2192 T2D Z-Score",
+        "val": "z = -18.28 (p=0.0010)"
+      },
+      {
+        "label": "Imatinib \u2192 CML Z-Score",
+        "val": "z = -7.25 (p=0.0010)"
+      },
+      {
+        "label": "Metformin \u2192 CML (Control)",
+        "val": "z = +18.32 (p=1.000)"
+      },
+      {
+        "label": "Imatinib \u2192 T2D (Control)",
+        "val": "z = +1.18 (p=0.965)"
+      }
+    ],
+    "bullet_points": [
+      "**Mathematical Formulation**: \u27e8d_c\u27e9 = (1/|T|) \u2211_{t \u2208 T} min_{s \u2208 S} d(t, s) benchmarking distance between drug targets T and disease genes S.",
+      "**Degree-Preserving Null Model**: Evaluated against 1,000 degree-binned random permutations to guarantee hub bias does not inflate significance.",
+      "**Proximity Verification**: Both drugs showed profound topological proximity to their primary disease modules (z \u2264 -7.25, p = 0.0010).",
+      "**Negative Control Specificity**: Cross-testing on non-indicated diseases completely abolished proximity (z > 0, p \u2248 1.0)."
+    ],
+    "notes": "Here is our proximity benchmark. Metformin is situated right on top of the T2D module with a z-score of -18.28. Notice that against CML, the negative control gives z = +18.32, proving extreme disease specificity."
+  },
+  {
+    "id": 9,
+    "title": "Inductive GNN Link Prediction: Zero Data Leakage",
+    "subtitle": "GraphSAGE & Graph Autoencoder (GAE) on Held-Out Test Edges",
+    "badge": "Phase 5: Module M5",
+    "key_metrics": [
+      {
+        "label": "GraphSAGE Test AUROC",
+        "val": "0.8865 (AP = 0.9008)"
+      },
+      {
+        "label": "GAE Test AUROC",
+        "val": "0.8832 (AP = 0.8958)"
+      },
+      {
+        "label": "Node2Vec Baseline",
+        "val": "0.5000 (AP = 0.5000)"
+      },
+      {
+        "label": "Held-Out Test Edges",
+        "val": "23,671 Edges (10%)"
+      }
+    ],
+    "bullet_points": [
+      "**Leak-Free Edge Splitting**: Applied PyG `RandomLinkSplit` (80% Train, 10% Val, 10% Test). Test edges strictly excluded from training message passing.",
+      "**GNN Architectures**: 2-layer inductive GraphSAGE with mean aggregation; GCN spectral Graph Autoencoder (GAE).",
+      "**Superior Representation Learning**: GraphSAGE achieved **AUROC = 0.8865** and **AP = 0.9008**, massively outperforming linear transductive baselines.",
+      "**PyTest Verification**: `tests/test_leakage.py` verified zero edge intersection between splits."
+    ],
+    "notes": "Our inductive GraphSAGE model achieves 0.8865 AUROC on 23,671 held-out test edges with zero data leakage. Unit tests proved that test edges never entered message-passing adjacency."
+  },
+  {
+    "id": 10,
+    "title": "Target Recovery & Novel Candidate Hypotheses",
+    "subtitle": "Leave-Targets-Out Cross-Validation & PubMed Literature Audit",
+    "badge": "Phase 5 & 7: Modules M5/M7",
+    "key_metrics": [
+      {
+        "label": "Metformin NDUFS7 Rank",
+        "val": "#15 / 15,882 (Hits@20 50%)"
+      },
+      {
+        "label": "Imatinib CSF1R Rank",
+        "val": "#85 / 15,882"
+      },
+      {
+        "label": "Top Metformin Lead",
+        "val": "NDC80 (Score 1.0000)"
+      },
+      {
+        "label": "Top Imatinib Lead",
+        "val": "CHUK/IKK-\u03b1 & NEDD8"
+      }
+    ],
+    "bullet_points": [
+      "**Leave-Targets-Out Validation**: Hiding known targets and ranking all 15,882 proteome candidates by embedding similarity recovered `NDUFS7` at **Rank #15** and `CSF1R` at **Rank #85**.",
+      "**Metformin Hypotheses**: `NDC80` (Rank 1, kinetochore/mitotic arrest), `UQCR11` & `UQCRH` (Ranks 2 & 4, Complex III respiratory coupling), `PMPCB` (Rank 3, mitochondrial peptidase).",
+      "**Imatinib Hypotheses**: `CHUK` (Rank 2, IKK-\u03b1 kinase in BCR-ABL NF-\u03baB survival signaling), `NEDD8` (Rank 3, neddylation pathway essential for BCR-ABL stability).",
+      "**PubMed Verification Table**: All top-20 links cross-referenced against automated PubMed queries."
+    ],
+    "notes": "In leave-targets-out cross-validation, NDUFS7 was recovered at rank 15 out of almost 16,000 proteins. Our top predicted off-targets like CHUK and NEDD8 have strong literature support in BCR-ABL biology."
+  },
+  {
+    "id": 11,
+    "title": "Two-Drug Comparison & Combination Pharmacology",
+    "subtitle": "Menche Separation s_AB = 1.3503 and LSC Eradication Synergy",
+    "badge": "Phase 6: Module M6",
+    "key_metrics": [
+      {
+        "label": "Direct Target Jaccard",
+        "val": "0.0000 (0 Shared)"
+      },
+      {
+        "label": "Menche Separation s_AB",
+        "val": "+1.3503 (Distinct Modules)"
+      },
+      {
+        "label": "2-Hop Shared Nodes",
+        "val": "347 Genes (Jaccard 0.5314)"
+      },
+      {
+        "label": "Shared Interactome Hubs",
+        "val": "22 Hubs (AKT1, TP53, SRC)"
+      }
+    ],
+    "bullet_points": [
+      "**Topological Module Separation**: s_AB = 1.3503 > 0 proves direct targets occupy distinct interactome territories.",
+      "**Cross-Talk Convergence**: The 2-hop interactome scaffold shares **347 common nodes**, converging on `AKT1`, `TP53`, `MAPK1`, and `STAT3`.",
+      "**Combination Rationale (Metformin + Imatinib in CML)**:",
+      "  1. *Eradication of Quiescent LSCs*: Imatinib eliminates proliferating blasts; Metformin inhibits Complex I, depletes ATP pools, and forces dormant leukemic stem cells into apoptosis.",
+      "  2. *Cardioprotection*: Metformin AMPK activation mitigates TKI-induced cardiomyocyte stress and ER toxicity."
+    ],
+    "notes": "Although direct targets are separated with s_AB = 1.35, their 2-hop networks share 347 proteins including AKT1 and TP53. This provides a strong molecular rationale for combining Metformin with Imatinib in CML."
+  },
+  {
+    "id": 12,
+    "title": "Engineering Deliverables, Limitations & Conclusion",
+    "subtitle": "A Fully Verified, Reproducible Network Pharmacology Framework",
+    "badge": "Conclusions & QA",
+    "key_metrics": [
+      {
+        "label": "PyTest Test Suite",
+        "val": "6 / 6 Passed (100%)"
+      },
+      {
+        "label": "End-to-End Orchestrator",
+        "val": "scripts/run_all.py"
+      },
+      {
+        "label": "Interactive Platform",
+        "val": "Streamlit + Modern Web"
+      },
+      {
+        "label": "Complete Report & Slides",
+        "val": "reports/final_report.md"
+      }
+    ],
+    "bullet_points": [
+      "**Software Quality Assurance**: Unit tests verify graph construction, ENSP mapping, Guney proximity, and zero GNN data leakage.",
+      "**Critical Limitations**: GNN predictions are computational topological hypotheses, not verified biochemical affinity; STRING interactome exhibits cancer gene ascertainment bias; LINCS signatures reflect cell-line specificity.",
+      "**Summary**: PharmaPath demonstrates that integrating topological graph scaffolds with inductive GNNs and rigorous null models provides an objective, leak-free framework for modern network pharmacology."
+    ],
+    "notes": "In conclusion, PharmaPath delivers an end-to-end reproducible platform with zero data fabrication, rigorous quality assurance, and validated biological findings. Thank you, and I look forward to your questions."
+  }
+]

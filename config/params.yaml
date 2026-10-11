@@ -1,0 +1,82 @@
+# PharmaPath Global Parameters Configuration
+
+seed: 42
+
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+
+string_ppi:
+  version: "v12.0"
+  taxon: "9606"
+  min_combined_score: 700
+  links_url: "https://stringdb-downloads.org/download/protein.links.v12.0/9606.protein.links.v12.0.txt.gz"
+  info_url: "https://stringdb-downloads.org/download/protein.info.v12.0/9606.protein.info.v12.0.txt.gz"
+  # Fallback mirror if stringdb-downloads is slow/unreachable
+  links_mirror_url: "https://version-12-0.string-db.org/download/protein.links.v12.0/9606.protein.links.v12.0.txt.gz"
+  info_mirror_url: "https://version-12-0.string-db.org/download/protein.info.v12.0/9606.protein.info.v12.0.txt.gz"
+
+subnetwork:
+  two_hop:
+    max_hops: 2
+    max_nodes: 500  # prune to top degree nodes if 2-hop explodes
+  rwr:
+    restart_prob: 0.5
+    top_n: 150
+
+expression:
+  source: "LINCS_L1000"
+  enrichr_libraries:
+    - "LINCS_L1000_Chem_Pert_up"
+    - "LINCS_L1000_Chem_Pert_down"
+
+enrichment:
+  pathway_libraries:
+    - "KEGG_2021_Human"
+    - "Reactome_2022"
+  fdr_cutoff: 0.05
+  top_n_pathways: 15
+
+centrality:
+  hub_percentile: 0.05
+  bottleneck_percentile: 0.05
+
+communities:
+  random_seed: 42
+  resolution: 1.0
+
+proximity:
+  metric: "closest"
+  num_permutations: 1000
+  degree_bin_size: 5
+  random_seed: 42
+
+gnn:
+  random_seed: 42
+  node2vec:
+    embedding_dim: 64
+    walk_length: 20
+    walks_per_node: 10
+    p: 1.0
+    q: 1.0
+    epochs: 10
+    batch_size: 128
+  graphsage:
+    in_channels: 64
+    hidden_channels: 64
+    out_channels: 32
+    epochs: 80
+    lr: 0.005
+  gae:
+    in_channels: 64
+    hidden_channels: 64
+    out_channels: 32
+    epochs: 80
+    lr: 0.005
+  link_split:
+    val_ratio: 0.1
+    test_ratio: 0.1
+  leave_targets_out:
+    k_hidden: 2
+    hits_ks: [10, 20, 50]
+  top_hypotheses_k: 20

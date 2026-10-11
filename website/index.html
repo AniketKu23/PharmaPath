@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaPath | Network-Pharmacology & GNN Discovery Platform</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%2308090C'/><circle cx='50' cy='50' r='42' fill='none' stroke='%23FF8000' stroke-width='6'/><circle cx='34' cy='38' r='10' fill='%23FF8000'/><circle cx='66' cy='62' r='10' fill='%23FF8000'/><line x1='34' y1='38' x2='66' y2='62' stroke='%23FFFFFF' stroke-width='4'/></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Vendor Styles -->
+  <link rel="stylesheet" href="vendor/vis-network.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-pharmapath">
+  <!-- Interactive Particle Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="nav-brand">
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF8000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="6" cy="6" r="3"></circle>
+          <circle cx="18" cy="6" r="3"></circle>
+          <circle cx="18" cy="18" r="3"></circle>
+          <circle cx="6" cy="18" r="3"></circle>
+          <line x1="9" y1="6" x2="15" y2="6"></line>
+          <line x1="6" y1="9" x2="6" y2="15"></line>
+          <line x1="9" y1="18" x2="15" y2="18"></line>
+          <line x1="16" y1="8" x2="8" y2="16"></line>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">Pharma<span class="text-orange">Path</span></span>
+        <span class="badge-platform">Interactive Discovery Platform</span>
+      </div>
+    </div>
+
+    <!-- Quick Utilities -->
+    <div class="nav-tools">
+      <button id="btn-fullscreen" class="tool-btn" title="Toggle Fullscreen Mode">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+        </svg>
+        <span>Fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main id="app-container">
+
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE RESEARCH LAB                                                  -->
+    <!-- ========================================================================= -->
+    <section id="view-explorer" class="view-section active">
+      
+      <!-- Explorer Tabs Bar -->
+      <div class="explorer-tabs-bar">
+        <button class="exp-tab active" data-tab="tab-subnetworks">
+          Subnetwork Canvas
+        </button>
+        <button class="exp-tab" data-tab="tab-pathways">
+          Pathways & ORA
+        </button>
+        <button class="exp-tab" data-tab="tab-centralities">
+          Centrality & Hubs
+        </button>
+        <button class="exp-tab" data-tab="tab-proximity">
+          Disease Proximity
+        </button>
+        <button class="exp-tab" data-tab="tab-gnn">
+          GNN Link Predictions
+        </button>
+        <button class="exp-tab" data-tab="tab-comparison">
+          Two-Drug Comparison
+        </button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="explorer-body">
+        
+        <!-- ------------------------------------------------------------------- -->
+        <!-- TAB 1: SUBNETWORK CANVAS                                            -->
+        <!-- ------------------------------------------------------------------- -->
+        <div id="tab-subnetworks" class="exp-content active">
+          <div class="canvas-panel-grid">
+            <!-- Left Controls Sidebar -->
+            <div class="canvas-sidebar glass-panel">
+              <h3 class="panel-title"><span class="text-orange">Subnetwork</span> Controls</h3>
+              
+              <div class="ctrl-group">
+                <label class="ctrl-label">Select Drug:</label>
+                <div class="pill-group">
+                  <button class="pill-btn active" data-drug="metformin">Metformin (T2D)</button>
+                  <button class="pill-btn" data-drug="imatinib">Imatinib (CML)</button>
+                </div>
+              </div>
+
+              <div class="ctrl-group">
+                <label class="ctrl-label">Extraction Algorithm:</label>
+                <div class="pill-group">
+                  <button class="pill-btn active" data-method="rwr">RWR (r=0.5)</button>
+                  <button class="pill-btn" data-method="2hop">2-Hop Neighborhood</button>
+                </div>
+              </div>
+
+              <div class="ctrl-group">
+                <label class="ctrl-label">Node Sizing Metric:</label>
+                <select id="select-sizing-metric" class="ctrl-select">
+                  <option value="degree">Degree Centrality</option>
+                  <option value="betweenness">Betweenness Centrality</option>
+                  <option value="eigenvector">Eigenvector Centrality</option>
+                </select>
+              </div>
+
+              <div class="ctrl-group">
+                <label class="ctrl-label">Min STRING Edge Score: <strong id="val-edge-score" class="text-orange">700</strong></label>
+                <input type="range" id="slider-edge-score" class="ctrl-range" min="700" max="950" value="700" step="25">
+              </div>
+
+              <div class="ctrl-group">
+                <label class="ctrl-label">Max Rendered Nodes: <strong id="val-max-nodes" class="text-orange">120</strong></label>
+                <input type="range" id="slider-max-nodes" class="ctrl-range" min="30" max="250" value="120" step="10">
+              </div>
+
+              <div class="ctrl-group">
+                <label class="ctrl-label">Highlight Gene Symbol:</label>
+                <div class="search-box">
+                  <input type="text" id="input-gene-search" class="ctrl-input" placeholder="e.g. PRKAA1, ABL1, NDUFS7">
+                  <button id="btn-gene-search" class="search-btn">Search</button>
+                </div>
+              </div>
+
+              <div class="ctrl-group">
+                <div class="action-btn-row">
+                  <button id="btn-toggle-physics" class="btn-action">Pause Physics</button>
+                  <button id="btn-fit-canvas" class="btn-action secondary">Center View</button>
+                </div>
+              </div>
+
+              <!-- Color Legend -->
+              <div class="color-legend glass-card mt-3">
+                <div class="legend-title">Node Aesthetics:</div>
+                <div class="legend-item"><span class="legend-dot dot-gold"></span> <strong>Seed Drug Target</strong> (Star)</div>
+                <div class="legend-item"><span class="legend-dot dot-red"></span> <strong>Up-Regulated</strong> (z > 1.0)</div>
+                <div class="legend-item"><span class="legend-dot dot-green"></span> <strong>Down-Regulated</strong> (z < -1.0)</div>
+                <div class="legend-item"><span class="legend-dot dot-blue"></span> <strong>Interactome Neighbor</strong></div>
+              </div>
+            </div>
+
+            <!-- Right Vis.js Canvas Viewport -->
+            <div class="canvas-viewport glass-panel">
+              <div class="canvas-kpis-bar">
+                <div class="kpi-mini">Nodes: <strong id="kpi-net-nodes" class="text-orange">--</strong></div>
+                <div class="kpi-mini">Edges: <strong id="kpi-net-edges" class="text-orange">--</strong></div>
+                <div class="kpi-mini">Density: <strong id="kpi-net-density" class="text-orange">--</strong></div>
+                <div class="kpi-mini">Targets In Subgraph: <strong id="kpi-net-targets" class="text-orange">--</strong></div>
+              </div>
+              
+              <!-- Vis.js Container -->
+              <div id="vis-network-canvas" class="vis-container"></div>
+              
+              <div class="canvas-hint">
+                <span>Click on any protein node to inspect detailed multi-omics attributes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- TAB 2: PATHWAYS & ENRICHMENT                                        -->
+        <!-- ------------------------------------------------------------------- -->
+        <div id="tab-pathways" class="exp-content">
+          <div class="exp-grid-2">
+            <!-- Left: Biological Sanity Audit & Controls -->
+            <div class="glass-panel">
+              <h3 class="panel-title"><span class="text-orange">Biological Sanity</span> Audit</h3>
+              <div id="sanity-audit-container">
+                <!-- Injected dynamically -->
+              </div>
+
+              <div class="mt-4">
+                <h4 class="sub-title">Enrichment Filters:</h4>
+                <div class="ctrl-group">
+                  <label class="ctrl-label">Drug:</label>
+                  <div class="pill-group" id="pathway-drug-pills">
+                    <button class="pill-btn active" data-pdrug="metformin">Metformin</button>
+                    <button class="pill-btn" data-pdrug="imatinib">Imatinib</button>
+                  </div>
+                </div>
+
+                <div class="ctrl-group">
+                  <label class="ctrl-label">Scope:</label>
+                  <div class="pill-group" id="pathway-scope-pills">
+                    <button class="pill-btn active" data-pscope="rwr_subnetwork">RWR Subnetwork</button>
+                    <button class="pill-btn" data-pscope="2hop_subnetwork">2-Hop Subnetwork</button>
+                    <button class="pill-btn" data-pscope="lincs_perturbed">LINCS Perturbed</button>
+                  </div>
+                </div>
+
+                <div class="ctrl-group">
+                  <label class="ctrl-label">Max FDR Threshold: <strong id="val-fdr-thresh" class="text-orange">0.05</strong></label>
+                  <input type="range" id="slider-fdr-thresh" class="ctrl-range" min="0.001" max="0.10" value="0.05" step="0.005">
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Chart & Pathways Table -->
+            <div class="glass-panel">
+              <h3 class="panel-title">Top Enriched Pathways (KEGG & Reactome)</h3>
+              <div class="chart-container" style="height: 320px;">
+                <canvas id="chart-pathways"></canvas>
+              </div>
+
+              <div class="mt-3">
+                <h4 class="sub-title">Pathway Ranking Table:</h4>
+                <div class="table-scroll" style="max-height: 280px;">
+                  <table class="pharma-table" id="table-pathways">
+                    <thead>
+                      <tr>
+                        <th>Term</th>
+                        <th>Database</th>
+                        <th>Adj. P-Value</th>
+                        <th>Overlap</th>
+                        <th>Combined Score</th>
+                      </tr>
+                    </thead>
+                    <tbody><!-- Dynamic rows --></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- TAB 3: NETWORK CENTRALITIES & MODULARITY                            -->
+        <!-- ------------------------------------------------------------------- -->
+        <div id="tab-centralities" class="exp-content">
+          <div class="exp-grid-2">
+            <!-- Left: Scatter Plot Degree vs Betweenness -->
+            <div class="glass-panel">
+              <div class="panel-header-row">
+                <h3 class="panel-title">Topological Roles: <span class="text-orange">Degree vs. Betweenness</span></h3>
+                <div class="pill-group" id="cent-drug-pills">
+                  <button class="pill-btn active" data-cdrug="metformin">Metformin</button>
+                  <button class="pill-btn" data-cdrug="imatinib">Imatinib</button>
+                </div>
+              </div>
+              <div class="chart-container" style="height: 360px;">
+                <canvas id="chart-centrality-scatter"></canvas>
+              </div>
+              <div class="legend-row mt-2">
+                <span class="badge-tag tag-purple">Dual Bridge</span>
+                <span class="badge-tag tag-orange">Hub (Degree)</span>
+                <span class="badge-tag tag-red">Bottleneck (Betweenness)</span>
+                <span class="badge-tag tag-blue">Standard Node</span>
+              </div>
+            </div>
+
+            <!-- Right: Top Hubs, Bottlenecks & Louvain Communities -->
+            <div class="glass-panel">
+              <h3 class="panel-title">Louvain Modularity Clusters & Dominant Pathways</h3>
+              <div class="table-scroll" style="max-height: 220px;">
+                <table class="pharma-table" id="table-communities">
+                  <thead>
+                    <tr>
+                      <th>Community ID</th>
+                      <th>Proteins</th>
+                      <th>Dominant Biological Pathway</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+
+              <h4 class="sub-title mt-4">Top Bottleneck Bridges:</h4>
+              <div class="table-scroll" style="max-height: 220px;">
+                <table class="pharma-table" id="table-bottlenecks">
+                  <thead>
+                    <tr>
+                      <th>Gene</th>
+                      <th>Degree</th>
+                      <th>Betweenness</th>
+                      <th>Eigenvector</th>
+                      <th>Role</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- TAB 4: DISEASE PROXIMITY LAB                                        -->
+        <!-- ------------------------------------------------------------------- -->
+        <div id="tab-proximity" class="exp-content">
+          <div class="exp-grid-2">
+            <!-- Left: Guney Proximity Null Permutation Distribution -->
+            <div class="glass-panel">
+              <div class="panel-header-row">
+                <h3 class="panel-title">Null Distribution <span class="text-orange">(1,000 Permutations)</span></h3>
+                <select id="select-prox-pair" class="ctrl-select" style="width: auto;">
+                  <option value="metformin_t2d">Metformin → Type 2 Diabetes (Primary)</option>
+                  <option value="imatinib_cml">Imatinib → Chronic Myeloid Leukemia (Primary)</option>
+                  <option value="metformin_cml">Metformin → CML (Negative Control)</option>
+                  <option value="imatinib_t2d">Imatinib → T2D (Negative Control)</option>
+                </select>
+              </div>
+
+              <div class="chart-container" style="height: 340px;">
+                <canvas id="chart-proximity-dist"></canvas>
+              </div>
+
+              <div id="prox-stats-callout" class="callout-card mt-3">
+                <!-- Injected dynamically -->
+              </div>
+            </div>
+
+            <!-- Right: Proximity Benchmark Summary Table & Theory -->
+            <div class="glass-panel">
+              <h3 class="panel-title">Statistical Proximity Benchmark Summary</h3>
+              <div class="table-scroll" style="max-height: 300px;">
+                <table class="pharma-table" id="table-proximity-summary">
+                  <thead>
+                    <tr>
+                      <th>Drug</th>
+                      <th>Disease Module</th>
+                      <th>Observed d_c</th>
+                      <th>Null Mean ± Std</th>
+                      <th>Z-Score</th>
+                      <th>P-Value</th>
+                      <th>Verdict</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+
+              <div class="glass-card mt-4">
+                <h4 class="sub-title"><span class="text-orange">Guney et al. (2016)</span> Mathematical Definition:</h4>
+                <div class="formula-box" style="font-family: var(--font-mono); font-size: 15px; color: var(--orange); background: rgba(0,0,0,0.5); padding: 12px 18px; border-radius: 8px; border-left: 3px solid var(--orange); margin: 10px 0;">
+                  &lang;d<sub>c</sub>(T, S)&rang; = <sup>1</sup>/<sub>|T|</sub> &sum;<sub>t &isin; T</sub> min<sub>s &isin; S</sub> d(t, s)
+                </div>
+                <p class="text-muted small">
+                  Measures the mean shortest path from each drug target <span class="text-orange">t &isin; T</span> to the nearest disease gene <span class="text-orange">s &isin; S</span> across the human PPI network.  
+                  A negative z-score (<strong class="text-green">z &le; &minus;2.0</strong>) confirms that the drug targets reside significantly inside or immediately adjacent to the disease module, controlling for node degree.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- TAB 5: GNN LINK PREDICTIONS STUDIO                                  -->
+        <!-- ------------------------------------------------------------------- -->
+        <div id="tab-gnn" class="exp-content">
+          <div class="exp-grid-2">
+            <!-- Left: Model Performance & ROC/PR Curves -->
+            <div class="glass-panel">
+              <h3 class="panel-title">Inductive GNN Benchmark: <span class="text-orange">Zero Data Leakage</span></h3>
+              <div class="table-scroll" style="max-height: 180px;">
+                <table class="pharma-table" id="table-gnn-metrics">
+                  <thead>
+                    <tr>
+                      <th>Model Architecture</th>
+                      <th>Test AUROC</th>
+                      <th>Test Average Precision</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+
+              <h4 class="sub-title mt-4">Leave-Targets-Out Cross-Validation:</h4>
+              <div class="table-scroll" style="max-height: 180px;">
+                <table class="pharma-table" id="table-gnn-recovery">
+                  <thead>
+                    <tr>
+                      <th>Drug</th>
+                      <th>Hidden Test Targets</th>
+                      <th>Recovered Ranks</th>
+                      <th>MRR</th>
+                      <th>Hits@20</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+
+              <div class="mt-3">
+                <img src="figures/gnn_link_prediction_roc_pr.png" alt="GNN ROC and PR Curves" class="img-preview" id="img-gnn-curves">
+              </div>
+            </div>
+
+            <!-- Right: Top-20 Predicted Hypotheses with PubMed Links -->
+            <div class="glass-panel">
+              <div class="panel-header-row">
+                <h3 class="panel-title">Top-20 Novel Candidate Hypotheses</h3>
+                <div class="pill-group" id="gnn-drug-pills">
+                  <button class="pill-btn active" data-gdrug="metformin">Metformin</button>
+                  <button class="pill-btn" data-gdrug="imatinib">Imatinib</button>
+                </div>
+              </div>
+
+              <div class="callout-card orange-border mb-3">
+                <strong>Methodological Rigor:</strong> Predictions represent proteins functionally and interactomically linked to drug targets by GraphSAGE embeddings. They are <strong>computational hypotheses</strong>, not proof of direct biochemical binding.
+              </div>
+
+              <div class="table-scroll" style="max-height: 440px;">
+                <table class="pharma-table" id="table-gnn-hypotheses">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Candidate Gene</th>
+                      <th>Confidence</th>
+                      <th>Biological Context</th>
+                      <th>Status</th>
+                      <th>PubMed Link</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------- -->
+        <!-- TAB 6: TWO-DRUG COMPARISON & SYNERGY LAB                            -->
+        <!-- ------------------------------------------------------------------- -->
+        <div id="tab-comparison" class="exp-content">
+          <div class="exp-grid-2">
+            <!-- Left: Modality Overlap & Separation -->
+            <div class="glass-panel">
+              <h3 class="panel-title">Interactome Separation & Jaccard Overlap</h3>
+              <div class="table-scroll" style="max-height: 260px;">
+                <table class="pharma-table" id="table-comp-summary">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Metformin</th>
+                      <th>Imatinib</th>
+                      <th>Shared</th>
+                      <th>Jaccard</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+
+              <div class="glass-card mt-3">
+                <h4 class="sub-title"><span class="text-orange">Menche et al. (2015 Science)</span> Interactome Separation:</h4>
+                <div class="formula-box" style="font-family: var(--font-mono); font-size: 14px; color: var(--orange); background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; border-left: 3px solid var(--orange); margin: 8px 0;">
+                  s<sub>AB</sub> = &lang;d<sub>AB</sub>&rang; &minus; (&lang;d<sub>AA</sub>&rang; + &lang;d<sub>BB</sub>&rang;) / 2
+                </div>
+                <div class="kpi-card-row">
+                  <div class="kpi-card">
+                    <div class="kpi-label">Separation s<sub>AB</sub></div>
+                    <div class="kpi-val text-orange">+1.3503</div>
+                  </div>
+                  <div class="kpi-card">
+                    <div class="kpi-label">Inter-Distance &lang;d<sub>AB</sub>&rang;</div>
+                    <div class="kpi-val">2.409</div>
+                  </div>
+                  <div class="kpi-card">
+                    <div class="kpi-label">Topological State</div>
+                    <div class="kpi-val text-green">Distinct Modules (s &gt; 0)</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass-card mt-3">
+                <h4 class="sub-title"><span class="text-orange">Jaccard Overlap</span> Across Omics Dimensions:</h4>
+                <div style="height: 180px; position: relative;">
+                  <canvas id="chart-comp-jaccard"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Shared Cross-Talk Hubs & Combination Pharmacology -->
+            <div class="glass-panel">
+              <h3 class="panel-title">Shared Interactome Cross-Talk Hubs (347 Shared Nodes)</h3>
+              <div class="table-scroll" style="max-height: 260px;">
+                <table class="pharma-table" id="table-shared-proteins">
+                  <thead>
+                    <tr>
+                      <th>Gene</th>
+                      <th>Full Degree</th>
+                      <th>Metformin Deg</th>
+                      <th>Imatinib Deg</th>
+                      <th>Shared Hub?</th>
+                      <th>Shared Bottleneck?</th>
+                    </tr>
+                  </thead>
+                  <tbody><!-- Dynamic rows --></tbody>
+                </table>
+              </div>
+
+              <div class="glass-card mt-3">
+                <h4 class="sub-title"><span class="text-orange">Combination Synergy:</span> Metformin + Imatinib in CML</h4>
+                <div class="report-box" id="combination-report-box">
+                  <!-- Injected dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Node Inspection Detail Modal -->
+  <div id="node-modal" class="modal-overlay">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <h3 id="modal-gene-title">Gene Details</h3>
+        <button id="btn-modal-close" class="close-btn">&times;</button>
+      </div>
+      <div id="modal-gene-body" class="modal-body">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Vendor Scripts -->
+  <script src="vendor/vis-network.min.js"></script>
+  <script src="vendor/chart.umd.min.js"></script>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>

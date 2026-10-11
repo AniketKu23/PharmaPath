@@ -1,0 +1,14 @@
+# Large raw datasets (>100MB)
+data/raw/
+data/processed/
+
+# Python environment and test caches
+.pytest_cache/
+__pycache__/
+*.pyc
+tests/
+notebooks/
+results/models/
+
+# Documentation source files not needed on website deployment
+docs/

@@ -1,0 +1,5 @@
+drug,disease,is_primary_context,targets_in_ppi,disease_genes_in_ppi,observed_d_c,mean_null_d_c,std_null_d_c,z_score,p_value,verdict
+Metformin,Type 2 Diabetes,True,61,456,0.21311475409836064,1.0121147540983606,0.04371513353242938,-18.277423295694028,0.000999000999000999,"Highly Significant Topological Proximity (z < -2.0, p < 0.01)"
+Imatinib,Chronic Myeloid Leukemia,True,10,161,0.4,1.2279,0.11424355561693621,-7.2467982594658205,0.000999000999000999,"Highly Significant Topological Proximity (z < -2.0, p < 0.01)"
+Metformin,Chronic Myeloid Leukemia [Control],False,61,161,1.9508196721311475,1.096655737704918,0.04663692119667256,18.315187034412816,1.0,Not Topologically Proximate (z >= -0.15 or p >= 0.05)
+Imatinib,Type 2 Diabetes [Control],False,10,456,1.3,1.1496,0.12727859207266554,1.1816598341544675,0.965034965034965,Not Topologically Proximate (z >= -0.15 or p >= 0.05)

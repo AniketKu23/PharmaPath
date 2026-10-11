@@ -1,0 +1,3 @@
+Drug,Candidate Proteome Size,Train Targets Count,Hidden Test Targets,Hidden Targets Ranks,Mean Reciprocal Rank (MRR),Hits@10,Hits@20,Hits@50
+Metformin,15882,59,"NDUFS7, NDUFAF8","{'NDUFS7': 15, 'NDUFAF8': 10998}",0.0334,0.0%,50.0%,50.0%
+Imatinib,15882,8,"CSF1R, DDR1","{'CSF1R': 85, 'DDR1': 8005}",0.0059,0.0%,0.0%,0.0%

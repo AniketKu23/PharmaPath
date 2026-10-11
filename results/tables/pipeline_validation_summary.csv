@@ -1,0 +1,5 @@
+Module,Status,Metric Evaluated,Observed Result,Criterion
+M5: GNN Link Prediction,PASS,Test AUROC / AP (No Leakage),"GraphSAGE: AUROC=0.8865, AP=0.9008 | GAE: AUROC=0.8832",GraphSAGE & GAE Test AUROC >= 0.80 without test leakage
+M5: Target Recovery,PASS,Leave-Targets-Out MRR / Hits@k,"Metformin: MRR=0.0334, Hits@20=50.0% | Imatinib: MRR=0.0059",Leave-targets-out recovery evaluated without test target leakage
+M3: Pathway Biological Sanity,PASS,Expected Canonical Pathway FDR,Metformin passed (AMPK/mTOR/FoxO FDR<0.05) | Imatinib passed (RTK/BCR-ABL/CML FDR<0.05),Metformin hits AMPK/mTOR/energy pathways; Imatinib hits RTK/CML/kinase pathways at FDR < 0.05
+M4: Disease Proximity,PASS,Empirical Proximity Z-Score & P-Value,Metformin->T2D: z=-18.28 (p=0.0010) | Imatinib->CML: z=-7.25 (p=0.0010),"Observed disease modules have z <= -2.0 and empirical p <= 0.05 vs 1,000 degree-matched random node sets"

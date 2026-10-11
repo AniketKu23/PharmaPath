@@ -1,0 +1,28 @@
+{
+  "mapping_stats": {
+    "total_proteins": 19699,
+    "mapped_proteins": 19699,
+    "unique_gene_symbols": 19699,
+    "missing_symbols": 0,
+    "loss_rate": 0.0
+  },
+  "full_graph_stats": {
+    "raw_links_lines": 13715404,
+    "edges_above_threshold": 473860,
+    "unmapped_edges": 0,
+    "edge_mapping_loss_rate": 0.0,
+    "total_nodes": 16201,
+    "total_undirected_edges": 236930,
+    "density": 0.0018054822099839898,
+    "num_connected_components": 126
+  },
+  "lcc_stats": {
+    "original_nodes": 16201,
+    "original_edges": 236930,
+    "lcc_nodes": 15882,
+    "lcc_edges": 236712,
+    "lcc_node_fraction": 0.9803098574162089,
+    "lcc_density": 0.00187701279494042,
+    "num_components_pruned": 125
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "summary": [
+    {
+      "Comparison Metric": "Direct Target Overlap",
+      "Metformin Count": 61,
+      "Imatinib Count": 10,
+      "Shared Count": 0,
+      "Jaccard Index": 0.0,
+      "Detail / Interpretation": "0 direct targets shared (Metformin is a metabolic/mitochondrial modulator; Imatinib is a receptor tyrosine kinase inhibitor)."
+    },
+    {
+      "Comparison Metric": "RWR Subnetwork Nodes (top 150)",
+      "Metformin Count": 150,
+      "Imatinib Count": 150,
+      "Shared Count": 0,
+      "Jaccard Index": 0.0,
+      "Detail / Interpretation": "0 shared interactome proteins connecting mitochondrial/AMPK signaling to tyrosine kinase cascades."
+    },
+    {
+      "Comparison Metric": "2-Hop Subnetwork Nodes",
+      "Metformin Count": 500,
+      "Imatinib Count": 500,
+      "Shared Count": 347,
+      "Jaccard Index": 0.5313935681470138,
+      "Detail / Interpretation": "347 shared nodes within 2 hops in the human interactome scaffold."
+    },
+    {
+      "Comparison Metric": "Enriched Pathways (FDR < 0.05)",
+      "Metformin Count": 66,
+      "Imatinib Count": 581,
+      "Shared Count": 20,
+      "Jaccard Index": 0.0319,
+      "Detail / Interpretation": "20 common pathways including energy homeostasis and signaling transduction."
+    },
+    {
+      "Comparison Metric": "Interactome Separation s_AB (closest)",
+      "Metformin Count": 61,
+      "Imatinib Count": 10,
+      "Shared Count": 0,
+      "Jaccard Index": null,
+      "Detail / Interpretation": "s_AB = 1.3503 (<d_AB> = 2.409, <d_AA> = 1.016, <d_BB> = 1.100)."
+    },
+    {
+      "Comparison Metric": "Interactome Separation s_AB (mean)",
+      "Metformin Count": 61,
+      "Imatinib Count": 10,
+      "Shared Count": 0,
+      "Jaccard Index": null,
+      "Detail / Interpretation": "s_AB = 1.2615 (<d_AB> = 2.990, <d_AA> = 1.457, <d_BB> = 2.000)."
+    }
+  ],
+  "shared_cross_talk": [
+    {
+      "gene_symbol": "TP53",
+      "full_ppi_degree": 766,
+      "metformin_degree": 134,
+      "imatinib_degree": 192,
+      "metformin_betweenness": 0.03158,
+      "imatinib_betweenness": 0.04376,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": true,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS27A",
+      "full_ppi_degree": 589,
+      "metformin_degree": 182,
+      "imatinib_degree": 206,
+      "metformin_betweenness": 0.01483,
+      "imatinib_betweenness": 0.01956,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": true,
+      "is_shared_bridge": true
+    },
+    {
+      "gene_symbol": "UBA52",
+      "full_ppi_degree": 521,
+      "metformin_degree": 180,
+      "imatinib_degree": 213,
+      "metformin_betweenness": 0.01269,
+      "imatinib_betweenness": 0.02487,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": true,
+      "is_shared_bridge": true
+    },
+    {
+      "gene_symbol": "EGFR",
+      "full_ppi_degree": 506,
+      "metformin_degree": 76,
+      "imatinib_degree": 126,
+      "metformin_betweenness": 0.00313,
+      "imatinib_betweenness": 0.00935,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "CTNNB1",
+      "full_ppi_degree": 465,
+      "metformin_degree": 81,
+      "imatinib_degree": 109,
+      "metformin_betweenness": 0.0063,
+      "imatinib_betweenness": 0.01026,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "H3C13",
+      "full_ppi_degree": 452,
+      "metformin_degree": 80,
+      "imatinib_degree": 111,
+      "metformin_betweenness": 0.00098,
+      "imatinib_betweenness": 0.00468,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "H4C6",
+      "full_ppi_degree": 452,
+      "metformin_degree": 77,
+      "imatinib_degree": 107,
+      "metformin_betweenness": 0.00218,
+      "imatinib_betweenness": 0.0039,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "ACTB",
+      "full_ppi_degree": 438,
+      "metformin_degree": 101,
+      "imatinib_degree": 124,
+      "metformin_betweenness": 0.01682,
+      "imatinib_betweenness": 0.01278,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": true,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "AKT1",
+      "full_ppi_degree": 435,
+      "metformin_degree": 95,
+      "imatinib_degree": 136,
+      "metformin_betweenness": 0.01227,
+      "imatinib_betweenness": 0.0208,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": true,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "FAU",
+      "full_ppi_degree": 423,
+      "metformin_degree": 151,
+      "imatinib_degree": 155,
+      "metformin_betweenness": 0.00641,
+      "imatinib_betweenness": 0.00028,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS18",
+      "full_ppi_degree": 421,
+      "metformin_degree": 189,
+      "imatinib_degree": 200,
+      "metformin_betweenness": 0.00257,
+      "imatinib_betweenness": 0.00025,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "H3C12",
+      "full_ppi_degree": 413,
+      "metformin_degree": 78,
+      "imatinib_degree": 103,
+      "metformin_betweenness": 0.00081,
+      "imatinib_betweenness": 0.00435,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "SRC",
+      "full_ppi_degree": 407,
+      "metformin_degree": 70,
+      "imatinib_degree": 112,
+      "metformin_betweenness": 0.00531,
+      "imatinib_betweenness": 0.00213,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS11",
+      "full_ppi_degree": 405,
+      "metformin_degree": 185,
+      "imatinib_degree": 198,
+      "metformin_betweenness": 5e-05,
+      "imatinib_betweenness": 0.00013,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "UBC",
+      "full_ppi_degree": 398,
+      "metformin_degree": 78,
+      "imatinib_degree": 93,
+      "metformin_betweenness": 0.00833,
+      "imatinib_betweenness": 0.01013,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS9",
+      "full_ppi_degree": 397,
+      "metformin_degree": 186,
+      "imatinib_degree": 198,
+      "metformin_betweenness": 0.00047,
+      "imatinib_betweenness": 2e-05,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "MED1",
+      "full_ppi_degree": 395,
+      "metformin_degree": 207,
+      "imatinib_degree": 244,
+      "metformin_betweenness": 0.03098,
+      "imatinib_betweenness": 0.04027,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": true,
+      "is_shared_bridge": true
+    },
+    {
+      "gene_symbol": "TNF",
+      "full_ppi_degree": 391,
+      "metformin_degree": 63,
+      "imatinib_degree": 92,
+      "metformin_betweenness": 0.00216,
+      "imatinib_betweenness": 0.00514,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "EP300",
+      "full_ppi_degree": 390,
+      "metformin_degree": 82,
+      "imatinib_degree": 110,
+      "metformin_betweenness": 0.00228,
+      "imatinib_betweenness": 0.0081,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS3",
+      "full_ppi_degree": 387,
+      "metformin_degree": 187,
+      "imatinib_degree": 193,
+      "metformin_betweenness": 0.02136,
+      "imatinib_betweenness": 0.00264,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "IL6",
+      "full_ppi_degree": 376,
+      "metformin_degree": 62,
+      "imatinib_degree": 101,
+      "metformin_betweenness": 0.00084,
+      "imatinib_betweenness": 0.0026,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPL5",
+      "full_ppi_degree": 375,
+      "metformin_degree": 177,
+      "imatinib_degree": 196,
+      "metformin_betweenness": 0.00054,
+      "imatinib_betweenness": 0.00085,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS6",
+      "full_ppi_degree": 375,
+      "metformin_degree": 169,
+      "imatinib_degree": 178,
+      "metformin_betweenness": 0.00513,
+      "imatinib_betweenness": 0.00354,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "BRCA1",
+      "full_ppi_degree": 373,
+      "metformin_degree": 63,
+      "imatinib_degree": 78,
+      "metformin_betweenness": 0.00317,
+      "imatinib_betweenness": 0.00566,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPL11",
+      "full_ppi_degree": 371,
+      "metformin_degree": 184,
+      "imatinib_degree": 205,
+      "metformin_betweenness": 0.00116,
+      "imatinib_betweenness": 0.00076,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPL23",
+      "full_ppi_degree": 371,
+      "metformin_degree": 181,
+      "imatinib_degree": 208,
+      "metformin_betweenness": 0.00063,
+      "imatinib_betweenness": 0.00014,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS23",
+      "full_ppi_degree": 369,
+      "metformin_degree": 181,
+      "imatinib_degree": 194,
+      "metformin_betweenness": 4e-05,
+      "imatinib_betweenness": 0.00012,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS16",
+      "full_ppi_degree": 366,
+      "metformin_degree": 183,
+      "imatinib_degree": 196,
+      "metformin_betweenness": 0.00076,
+      "imatinib_betweenness": 0.00075,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPS2",
+      "full_ppi_degree": 365,
+      "metformin_degree": 174,
+      "imatinib_degree": 193,
+      "metformin_betweenness": 0.00194,
+      "imatinib_betweenness": 0.00086,
+      "is_shared_hub": false,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    },
+    {
+      "gene_symbol": "RPL23A",
+      "full_ppi_degree": 364,
+      "metformin_degree": 176,
+      "imatinib_degree": 198,
+      "metformin_betweenness": 0.0,
+      "imatinib_betweenness": 0.0,
+      "is_shared_hub": true,
+      "is_shared_bottleneck": false,
+      "is_shared_bridge": false
+    }
+  ],
+  "combination_report": "# PharmaPath: Metformin + Imatinib Combination Pharmacology Analysis\n\n## 1. Topological Interactome Relationship\n- **Direct Target Jaccard Index**: 0.0000 (0 shared direct targets out of 71 union targets).\n- **Target Separation (Menche et al., 2015)**:\n  - $s_{AB}^{\\text{closest}} = 1.3503$\n  - Mean inter-drug target distance $\\langle d_{AB} \\rangle = 2.409$\n  - Mean intra-drug target distances: Metformin $\\langle d_{AA} \\rangle = 1.016$, Imatinib $\\langle d_{BB} \\rangle = 1.100$.\n  - Topologically, while the direct targets belong to distinct biological classes (tyrosine kinases vs. mitochondrial complex I and AMPK subunits), they are situated in tightly communicating interactome regions separated by a small path length.\n\n## 2. Shared Network Scaffold & Cross-Talk Hubs\n- **RWR Subnetwork Overlap**: 0 shared proteins (Jaccard = 0.0000).\n- **2-Hop Subnetwork Overlap**: 347 shared proteins (Jaccard = 0.5314).\n- **Shared Hub & Bottleneck Candidates (2-Hop)**: RPL35, RPS18, RPS16, RPL5, MED1, RPL9, RPS11, RPS23, UBA52, RPL11\n- **Key Bridge Proteins**: The shared interactome subnetwork connects the energy-sensing machinery (PRKAA1/AMPK) and cellular metabolism directly to downstream effectors of BCR-ABL signaling (PI3K/AKT/mTOR axis).\n\n## 3. Biological & Clinical Mechanism of Combination\n1. **Targeting Leukemia Stem Cell (LSC) Quiescence in CML**:\n   - Imatinib effectively eliminates proliferating BCR-ABL+ blast cells in Chronic Myeloid Leukemia (CML) by inhibiting ABL1 kinase activity. However, quiescent leukemic stem cells (LSCs) frequently survive TKI therapy and maintain oxidative phosphorylation and glycolysis.\n   - Metformin inhibits Mitochondrial Complex I (NDUF subunits) and activates AMPK, downregulating cellular ATP synthesis and suppressing mTORC1 signaling.\n2. **Synthetic Lethality / Sensitization**:\n   - Preclinical studies (e.g., Chu et al., Cancer Cell; Sharma et al.) demonstrate that combining Metformin with Imatinib forces CML cells out of metabolic dormancy, sensitizing resistant BCR-ABL mutants and eradicating residual disease.\n3. **Cardioprotective and Toxicity Mitigation**:\n   - Imatinib can induce cardiomyocyte stress through off-target inhibition of ABL1/c-Kit and endoplasmic reticulum stress. Metformin's AMPK activation provides well-documented cardioprotective benefits, potentially mitigating TKI-associated cardiotoxicity.\n"
+}

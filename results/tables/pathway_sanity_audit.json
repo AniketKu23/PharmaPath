@@ -1,0 +1,166 @@
+{
+  "Metformin": {
+    "expected_hallmarks": [
+      "AMPK signaling",
+      "mTOR signaling",
+      "Insulin signaling",
+      "FoxO signaling",
+      "Glycolysis / Gluconeogenesis"
+    ],
+    "rwr_sanity": {
+      "passed": true,
+      "match_rate": 0.8,
+      "significant_terms_count": 66,
+      "matched_hallmarks": [
+        {
+          "keyword": "AMPK signaling",
+          "matched_terms": [
+            "AMPK signaling pathway"
+          ]
+        },
+        {
+          "keyword": "mTOR signaling",
+          "matched_terms": [
+            "MTOR Signaling R-HSA-165159"
+          ]
+        },
+        {
+          "keyword": "Insulin signaling",
+          "matched_terms": [
+            "Insulin signaling pathway"
+          ]
+        },
+        {
+          "keyword": "FoxO signaling",
+          "matched_terms": [
+            "FoxO signaling pathway"
+          ]
+        }
+      ],
+      "missing_hallmarks": [
+        "Glycolysis / Gluconeogenesis"
+      ],
+      "verdict": "PASSED: Robust biological alignment (4/5 hallmark concepts verified with FDR < 0.05)"
+    },
+    "top_rwr_pathways": [
+      {
+        "Term": "Respiratory Electron Transport, ATP Synthesis By Chemiosmotic Coupling, Heat Production By Uncoupling Proteins R-HSA-163200",
+        "Library": "Reactome_2022",
+        "adj_p_value": 2.0816994193007252e-166,
+        "Overlap": "85/112"
+      },
+      {
+        "Term": "Thermogenesis",
+        "Library": "KEGG_2021_Human",
+        "adj_p_value": 2.742487620621029e-158,
+        "Overlap": "98/232"
+      },
+      {
+        "Term": "Oxidative phosphorylation",
+        "Library": "KEGG_2021_Human",
+        "adj_p_value": 1.2608083127704145e-153,
+        "Overlap": "84/133"
+      },
+      {
+        "Term": "Citric Acid (TCA) Cycle And Respiratory Electron Transport R-HSA-1428517",
+        "Library": "Reactome_2022",
+        "adj_p_value": 8.763759120727764e-145,
+        "Overlap": "85/163"
+      },
+      {
+        "Term": "Respiratory Electron Transport R-HSA-611105",
+        "Library": "Reactome_2022",
+        "adj_p_value": 2.4039209158360182e-142,
+        "Overlap": "72/90"
+      }
+    ]
+  },
+  "Imatinib": {
+    "expected_hallmarks": [
+      "Tyrosine kinase",
+      "BCR-ABL",
+      "KIT",
+      "PDGFR",
+      "PI3K-Akt signaling",
+      "Chronic myeloid leukemia"
+    ],
+    "rwr_sanity": {
+      "passed": true,
+      "match_rate": 0.8333333333333334,
+      "significant_terms_count": 581,
+      "matched_hallmarks": [
+        {
+          "keyword": "Tyrosine kinase",
+          "matched_terms": [
+            "Signaling By Receptor Tyrosine Kinases R-HSA-9006934",
+            "Signaling By Non-Receptor Tyrosine Kinases R-HSA-9006927"
+          ]
+        },
+        {
+          "keyword": "KIT",
+          "matched_terms": [
+            "Signaling By SCF-KIT R-HSA-1433557",
+            "Signaling By KIT In Disease R-HSA-9669938",
+            "Regulation Of KIT Signaling R-HSA-1433559"
+          ]
+        },
+        {
+          "keyword": "PDGFR",
+          "matched_terms": [
+            "Signaling By PDGFRA Extracellular Domain Mutants R-HSA-9673770",
+            "Signaling By PDGFR In Disease R-HSA-9671555",
+            "Signaling By Membrane-Tethered Fusions Of PDGFRA Or PDGFRB R-HSA-9673768"
+          ]
+        },
+        {
+          "keyword": "PI3K-Akt signaling",
+          "matched_terms": [
+            "PI3K-Akt signaling pathway"
+          ]
+        },
+        {
+          "keyword": "Chronic myeloid leukemia",
+          "matched_terms": [
+            "Chronic myeloid leukemia"
+          ]
+        }
+      ],
+      "missing_hallmarks": [
+        "BCR-ABL"
+      ],
+      "verdict": "PASSED: Robust biological alignment (5/6 hallmark concepts verified with FDR < 0.05)"
+    },
+    "top_rwr_pathways": [
+      {
+        "Term": "Ras signaling pathway",
+        "Library": "KEGG_2021_Human",
+        "adj_p_value": 2.209814439770208e-116,
+        "Overlap": "80/232"
+      },
+      {
+        "Term": "PI3K-Akt signaling pathway",
+        "Library": "KEGG_2021_Human",
+        "adj_p_value": 1.914715825058385e-105,
+        "Overlap": "83/354"
+      },
+      {
+        "Term": "Pathways in cancer",
+        "Library": "KEGG_2021_Human",
+        "adj_p_value": 1.836557945341079e-98,
+        "Overlap": "88/531"
+      },
+      {
+        "Term": "Signaling By Receptor Tyrosine Kinases R-HSA-9006934",
+        "Library": "Reactome_2022",
+        "adj_p_value": 1.4565882487101277e-96,
+        "Overlap": "86/496"
+      },
+      {
+        "Term": "Rap1 signaling pathway",
+        "Library": "KEGG_2021_Human",
+        "adj_p_value": 1.8790487603848368e-95,
+        "Overlap": "68/210"
+      }
+    ]
+  }
+}

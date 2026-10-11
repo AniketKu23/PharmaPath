@@ -1,0 +1,7 @@
+Comparison Metric,Metformin Count,Imatinib Count,Shared Count,Jaccard Index,Detail / Interpretation
+Direct Target Overlap,61,10,0,0.0,0 direct targets shared (Metformin is a metabolic/mitochondrial modulator; Imatinib is a receptor tyrosine kinase inhibitor).
+RWR Subnetwork Nodes (top 150),150,150,0,0.0,0 shared interactome proteins connecting mitochondrial/AMPK signaling to tyrosine kinase cascades.
+2-Hop Subnetwork Nodes,500,500,347,0.5313935681470138,347 shared nodes within 2 hops in the human interactome scaffold.
+Enriched Pathways (FDR < 0.05),66,581,20,0.0319,20 common pathways including energy homeostasis and signaling transduction.
+Interactome Separation s_AB (closest),61,10,0,,"s_AB = 1.3503 (<d_AB> = 2.409, <d_AA> = 1.016, <d_BB> = 1.100)."
+Interactome Separation s_AB (mean),61,10,0,,"s_AB = 1.2615 (<d_AB> = 2.990, <d_AA> = 1.457, <d_BB> = 2.000)."

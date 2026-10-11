@@ -1,0 +1,21 @@
+rank,drug,candidate_protein,confidence_score,status,evidence_type
+1,Imatinib,ATP5F1D,0.9994,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+2,Imatinib,CHUK,0.9994,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+3,Imatinib,NEDD8,0.9993,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+4,Imatinib,TRRAP,0.9993,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+5,Imatinib,CHEK2,0.9993,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+6,Imatinib,RNF2,0.9993,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+7,Imatinib,IRS1,0.9992,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+8,Imatinib,RBBP7,0.9992,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+9,Imatinib,SHC1,0.9992,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+10,Imatinib,MCM2,0.9992,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+11,Imatinib,RB1,0.9992,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+12,Imatinib,CDKN1B,0.9991,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+13,Imatinib,IL1A,0.9991,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+14,Imatinib,SUMO1,0.9991,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+15,Imatinib,FOXO3,0.9991,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+16,Imatinib,FOXP3,0.999,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+17,Imatinib,YBX1,0.999,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+18,Imatinib,XAB2,0.999,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+19,Imatinib,HJURP,0.999,Computational Hypothesis,GNN Topological Embedding Cosine Proximity
+20,Imatinib,NCOR1,0.9989,Computational Hypothesis,GNN Topological Embedding Cosine Proximity

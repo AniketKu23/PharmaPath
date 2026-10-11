@@ -1,0 +1,9 @@
+metric,2-hop,RWR,drug
+Total Nodes,500,150,Imatinib
+Total Edges,22553,2754,Imatinib
+Graph Density,0.1808,0.2464,Imatinib
+Avg Degree,90.21,36.72,Imatinib
+Connected Components,1,1,Imatinib
+Node Overlap Count,77,77,Imatinib
+Node Jaccard Similarity,0.1344,0.1344,Imatinib
+Edge Jaccard Similarity,0.0538,0.0538,Imatinib

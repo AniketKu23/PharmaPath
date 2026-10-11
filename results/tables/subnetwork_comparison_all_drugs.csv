@@ -1,0 +1,17 @@
+metric,2-hop,RWR,drug
+Total Nodes,500,150,Metformin
+Total Edges,21484,4891,Metformin
+Graph Density,0.1722,0.4377,Metformin
+Avg Degree,85.94,65.21,Metformin
+Connected Components,1,2,Metformin
+Node Overlap Count,135,135,Metformin
+Node Jaccard Similarity,0.2621,0.2621,Metformin
+Edge Jaccard Similarity,0.2049,0.2049,Metformin
+Total Nodes,500,150,Imatinib
+Total Edges,22553,2754,Imatinib
+Graph Density,0.1808,0.2464,Imatinib
+Avg Degree,90.21,36.72,Imatinib
+Connected Components,1,1,Imatinib
+Node Overlap Count,77,77,Imatinib
+Node Jaccard Similarity,0.1344,0.1344,Imatinib
+Edge Jaccard Similarity,0.0538,0.0538,Imatinib
