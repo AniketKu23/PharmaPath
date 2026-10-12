@@ -22,8 +22,21 @@ PAGES = [
 ]
 
 
+import socket
+import pytest
+
+def is_server_listening(host="127.0.0.1", port=8501):
+    try:
+        with socket.create_connection((host, port), timeout=1.0):
+            return True
+    except OSError:
+        return False
+
+
 def test_mobile_pages_no_overflow_and_no_js_errors():
     """Verify mobile rendering at 390x844 with control interactions."""
+    if not is_server_listening():
+        pytest.skip("Streamlit app is not running at http://127.0.0.1:8501")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(

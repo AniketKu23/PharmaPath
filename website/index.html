@@ -65,22 +65,22 @@
       
       <!-- Explorer Tabs Bar -->
       <div class="explorer-tabs-bar">
-        <button class="exp-tab active" data-tab="tab-subnetworks">
+        <button class="exp-tab active" data-tab="tab-subnetworks" data-tip="subnetwork_canvas">
           Subnetwork Canvas
         </button>
-        <button class="exp-tab" data-tab="tab-pathways">
+        <button class="exp-tab" data-tab="tab-pathways" data-tip="pathways_ora">
           Pathways & ORA
         </button>
-        <button class="exp-tab" data-tab="tab-centralities">
+        <button class="exp-tab" data-tab="tab-centralities" data-tip="centrality_modularity">
           Centrality & Hubs
         </button>
-        <button class="exp-tab" data-tab="tab-proximity">
+        <button class="exp-tab" data-tab="tab-proximity" data-tip="disease_proximity">
           Disease Proximity
         </button>
-        <button class="exp-tab" data-tab="tab-gnn">
+        <button class="exp-tab" data-tab="tab-gnn" data-tip="gnn_predictions">
           GNN Link Predictions
         </button>
-        <button class="exp-tab" data-tab="tab-comparison">
+        <button class="exp-tab" data-tab="tab-comparison" data-tip="drug_comparison">
           Two-Drug Comparison
         </button>
       </div>
@@ -98,24 +98,24 @@
               <h3 class="panel-title"><span class="text-orange">Subnetwork</span> Controls</h3>
               
               <div class="ctrl-group">
-                <label class="ctrl-label">Select Drug:</label>
+                <label class="ctrl-label">Select Drug: <span class="info-icon" data-tip="drug_selection">i</span></label>
                 <div class="pill-group">
-                  <button class="pill-btn active" data-drug="metformin">Metformin (T2D)</button>
-                  <button class="pill-btn" data-drug="imatinib">Imatinib (CML)</button>
+                  <button class="pill-btn active" data-drug="metformin" data-tip="metformin">Metformin (T2D)</button>
+                  <button class="pill-btn" data-drug="imatinib" data-tip="imatinib">Imatinib (CML)</button>
                 </div>
               </div>
 
               <div class="ctrl-group">
-                <label class="ctrl-label">Extraction Algorithm:</label>
+                <label class="ctrl-label">Extraction Algorithm: <span class="info-icon" data-tip="extraction_method">i</span></label>
                 <div class="pill-group">
-                  <button class="pill-btn active" data-method="rwr">RWR (r=0.5)</button>
-                  <button class="pill-btn" data-method="2hop">2-Hop Neighborhood</button>
+                  <button class="pill-btn active" data-method="rwr" data-tip="rwr">RWR (r=0.5)</button>
+                  <button class="pill-btn" data-method="2hop" data-tip="two_hop">2-Hop Neighborhood</button>
                 </div>
               </div>
 
               <div class="ctrl-group">
-                <label class="ctrl-label">Node Sizing Metric:</label>
-                <select id="select-sizing-metric" class="ctrl-select">
+                <label class="ctrl-label">Node Sizing Metric: <span class="info-icon" data-tip="sizing_metric">i</span></label>
+                <select id="select-sizing-metric" class="ctrl-select" data-tip="sizing_metric">
                   <option value="degree">Degree Centrality</option>
                   <option value="betweenness">Betweenness Centrality</option>
                   <option value="eigenvector">Eigenvector Centrality</option>
@@ -123,17 +123,17 @@
               </div>
 
               <div class="ctrl-group">
-                <label class="ctrl-label">Min STRING Edge Score: <strong id="val-edge-score" class="text-orange">700</strong></label>
+                <label class="ctrl-label">Min STRING Edge Score: <strong id="val-edge-score" class="text-orange">700</strong> <span class="info-icon" data-tip="edge_score">i</span></label>
                 <input type="range" id="slider-edge-score" class="ctrl-range" min="700" max="950" value="700" step="25">
               </div>
 
               <div class="ctrl-group">
-                <label class="ctrl-label">Max Rendered Nodes: <strong id="val-max-nodes" class="text-orange">120</strong></label>
+                <label class="ctrl-label">Max Rendered Nodes: <strong id="val-max-nodes" class="text-orange">120</strong> <span class="info-icon" data-tip="max_nodes">i</span></label>
                 <input type="range" id="slider-max-nodes" class="ctrl-range" min="30" max="250" value="120" step="10">
               </div>
 
               <div class="ctrl-group">
-                <label class="ctrl-label">Highlight Gene Symbol:</label>
+                <label class="ctrl-label">Highlight Gene Symbol: <span class="info-icon" data-tip="gene_search">i</span></label>
                 <div class="search-box">
                   <input type="text" id="input-gene-search" class="ctrl-input" placeholder="e.g. PRKAA1, ABL1, NDUFS7">
                   <button id="btn-gene-search" class="search-btn">Search</button>
@@ -150,20 +150,20 @@
               <!-- Color Legend -->
               <div class="color-legend glass-card mt-3">
                 <div class="legend-title">Node Aesthetics:</div>
-                <div class="legend-item"><span class="legend-dot dot-gold"></span> <strong>Seed Drug Target</strong> (Star)</div>
-                <div class="legend-item"><span class="legend-dot dot-red"></span> <strong>Up-Regulated</strong> (z > 1.0)</div>
-                <div class="legend-item"><span class="legend-dot dot-green"></span> <strong>Down-Regulated</strong> (z < -1.0)</div>
-                <div class="legend-item"><span class="legend-dot dot-blue"></span> <strong>Interactome Neighbor</strong></div>
+                <div class="legend-item" data-tip="seed_target"><span class="legend-dot dot-gold"></span> <strong>Seed Drug Target</strong> (Star)</div>
+                <div class="legend-item" data-tip="up_regulated"><span class="legend-dot dot-red"></span> <strong>Up-Regulated</strong> (z > 1.0)</div>
+                <div class="legend-item" data-tip="down_regulated"><span class="legend-dot dot-green"></span> <strong>Down-Regulated</strong> (z < -1.0)</div>
+                <div class="legend-item" data-tip="interactome_neighbor"><span class="legend-dot dot-blue"></span> <strong>Interactome Neighbor</strong></div>
               </div>
             </div>
 
             <!-- Right Vis.js Canvas Viewport -->
             <div class="canvas-viewport glass-panel">
               <div class="canvas-kpis-bar">
-                <div class="kpi-mini">Nodes: <strong id="kpi-net-nodes" class="text-orange">--</strong></div>
-                <div class="kpi-mini">Edges: <strong id="kpi-net-edges" class="text-orange">--</strong></div>
-                <div class="kpi-mini">Density: <strong id="kpi-net-density" class="text-orange">--</strong></div>
-                <div class="kpi-mini">Targets In Subgraph: <strong id="kpi-net-targets" class="text-orange">--</strong></div>
+                <div class="kpi-mini" data-tip="kpi_nodes">Nodes: <strong id="kpi-net-nodes" class="text-orange">--</strong></div>
+                <div class="kpi-mini" data-tip="kpi_edges">Edges: <strong id="kpi-net-edges" class="text-orange">--</strong></div>
+                <div class="kpi-mini" data-tip="kpi_density">Density: <strong id="kpi-net-density" class="text-orange">--</strong></div>
+                <div class="kpi-mini" data-tip="kpi_targets">Targets In Subgraph: <strong id="kpi-net-targets" class="text-orange">--</strong></div>
               </div>
               
               <!-- Vis.js Container -->
@@ -183,7 +183,7 @@
           <div class="exp-grid-2">
             <!-- Left: Biological Sanity Audit & Controls -->
             <div class="glass-panel">
-              <h3 class="panel-title"><span class="text-orange">Biological Sanity</span> Audit</h3>
+              <h3 class="panel-title"><span class="text-orange">Biological Sanity</span> Audit <span class="info-icon" data-tip="sanity_audit">i</span></h3>
               <div id="sanity-audit-container">
                 <!-- Injected dynamically -->
               </div>
@@ -191,24 +191,24 @@
               <div class="mt-4">
                 <h4 class="sub-title">Enrichment Filters:</h4>
                 <div class="ctrl-group">
-                  <label class="ctrl-label">Drug:</label>
+                  <label class="ctrl-label">Drug: <span class="info-icon" data-tip="drug_selection">i</span></label>
                   <div class="pill-group" id="pathway-drug-pills">
-                    <button class="pill-btn active" data-pdrug="metformin">Metformin</button>
-                    <button class="pill-btn" data-pdrug="imatinib">Imatinib</button>
+                    <button class="pill-btn active" data-pdrug="metformin" data-tip="metformin">Metformin</button>
+                    <button class="pill-btn" data-pdrug="imatinib" data-tip="imatinib">Imatinib</button>
                   </div>
                 </div>
 
                 <div class="ctrl-group">
-                  <label class="ctrl-label">Scope:</label>
+                  <label class="ctrl-label">Scope: <span class="info-icon" data-tip="ora">i</span></label>
                   <div class="pill-group" id="pathway-scope-pills">
-                    <button class="pill-btn active" data-pscope="rwr_subnetwork">RWR Subnetwork</button>
-                    <button class="pill-btn" data-pscope="2hop_subnetwork">2-Hop Subnetwork</button>
-                    <button class="pill-btn" data-pscope="lincs_perturbed">LINCS Perturbed</button>
+                    <button class="pill-btn active" data-pscope="rwr_subnetwork" data-tip="scope_rwr">RWR Subnetwork</button>
+                    <button class="pill-btn" data-pscope="2hop_subnetwork" data-tip="scope_2hop">2-Hop Subnetwork</button>
+                    <button class="pill-btn" data-pscope="lincs_perturbed" data-tip="scope_lincs">LINCS Perturbed</button>
                   </div>
                 </div>
 
                 <div class="ctrl-group">
-                  <label class="ctrl-label">Max FDR Threshold: <strong id="val-fdr-thresh" class="text-orange">0.05</strong></label>
+                  <label class="ctrl-label">Max FDR Threshold: <strong id="val-fdr-thresh" class="text-orange">0.05</strong> <span class="info-icon" data-tip="fdr_threshold">i</span></label>
                   <input type="range" id="slider-fdr-thresh" class="ctrl-range" min="0.001" max="0.10" value="0.05" step="0.005">
                 </div>
               </div>
@@ -216,7 +216,7 @@
 
             <!-- Right: Interactive Chart & Pathways Table -->
             <div class="glass-panel">
-              <h3 class="panel-title">Top Enriched Pathways (KEGG & Reactome)</h3>
+              <h3 class="panel-title">Top Enriched Pathways (KEGG & Reactome) <span class="info-icon" data-tip="pathways_ora">i</span></h3>
               <div class="chart-container" style="height: 320px;">
                 <canvas id="chart-pathways"></canvas>
               </div>
@@ -227,11 +227,11 @@
                   <table class="pharma-table" id="table-pathways">
                     <thead>
                       <tr>
-                        <th>Term</th>
-                        <th>Database</th>
-                        <th>Adj. P-Value</th>
-                        <th>Overlap</th>
-                        <th>Combined Score</th>
+                        <th data-tip="pathway_term">Term</th>
+                        <th data-tip="pathway_db">Database</th>
+                        <th data-tip="adjusted_p">Adj. P-Value</th>
+                        <th data-tip="pathway_overlap">Overlap</th>
+                        <th data-tip="combined_score">Combined Score</th>
                       </tr>
                     </thead>
                     <tbody><!-- Dynamic rows --></tbody>
@@ -250,49 +250,49 @@
             <!-- Left: Scatter Plot Degree vs Betweenness -->
             <div class="glass-panel">
               <div class="panel-header-row">
-                <h3 class="panel-title">Topological Roles: <span class="text-orange">Degree vs. Betweenness</span></h3>
+                <h3 class="panel-title">Topological Roles: <span class="text-orange">Degree vs. Betweenness</span> <span class="info-icon" data-tip="scatter_topology">i</span></h3>
                 <div class="pill-group" id="cent-drug-pills">
-                  <button class="pill-btn active" data-cdrug="metformin">Metformin</button>
-                  <button class="pill-btn" data-cdrug="imatinib">Imatinib</button>
+                  <button class="pill-btn active" data-cdrug="metformin" data-tip="metformin">Metformin</button>
+                  <button class="pill-btn" data-cdrug="imatinib" data-tip="imatinib">Imatinib</button>
                 </div>
               </div>
               <div class="chart-container" style="height: 360px;">
                 <canvas id="chart-centrality-scatter"></canvas>
               </div>
               <div class="legend-row mt-2">
-                <span class="badge-tag tag-purple">Dual Bridge</span>
-                <span class="badge-tag tag-orange">Hub (Degree)</span>
-                <span class="badge-tag tag-red">Bottleneck (Betweenness)</span>
-                <span class="badge-tag tag-blue">Standard Node</span>
+                <span class="badge-tag tag-purple" data-tip="dual_bridge">Dual Bridge</span>
+                <span class="badge-tag tag-orange" data-tip="hub">Hub (Degree)</span>
+                <span class="badge-tag tag-red" data-tip="bottleneck">Bottleneck (Betweenness)</span>
+                <span class="badge-tag tag-blue" data-tip="standard_node">Standard Node</span>
               </div>
             </div>
 
             <!-- Right: Top Hubs, Bottlenecks & Louvain Communities -->
             <div class="glass-panel">
-              <h3 class="panel-title">Louvain Modularity Clusters & Dominant Pathways</h3>
+              <h3 class="panel-title">Louvain Modularity Clusters & Dominant Pathways <span class="info-icon" data-tip="louvain">i</span></h3>
               <div class="table-scroll" style="max-height: 220px;">
                 <table class="pharma-table" id="table-communities">
                   <thead>
                     <tr>
-                      <th>Community ID</th>
-                      <th>Proteins</th>
-                      <th>Dominant Biological Pathway</th>
+                      <th data-tip="community_id">Community ID</th>
+                      <th data-tip="community_size">Proteins</th>
+                      <th data-tip="dominant_pathway">Dominant Biological Pathway</th>
                     </tr>
                   </thead>
                   <tbody><!-- Dynamic rows --></tbody>
                 </table>
               </div>
 
-              <h4 class="sub-title mt-4">Top Bottleneck Bridges:</h4>
+              <h4 class="sub-title mt-4">Top Bottleneck Bridges: <span class="info-icon" data-tip="bottleneck">i</span></h4>
               <div class="table-scroll" style="max-height: 220px;">
                 <table class="pharma-table" id="table-bottlenecks">
                   <thead>
                     <tr>
-                      <th>Gene</th>
-                      <th>Degree</th>
-                      <th>Betweenness</th>
-                      <th>Eigenvector</th>
-                      <th>Role</th>
+                      <th data-tip="candidate_gene">Gene</th>
+                      <th data-tip="degree">Degree</th>
+                      <th data-tip="betweenness">Betweenness</th>
+                      <th data-tip="eigenvector">Eigenvector</th>
+                      <th data-tip="topological_role">Role</th>
                     </tr>
                   </thead>
                   <tbody><!-- Dynamic rows --></tbody>
@@ -310,8 +310,8 @@
             <!-- Left: Guney Proximity Null Permutation Distribution -->
             <div class="glass-panel">
               <div class="panel-header-row">
-                <h3 class="panel-title">Null Distribution <span class="text-orange">(1,000 Permutations)</span></h3>
-                <select id="select-prox-pair" class="ctrl-select" style="width: auto;">
+                <h3 class="panel-title">Null Distribution <span class="text-orange">(1,000 Permutations)</span> <span class="info-icon" data-tip="null_model">i</span></h3>
+                <select id="select-prox-pair" class="ctrl-select" style="width: auto;" data-tip="prox_pair">
                   <option value="metformin_t2d">Metformin → Type 2 Diabetes (Primary)</option>
                   <option value="imatinib_cml">Imatinib → Chronic Myeloid Leukemia (Primary)</option>
                   <option value="metformin_cml">Metformin → CML (Negative Control)</option>
@@ -330,26 +330,26 @@
 
             <!-- Right: Proximity Benchmark Summary Table & Theory -->
             <div class="glass-panel">
-              <h3 class="panel-title">Statistical Proximity Benchmark Summary</h3>
+              <h3 class="panel-title">Statistical Proximity Benchmark Summary <span class="info-icon" data-tip="disease_proximity">i</span></h3>
               <div class="table-scroll" style="max-height: 300px;">
                 <table class="pharma-table" id="table-proximity-summary">
                   <thead>
                     <tr>
-                      <th>Drug</th>
-                      <th>Disease Module</th>
-                      <th>Observed d_c</th>
-                      <th>Null Mean ± Std</th>
-                      <th>Z-Score</th>
-                      <th>P-Value</th>
-                      <th>Verdict</th>
+                      <th data-tip="drug_selection">Drug</th>
+                      <th data-tip="disease_proximity">Disease Module</th>
+                      <th data-tip="dc">Observed d_c</th>
+                      <th data-tip="null_model">Null Mean ± Std</th>
+                      <th data-tip="z_score">Z-Score</th>
+                      <th data-tip="empirical_p">P-Value</th>
+                      <th data-tip="prox_verdict">Verdict</th>
                     </tr>
                   </thead>
                   <tbody><!-- Dynamic rows --></tbody>
                 </table>
               </div>
 
-              <div class="glass-card mt-4">
-                <h4 class="sub-title"><span class="text-orange">Guney et al. (2016)</span> Mathematical Definition:</h4>
+              <div class="glass-card mt-4" data-tip="guney_formula">
+                <h4 class="sub-title"><span class="text-orange">Guney et al. (2016)</span> Mathematical Definition: <span class="info-icon" data-tip="guney_formula">i</span></h4>
                 <div class="formula-box" style="font-family: var(--font-mono); font-size: 15px; color: var(--orange); background: rgba(0,0,0,0.5); padding: 12px 18px; border-radius: 8px; border-left: 3px solid var(--orange); margin: 10px 0;">
                   &lang;d<sub>c</sub>(T, S)&rang; = <sup>1</sup>/<sub>|T|</sub> &sum;<sub>t &isin; T</sub> min<sub>s &isin; S</sub> d(t, s)
                 </div>
@@ -369,30 +369,30 @@
           <div class="exp-grid-2">
             <!-- Left: Model Performance & ROC/PR Curves -->
             <div class="glass-panel">
-              <h3 class="panel-title">Inductive GNN Benchmark: <span class="text-orange">Zero Data Leakage</span></h3>
+              <h3 class="panel-title">Inductive GNN Benchmark: <span class="text-orange">Zero Data Leakage</span> <span class="info-icon" data-tip="data_leakage">i</span></h3>
               <div class="table-scroll" style="max-height: 180px;">
                 <table class="pharma-table" id="table-gnn-metrics">
                   <thead>
                     <tr>
-                      <th>Model Architecture</th>
-                      <th>Test AUROC</th>
-                      <th>Test Average Precision</th>
+                      <th data-tip="graphsage">Model Architecture</th>
+                      <th data-tip="auroc">Test AUROC</th>
+                      <th data-tip="average_precision">Test Average Precision</th>
                     </tr>
                   </thead>
                   <tbody><!-- Dynamic rows --></tbody>
                 </table>
               </div>
 
-              <h4 class="sub-title mt-4">Leave-Targets-Out Cross-Validation:</h4>
+              <h4 class="sub-title mt-4">Leave-Targets-Out Cross-Validation: <span class="info-icon" data-tip="leave_targets_out">i</span></h4>
               <div class="table-scroll" style="max-height: 180px;">
                 <table class="pharma-table" id="table-gnn-recovery">
                   <thead>
                     <tr>
-                      <th>Drug</th>
-                      <th>Hidden Test Targets</th>
-                      <th>Recovered Ranks</th>
-                      <th>MRR</th>
-                      <th>Hits@20</th>
+                      <th data-tip="drug_selection">Drug</th>
+                      <th data-tip="hidden_targets">Hidden Test Targets</th>
+                      <th data-tip="recovery_ranks">Recovered Ranks</th>
+                      <th data-tip="mrr">MRR</th>
+                      <th data-tip="hits_at_20">Hits@20</th>
                     </tr>
                   </thead>
                   <tbody><!-- Dynamic rows --></tbody>
@@ -407,14 +407,14 @@
             <!-- Right: Top-20 Predicted Hypotheses with PubMed Links -->
             <div class="glass-panel">
               <div class="panel-header-row">
-                <h3 class="panel-title">Top-20 Novel Candidate Hypotheses</h3>
+                <h3 class="panel-title">Top-20 Novel Candidate Hypotheses <span class="info-icon" data-tip="candidate_gene">i</span></h3>
                 <div class="pill-group" id="gnn-drug-pills">
-                  <button class="pill-btn active" data-gdrug="metformin">Metformin</button>
-                  <button class="pill-btn" data-gdrug="imatinib">Imatinib</button>
+                  <button class="pill-btn active" data-gdrug="metformin" data-tip="metformin">Metformin</button>
+                  <button class="pill-btn" data-gdrug="imatinib" data-tip="imatinib">Imatinib</button>
                 </div>
               </div>
 
-              <div class="callout-card orange-border mb-3">
+              <div class="callout-card orange-border mb-3" data-tip="gnn_rigor">
                 <strong>Methodological Rigor:</strong> Predictions represent proteins functionally and interactomically linked to drug targets by GraphSAGE embeddings. They are <strong>computational hypotheses</strong>, not proof of direct biochemical binding.
               </div>
 
@@ -423,10 +423,10 @@
                   <thead>
                     <tr>
                       <th>Rank</th>
-                      <th>Candidate Gene</th>
-                      <th>Confidence</th>
-                      <th>Biological Context</th>
-                      <th>Status</th>
+                      <th data-tip="candidate_gene">Candidate Gene</th>
+                      <th data-tip="gnn_confidence">Confidence</th>
+                      <th data-tip="gnn_context">Biological Context</th>
+                      <th data-tip="gnn_status">Status</th>
                       <th>PubMed Link</th>
                     </tr>
                   </thead>
@@ -444,45 +444,45 @@
           <div class="exp-grid-2">
             <!-- Left: Modality Overlap & Separation -->
             <div class="glass-panel">
-              <h3 class="panel-title">Interactome Separation & Jaccard Overlap</h3>
+              <h3 class="panel-title">Interactome Separation & Jaccard Overlap <span class="info-icon" data-tip="menche">i</span></h3>
               <div class="table-scroll" style="max-height: 260px;">
                 <table class="pharma-table" id="table-comp-summary">
                   <thead>
                     <tr>
-                      <th>Metric</th>
-                      <th>Metformin</th>
-                      <th>Imatinib</th>
-                      <th>Shared</th>
-                      <th>Jaccard</th>
+                      <th data-tip="comp_metric">Metric</th>
+                      <th data-tip="metformin">Metformin</th>
+                      <th data-tip="imatinib">Imatinib</th>
+                      <th data-tip="shared_proteins">Shared</th>
+                      <th data-tip="jaccard">Jaccard</th>
                     </tr>
                   </thead>
                   <tbody><!-- Dynamic rows --></tbody>
                 </table>
               </div>
 
-              <div class="glass-card mt-3">
-                <h4 class="sub-title"><span class="text-orange">Menche et al. (2015 Science)</span> Interactome Separation:</h4>
+              <div class="glass-card mt-3" data-tip="menche">
+                <h4 class="sub-title"><span class="text-orange">Menche et al. (2015 Science)</span> Interactome Separation: <span class="info-icon" data-tip="menche">i</span></h4>
                 <div class="formula-box" style="font-family: var(--font-mono); font-size: 14px; color: var(--orange); background: rgba(0,0,0,0.5); padding: 8px 14px; border-radius: 8px; border-left: 3px solid var(--orange); margin: 8px 0;">
                   s<sub>AB</sub> = &lang;d<sub>AB</sub>&rang; &minus; (&lang;d<sub>AA</sub>&rang; + &lang;d<sub>BB</sub>&rang;) / 2
                 </div>
                 <div class="kpi-card-row">
-                  <div class="kpi-card">
+                  <div class="kpi-card" data-tip="menche_separation">
                     <div class="kpi-label">Separation s<sub>AB</sub></div>
                     <div class="kpi-val text-orange">+1.3503</div>
                   </div>
-                  <div class="kpi-card">
+                  <div class="kpi-card" data-tip="inter_distance">
                     <div class="kpi-label">Inter-Distance &lang;d<sub>AB</sub>&rang;</div>
                     <div class="kpi-val">2.409</div>
                   </div>
-                  <div class="kpi-card">
+                  <div class="kpi-card" data-tip="topological_state">
                     <div class="kpi-label">Topological State</div>
                     <div class="kpi-val text-green">Distinct Modules (s &gt; 0)</div>
                   </div>
                 </div>
               </div>
 
-              <div class="glass-card mt-3">
-                <h4 class="sub-title"><span class="text-orange">Jaccard Overlap</span> Across Omics Dimensions:</h4>
+              <div class="glass-card mt-3" data-tip="jaccard">
+                <h4 class="sub-title"><span class="text-orange">Jaccard Overlap</span> Across Omics Dimensions: <span class="info-icon" data-tip="jaccard">i</span></h4>
                 <div style="height: 180px; position: relative;">
                   <canvas id="chart-comp-jaccard"></canvas>
                 </div>
@@ -491,17 +491,17 @@
 
             <!-- Right: Shared Cross-Talk Hubs & Combination Pharmacology -->
             <div class="glass-panel">
-              <h3 class="panel-title">Shared Interactome Cross-Talk Hubs (347 Shared Nodes)</h3>
+              <h3 class="panel-title">Shared Interactome Cross-Talk Hubs (347 Shared Nodes) <span class="info-icon" data-tip="crosstalk">i</span></h3>
               <div class="table-scroll" style="max-height: 260px;">
                 <table class="pharma-table" id="table-shared-proteins">
                   <thead>
                     <tr>
-                      <th>Gene</th>
-                      <th>Full Degree</th>
-                      <th>Metformin Deg</th>
-                      <th>Imatinib Deg</th>
-                      <th>Shared Hub?</th>
-                      <th>Shared Bottleneck?</th>
+                      <th data-tip="candidate_gene">Gene</th>
+                      <th data-tip="degree">Full Degree</th>
+                      <th data-tip="metformin">Metformin Deg</th>
+                      <th data-tip="imatinib">Imatinib Deg</th>
+                      <th data-tip="shared_hub">Shared Hub?</th>
+                      <th data-tip="shared_bottleneck">Shared Bottleneck?</th>
                     </tr>
                   </thead>
                   <tbody><!-- Dynamic rows --></tbody>
@@ -509,7 +509,7 @@
               </div>
 
               <div class="glass-card mt-3">
-                <h4 class="sub-title"><span class="text-orange">Combination Synergy:</span> Metformin + Imatinib in CML</h4>
+                <h4 class="sub-title"><span class="text-orange">Combination Synergy:</span> Metformin + Imatinib in CML <span class="info-icon" data-tip="synergy">i</span></h4>
                 <div class="report-box" id="combination-report-box">
                   <!-- Injected dynamically -->
                 </div>
@@ -538,6 +538,9 @@
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
+
+  <!-- Global Interactive Explainer Tooltip -->
+  <div id="pharma-tooltip" class="pharma-tooltip" role="tooltip" aria-hidden="true"></div>
 
   <!-- Vendor Scripts -->
   <script src="vendor/vis-network.min.js"></script>
