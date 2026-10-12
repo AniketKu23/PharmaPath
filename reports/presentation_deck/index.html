@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaPath Presentation Deck | Master Defense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --bg-card: rgba(15, 21, 33, 0.9);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(255, 128, 0, 0.35);
+      --orange: #ff8000;
+      --orange-light: #ffa633;
+      --cyan: #00d2ff;
+      --green: #10b981;
+      --purple: #a855f7;
+      --red: #ef4444;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font: 'Outfit', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: #020408;
+      color: var(--text);
+      font-family: var(--font);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    /* Fixed 16:9 Presentation Slide Canvas */
+    .slide-wrapper {
+      width: 1920px;
+      height: 1080px;
+      background: radial-gradient(circle at 88% 12%, rgba(255, 128, 0, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 12% 88%, rgba(0, 210, 255, 0.07) 0%, transparent 45%),
+                  linear-gradient(135deg, #07090e 0%, #0d121c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      padding: 44px 60px 32px 60px;
+    }
+
+    /* Top Slide Header */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 16px;
+    }
+
+    .slide-meta-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .topic-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 128, 0, 0.12);
+      border: 1px solid rgba(255, 128, 0, 0.35);
+      color: var(--orange-light);
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .topic-pill.cyan {
+      background: rgba(0, 210, 255, 0.12);
+      border-color: rgba(0, 210, 255, 0.35);
+      color: var(--cyan);
+    }
+
+    .topic-pill.green {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.35);
+      color: var(--green);
+    }
+
+    .slide-title {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .slide-title span.hl {
+      color: var(--orange);
+    }
+
+    .slide-title span.hl-cyan {
+      color: var(--cyan);
+    }
+
+    .slide-subtitle {
+      font-size: 17.5px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    .slide-meta-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-tag {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: #9ca3af;
+      letter-spacing: 1px;
+    }
+
+    .slide-num-badge {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    /* Slide Content Layouts */
+    .slide-body {
+      flex: 1;
+      display: grid;
+      gap: 28px;
+      position: relative;
+      min-height: 0;
+    }
+
+    .grid-2col-50-50 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-2col-45-55 {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .grid-2col-55-45 {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    /* Cards and Glass Panels */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card.accent-orange {
+      border-left: 4px solid var(--orange);
+    }
+
+    .card.accent-cyan {
+      border-left: 4px solid var(--cyan);
+    }
+
+    .card.accent-green {
+      border-left: 4px solid var(--green);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-text {
+      font-size: 15px;
+      color: #d1d5db;
+      line-height: 1.55;
+    }
+
+    /* Metric Chips */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin: 4px 0;
+    }
+
+    .metric-chip {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .metric-chip .val {
+      font-family: var(--font);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1.1;
+    }
+
+    .metric-chip .val.cyan {
+      color: var(--cyan);
+    }
+
+    .metric-chip .val.green {
+      color: var(--green);
+    }
+
+    .metric-chip .lbl {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 3px;
+    }
+
+    /* Bullet Lists */
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #e5e7eb;
+    }
+
+    .bullet-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .bullet-dot.cyan {
+      background: var(--cyan);
+    }
+
+    .bullet-dot.green {
+      background: var(--green);
+    }
+
+    /* Screenshot Display Containers */
+    .shot-container {
+      background: #04060a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      height: 100%;
+      position: relative;
+    }
+
+    .shot-header {
+      background: rgba(17, 24, 39, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+      font-family: var(--mono);
+      color: var(--text-muted);
+    }
+
+    .shot-header .dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .shot-header .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .shot-img-wrapper {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #020305;
+      position: relative;
+    }
+
+    .shot-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+      display: block;
+    }
+
+    .shot-caption {
+      background: rgba(10, 14, 22, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 8px 14px;
+      font-size: 12.5px;
+      color: var(--orange-light);
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Data Tables */
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-top: 4px;
+    }
+
+    .mini-table th {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      padding: 7px 10px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #e5e7eb;
+    }
+
+    .mini-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-status {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--mono);
+    }
+
+    .badge-status.pass {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-status.orange {
+      background: rgba(255, 128, 0, 0.15);
+      color: var(--orange-light);
+      border: 1px solid rgba(255, 128, 0, 0.3);
+    }
+
+    /* Math formulas */
+    .math-callout {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 128, 0, 0.25);
+      border-left: 3px solid var(--orange);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--orange-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 12px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    /* Title Slide Specifics */
+    .title-slide {
+      padding: 60px 80px;
+      justify-content: space-between;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 128, 0, 0.12);
+      border: 1px solid rgba(255, 128, 0, 0.35);
+      color: var(--orange-light);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: #ffffff;
+    }
+
+    .hero-subtitle {
+      font-size: 22px;
+      color: #9ca3af;
+      font-weight: 400;
+      line-height: 1.45;
+      max-width: 1200px;
+      margin-top: 10px;
+    }
+
+    .title-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin: 28px 0;
+    }
+
+    .title-stat-card {
+      background: rgba(16, 22, 34, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 3px solid var(--orange);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .title-stat-card .number {
+      font-size: 34px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .title-stat-card .desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .title-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .author-info h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .author-info p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 0: COVER / TITLE SLIDE                                              -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper title-slide" id="slide-0">
+    <div>
+      <div class="hero-badge">
+        PharmaPath &middot; Multi-Omics Biological Database Defense
+      </div>
+      <h1 class="hero-title">
+        PharmaPath: A Multi-Omics Biological Database for Network Pharmacology
+      </h1>
+      <p class="hero-subtitle">
+        Computational Discovery Across the Human Interactome Using Metformin, Imatinib, Disease Modules, and Inductive Graph Learning
+      </p>
+    </div>
+
+    <!-- Centerpiece Architecture Banner -->
+    <div style="background: rgba(16, 22, 34, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 18px 28px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <span style="font-size: 32px;">🧬</span>
+        <div>
+          <h4 style="font-size: 16px; font-weight: 700; color: #fff;">Integrated Multi-Omics Database Pipeline</h4>
+          <p style="font-size: 13.5px; color: #9ca3af; margin-top: 2px;">STRING v12 &bull; ChEMBL 33 &bull; LINCS L1000 &bull; Open Targets Platform &bull; KEGG &bull; Reactome &bull; PyTorch Geometric</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <span class="badge-status pass" style="padding: 6px 12px; font-size: 12px;">0.0000% LOSS RATE</span>
+        <span class="badge-status orange" style="padding: 6px 12px; font-size: 12px;">ZERO DATA LEAKAGE</span>
+      </div>
+    </div>
+
+    <div class="title-stats-grid">
+      <div class="title-stat-card">
+        <div class="number">15,882</div>
+        <div class="desc">Human Proteins (98.03% LCC)</div>
+      </div>
+      <div class="title-stat-card" style="border-top-color: var(--cyan);">
+        <div class="number" style="color: var(--cyan);">236,712</div>
+        <div class="desc">STRING v12 High-Confidence Edges</div>
+      </div>
+      <div class="title-stat-card" style="border-top-color: var(--green);">
+        <div class="number" style="color: var(--green);">0.8865</div>
+        <div class="desc">GraphSAGE Test AUROC (Inductive)</div>
+      </div>
+      <div class="title-stat-card" style="border-top-color: var(--orange);">
+        <div class="number" style="color: var(--orange);">-18.28</div>
+        <div class="desc">Metformin &rarr; T2D Proximity Z-Score</div>
+      </div>
+    </div>
+
+    <div class="title-footer">
+      <div class="author-info">
+        <h4>Senior Bioinformatics &amp; Machine Learning Engineering</h4>
+        <p>Biological Database Capstone Examination Committee &bull; Reproducible Research Pipeline</p>
+      </div>
+      <div class="author-info" style="text-align: right;">
+        <p style="font-family: var(--mono); color: var(--orange-light);">https://pharmapath-website.vercel.app</p>
+        <p>End-to-End Pipeline: scripts/run_all.py &bull; Automated PyTest Suite (100% Passed)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 1: ABSTRACT                                                         -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-1">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Abstract &middot; The Systems Pharmacology Thesis</div>
+        <h2 class="slide-title">Drug Action as a <span class="hl">Network Perturbation</span></h2>
+        <p class="slide-subtitle">Connecting physical human interactomes, disease genetics, and inductive AI into a discovery database</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 1 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div class="card accent-orange" style="justify-content: space-between;">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <h3 class="card-title">
+            Executive Summary &amp; Research Paradigm
+          </h3>
+          <p class="card-text">
+            Complex human diseases do not emerge from isolated genetic lesions; they arise from perturbed multi-protein communication cascades across the interactome. <strong>PharmaPath</strong> establishes an end-to-end biological database and discovery platform connecting multi-omics evidence layers to evaluate drug mechanism, disease module localization, and target recovery.
+          </p>
+
+          <div class="metrics-row">
+            <div class="metric-chip">
+              <div class="val">0.0000%</div>
+              <div class="lbl">Mapping Loss Rate</div>
+            </div>
+            <div class="metric-chip">
+              <div class="val cyan">347</div>
+              <div class="lbl">Shared Interactome Hubs</div>
+            </div>
+            <div class="metric-chip">
+              <div class="val green">p=0.001</div>
+              <div class="lbl">Empirical Proximity</div>
+            </div>
+          </div>
+
+          <ul class="bullet-list">
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Contrasting Modalities:</strong> Evaluates pleiotropic metabolic regulation (Metformin in T2D) vs. precision oncogenic kinase inhibition (Imatinib in CML).</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot cyan"></span>
+              <span><strong>Statistical Rigor:</strong> 1,000 degree-matched null permutations verify that drug-disease proximity reflects authentic biological localization.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <span><strong>Leakage-Safe GNN:</strong> GraphSAGE achieves 0.8865 AUROC and recovers held-out targets without topological leakage.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="math-callout">
+          <span>&lang;d<sub>c</sub>(T, S)&rang; = <sup>1</sup>/<sub>|T|</sub> &sum;<sub>t &isin; T</sub> min<sub>s &isin; S</sub> d(t, s)</span>
+          <span style="font-size: 12px; color: #9ca3af;">Guney et al. (2016)</span>
+        </div>
+      </div>
+
+      <!-- Real Screenshot Container -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Live Discovery Lab &mdash; Interactive Subnetwork Canvas</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/01_subnetwork_metformin.png" alt="Live PharmaPath Web Canvas">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: 150-Node Metformin RWR Subnetwork (Density = 0.4377, 61 Seed Targets)</span>
+          <span class="badge-status pass">LIVE SYSTEM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Abstract</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 2: INTRODUCTION                                                     -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-2">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Introduction &middot; The Problem &amp; The Two Archetypes</div>
+        <h2 class="slide-title">Beyond the <span class="hl">Single-Target</span> Myth</h2>
+        <p class="slide-subtitle">Why complex diseases require systemic network-level pharmacological modeling</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 2 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-55-45">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            The Single-Target Bottleneck in Modern Pharmacology
+          </h3>
+          <p class="card-text">
+            Traditional drug discovery relies on the "one-drug, one-target, one-disease" paradigm. However, clinical attrition remains over 90% because complex disorders emerge from robust, redundant network states that rapidly rewire around single molecular blocks.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <!-- Metformin Card -->
+          <div class="card accent-orange" style="padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="font-size: 17px; color: var(--orange); font-weight: 800;">METFORMIN (T2D)</h4>
+              <span class="badge-status orange">61 LCC TARGETS</span>
+            </div>
+            <p style="font-size: 13.5px; color: #d1d5db; line-height: 1.5; margin-top: 6px;">
+              <strong>Pleiotropic Metabolic Regulator:</strong> Targets Mitochondrial Complex I subunits (NDUFA/B/C/S) and AMPK regulatory heterotrimers (PRKAA1/2, PRKAB1, PRKAG1). Inhibits gluconeogenesis via cellular energetic stress.
+            </p>
+          </div>
+
+          <!-- Imatinib Card -->
+          <div class="card accent-cyan" style="padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="font-size: 17px; color: var(--cyan); font-weight: 800;">IMATINIB (CML)</h4>
+              <span class="badge-status pass" style="color: var(--cyan); border-color: rgba(0, 210, 255, 0.3); background: rgba(0, 210, 255, 0.1);">10 LCC TARGETS</span>
+            </div>
+            <p style="font-size: 13.5px; color: #d1d5db; line-height: 1.5; margin-top: 6px;">
+              <strong>Precision Kinase Inhibitor:</strong> Competitively blocks ATP pocket of BCR-ABL1 fusion kinase, KIT, PDGFRA/B, and CSF1R. Suppresses leukemic myeloblast proliferation with high molecular specificity.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 16px; background: rgba(0, 0, 0, 0.4);">
+          <h4 style="font-size: 14.5px; font-weight: 700; color: #ffffff; margin-bottom: 6px;">The 4 Guiding Research Questions:</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; color: #9ca3af;">
+            <div><strong>1. Subnetwork Perturbation:</strong> What modules do drugs diffuse across?</div>
+            <div><strong>2. Disease Proximity:</strong> Are targets closer than random expectation?</div>
+            <div><strong>3. Network Bottlenecks:</strong> Which critical hubs control flux?</div>
+            <div><strong>4. Inductive GNN:</strong> Can GNNs predict novel links without leakage?</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Screenshot Container -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Imatinib Kinase Network</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/02_subnetwork_imatinib.png" alt="Imatinib Real Platform Canvas">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: 150-Node Imatinib Kinase Subnetwork (Density = 0.2464, 10 Seed Targets)</span>
+          <span class="badge-status orange">CONFIG-DRIVEN</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Introduction</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 3: LITERATURE REVIEW                                                -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-3">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Literature Review &middot; Systems Pharmacology Foundations</div>
+        <h2 class="slide-title">From Reductionism to <span class="hl">Systems Medicine</span></h2>
+        <p class="slide-subtitle">Connecting empirical biological databases with mathematical network medicine theory</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 3 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            Key Scientific Foundations &amp; Conceptual Anchors
+          </h3>
+          <ul class="bullet-list" style="gap: 12px;">
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <div>
+                <strong>Barab&aacute;si et al. (2011 Nature Reviews Genetics):</strong> Established that the human interactome is scale-free and that disease-causing mutations cluster into topologically cohesive disease modules.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot cyan"></span>
+              <div>
+                <strong>Guney et al. (2016 Nature Communications):</strong> Formulated the degree-matched closest-distance metric &lang;d<sub>c</sub>(T,S)&rang; proving that clinically efficacious drugs directly overlap or localize proximate to disease modules.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <div>
+                <strong>Menche et al. (2015 Science):</strong> Derived the interactome module separation metric s<sub>AB</sub>, establishing that distinct diseases and drug targets occupy separated topological spheres.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot" style="background: var(--purple);"></span>
+              <div>
+                <strong>Hamilton et al. (2017 NeurIPS):</strong> GraphSAGE inductive representation learning enables neighborhood aggregation on unseen interactome topologies without transductive leakage.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding: 16px; background: rgba(0,0,0,0.4);">
+          <h4 style="font-size: 14.5px; color: var(--cyan); font-weight: 700; margin-bottom: 8px;">The Multi-Omics Biological Database Ecosystem:</h4>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 12.5px;">
+            <div style="background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
+              <strong style="color: #fff;">STRING v12</strong><br><span style="color: #9ca3af;">Scaffold PPI &ge; 700</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
+              <strong style="color: #fff;">ChEMBL 33</strong><br><span style="color: #9ca3af;">Curated Drug Targets</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
+              <strong style="color: #fff;">LINCS L1000</strong><br><span style="color: #9ca3af;">Chemical z-scores</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
+              <strong style="color: #fff;">Open Targets</strong><br><span style="color: #9ca3af;">Genetic Evidence</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
+              <strong style="color: #fff;">KEGG 2021</strong><br><span style="color: #9ca3af;">Pathway Signatures</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 6px;">
+              <strong style="color: #fff;">Reactome 2022</strong><br><span style="color: #9ca3af;">Reaction Cascades</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Protein Inspector Modal Screenshot -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Multi-Omics Protein Inspector</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/crops/tight_protein_modal.png" alt="Real Protein Modal Inspector">
+        </div>
+        <div class="shot-caption">
+          <span>Live Inspector: Multi-Omics Integration (Degree, LINCS Perturbation z, Cluster, PubMed Bridge)</span>
+          <span class="badge-status pass">PROGRAMMATIC API</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Literature Review</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 4: METHODOLOGY (PIPELINE ARCHITECTURE)                             -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-4">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Methodology &middot; Computational Pipeline &amp; Data Engineering</div>
+        <h2 class="slide-title">End-to-End <span class="hl">Database-to-Discovery</span> Flow</h2>
+        <p class="slide-subtitle">Six-phase computational protocol ensuring zero data leakage and 100% provenance tracking</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 4 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <!-- Phase 1 to 6 steps -->
+        <div class="card" style="padding: 14px; border-left: 3px solid var(--orange);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong style="color: var(--orange); font-size: 14.5px;">PHASE 1: Interactome Scaffolding</strong>
+            <span class="badge-status orange">0.0000% LOSS</span>
+          </div>
+          <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+            Ingest STRING v12 human interactome (combined_score &ge; 700). Map 19,699 ENSP IDs to HGNC symbols. Extract Largest Connected Component (15,882 nodes, 236,712 edges).
+          </p>
+        </div>
+
+        <div class="card" style="padding: 14px; border-left: 3px solid var(--cyan);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong style="color: var(--cyan); font-size: 14.5px;">PHASE 2: Dual Subnetwork Extraction</strong>
+            <span class="badge-status pass" style="color: var(--cyan); border-color: rgba(0,210,255,0.3);">DIFFUSION</span>
+          </div>
+          <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+            Extract 2-hop topological periphery (500 nodes) and Random Walk with Restart (RWR, r=0.5, 150 nodes) to simulate steady-state network diffusion from seed targets.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 14px; border-left: 3px solid var(--green);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong style="color: var(--green); font-size: 14.5px;">PHASE 3: Multi-Omics Overlays &amp; ORA</strong>
+            <span class="badge-status pass">SANITY PASSED</span>
+          </div>
+          <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+            Overlay LINCS L1000 expression z-scores. Execute Fisher's exact over-representation analysis against KEGG 2021 and Reactome 2022 with Benjamini&ndash;Hochberg FDR &lt; 0.05.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 14px; border-left: 3px solid var(--purple);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong style="color: var(--purple); font-size: 14.5px;">PHASE 4: Topology &amp; Disease Proximity</strong>
+            <span class="badge-status pass" style="color: var(--purple); border-color: rgba(168,85,247,0.3);">1,000 PERMS</span>
+          </div>
+          <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+            Compute degree, betweenness, Louvain modularity clusters. Run Guney closest-distance test against 1,000 degree-matched null permutations.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 14px; border-left: 3px solid #e11d48;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong style="color: #fb7185; font-size: 14.5px;">PHASE 5: Inductive GNN &amp; Leave-Targets-Out</strong>
+            <span class="badge-status pass" style="color: #fb7185; border-color: rgba(244,63,94,0.3);">ZERO LEAKAGE</span>
+          </div>
+          <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+            Split edges 80/10/10 with complete exclusion from message passing. Train GraphSAGE and GAE. Execute leave-targets-out recovery.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real Screenshot Container -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Biological Sanity Audit Engine</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/04_pathways_metformin.png" alt="PharmaPath Biological Sanity Engine">
+        </div>
+        <div class="shot-caption">
+          <span>Automated Verification: Recovering Hallmark Metabolic Cascades (OxPhos FDR = 1.26e-153)</span>
+          <span class="badge-status pass">AUDIT VERIFIED</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Methodology</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 5: METHODOLOGY (INTERACTIVE PLATFORM LAB)                          -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-5">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Methodology &middot; Interactive Software Engineering</div>
+        <h2 class="slide-title">Interactive <span class="hl">Discovery Lab</span> Architecture</h2>
+        <p class="slide-subtitle">Pre-computed multi-omics analytics served via a zero-latency client-side exploration canvas</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 4 / 8 (CONT)</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-45-55">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            Interactive Web Platform Engineering Highlights
+          </h3>
+          <p class="card-text">
+            To make high-throughput network pharmacology immediately accessible to wet-lab biologists and bioinformaticians, PharmaPath compiles high-performance graph analytics into lightweight JSON data structures served through a responsive modern interface.
+          </p>
+
+          <div class="metrics-row">
+            <div class="metric-chip">
+              <div class="val">6</div>
+              <div class="lbl">Discovery Views</div>
+            </div>
+            <div class="metric-chip">
+              <div class="val cyan">&lt;50ms</div>
+              <div class="lbl">Filter Latency</div>
+            </div>
+            <div class="metric-chip">
+              <div class="val green">100%</div>
+              <div class="lbl">PyTest Coverage</div>
+            </div>
+          </div>
+
+          <ul class="bullet-list" style="gap: 10px;">
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Vis-Network Physics Engine:</strong> Live force-directed layout with dynamic node sizing (Degree/Betweenness), threshold sliders, and real-time gene search.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot cyan"></span>
+              <span><strong>Chart.js Visualizations:</strong> Interactive pathway horizontal bar charts, scatter plots with 4 topological quadrant tags, and null permutation histograms.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <span><strong>PubMed Cross-Linking:</strong> One-click verified bibliographic search for every predicted drug-protein candidate pair.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding: 14px; background: rgba(0,0,0,0.5);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: var(--mono); font-size: 13px; color: var(--orange-light);">python website/server.py</span>
+            <span class="badge-status pass">STANDALONE DEPLOYMENT</span>
+          </div>
+          <p style="font-size: 13px; color: #9ca3af; margin-top: 4px;">
+            Zero runtime Python back-end bottleneck: static JSON caches allow seamless deployment to Vercel, AWS S3, or local offline presentation servers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real Screenshot of Centrality & Hubs Tab -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Centrality &amp; Hubs Explorer</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/crops/tight_centrality_studio.png" alt="Centrality Explorer Real Platform">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: Degree vs. Betweenness Scatter, Louvain Clusters, &amp; Dual Bridge Identification</span>
+          <span class="badge-status orange">INTERACTIVE LAB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Methodology</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 6: ANALYSIS (SUBNETWORK DIFFUSION & DENSITY)                         -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-6">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Analysis &middot; Interactome Diffusion &amp; Module Isolation</div>
+        <h2 class="slide-title">Subnetwork Diffusion <span class="hl">Enriches Functional Modules</span></h2>
+        <p class="slide-subtitle">Comparing 2-hop topological periphery with Random Walk with Restart (RWR) concentration</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 5 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            Quantitative Subnetwork Density Comparison
+          </h3>
+          <p class="card-text">
+            While 2-hop neighborhoods capture wide peripheral connectivity (500 nodes), <strong>Random Walk with Restart (RWR, r=0.5)</strong> simulates fluid diffusion from seed targets, filtering out peripheral interactome noise and concentrating densely connected functional complexes.
+          </p>
+
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Drug &amp; Algorithm</th>
+                <th>Nodes</th>
+                <th>Edges</th>
+                <th>Graph Density</th>
+                <th>Enrichment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Metformin &middot; 2-Hop</strong></td>
+                <td>500</td>
+                <td>21,448</td>
+                <td>0.1719</td>
+                <td>Baseline</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--orange);">Metformin &middot; RWR</strong></td>
+                <td>150</td>
+                <td>4,891</td>
+                <td><strong style="color: var(--orange);">0.4377</strong></td>
+                <td><span class="badge-status orange">2.5&times; Density</span></td>
+              </tr>
+              <tr>
+                <td><strong>Imatinib &middot; 2-Hop</strong></td>
+                <td>500</td>
+                <td>22,559</td>
+                <td>0.1808</td>
+                <td>Baseline</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--cyan);">Imatinib &middot; RWR</strong></td>
+                <td>150</td>
+                <td>2,754</td>
+                <td><strong style="color: var(--cyan);">0.2464</strong></td>
+                <td><span class="badge-status pass" style="color: var(--cyan); border-color: rgba(0,210,255,0.3);">1.4&times; Density</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="metrics-row" style="margin-top: 6px;">
+            <div class="metric-chip">
+              <div class="val">0.2621</div>
+              <div class="lbl">Metformin 2-Hop vs RWR Jaccard</div>
+            </div>
+            <div class="metric-chip">
+              <div class="val cyan">0.1344</div>
+              <div class="lbl">Imatinib 2-Hop vs RWR Jaccard</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 14px; background: rgba(0, 0, 0, 0.4);">
+          <h4 style="font-size: 14.5px; color: #ffffff; font-weight: 700;">Key Topological Discovery:</h4>
+          <p style="font-size: 13.5px; color: #9ca3af; line-height: 1.5; margin-top: 4px;">
+            Metformin achieves a remarkable <strong>0.4377 subnetwork density</strong> because mitochondrial Complex I comprises 45 tightly physical-bound NDUF subunits. In contrast, Imatinib's kinase targets branch into divergent downstream signaling cascades (MAPK, PI3K), yielding modular clusters.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real Screenshot of Subnetwork Canvas -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Subnetwork Diffusion &amp; Density Engine</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/crops/tight_subnetwork_canvas.png" alt="RWR Subnetwork Diffusion View">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: RWR Concentrates High-Density Functional Complex (Density = 0.4377 vs 0.1719)</span>
+          <span class="badge-status pass">QUANTITATIVE PROOF</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Analysis &middot; Diffusion</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 7: ANALYSIS (BIOLOGICAL VALIDATION & PATHWAYS)                       -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-7">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Analysis &middot; Biological Validation &amp; Pathway ORA</div>
+        <h2 class="slide-title">Ground-Truth <span class="hl">Biological Sanity</span> Verified</h2>
+        <p class="slide-subtitle">Automated statistical verification across KEGG 2021 Human and Reactome 2022 signatures</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 5 / 8 (CONT)</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            Automated Hallmark Sanity Audit Results
+          </h3>
+          <p class="card-text">
+            Without synthetic parameter adjustments, both drug subnetworks automatically passed stringent over-representation analysis (ORA) tests using Benjamini&ndash;Hochberg false discovery rate correction:
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 8px; margin: 2px 0;">
+            <div style="background: rgba(255, 128, 0, 0.08); border: 1px solid rgba(255, 128, 0, 0.25); border-radius: 8px; padding: 10px 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="color: var(--orange); font-size: 14.5px;">METFORMIN &rarr; TYPE 2 DIABETES</strong>
+                <span class="badge-status pass">4/5 AUDIT PASSED</span>
+              </div>
+              <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+                Top recovered pathways: <strong>Oxidative phosphorylation</strong> (FDR = 1.26 &times; 10<sup>&minus;153</sup>), <strong>Respiratory Electron Transport</strong> (FDR = 2.08 &times; 10<sup>&minus;166</sup>), AMPK signaling, mTOR signaling, Insulin signaling, FoxO signaling.
+              </p>
+            </div>
+
+            <div style="background: rgba(0, 210, 255, 0.08); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: 8px; padding: 10px 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="color: var(--cyan); font-size: 14.5px;">IMATINIB &rarr; CHRONIC MYELOID LEUKEMIA</strong>
+                <span class="badge-status pass" style="color: var(--cyan); border-color: rgba(0,210,255,0.3);">5/6 AUDIT PASSED</span>
+              </div>
+              <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+                Top recovered pathways: <strong>Chronic Myeloid Leukemia</strong> (FDR = 1.25 &times; 10<sup>&minus;24</sup>), <strong>Receptor Tyrosine Kinases</strong> (FDR = 1.46 &times; 10<sup>&minus;96</sup>), Ras signaling (FDR = 2.21 &times; 10<sup>&minus;116</sup>), PI3K-Akt signaling, MAPK cascades.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 14px; background: rgba(0, 0, 0, 0.4);">
+          <h4 style="font-size: 14.5px; color: #ffffff; font-weight: 700;">Multi-Omics Significance:</h4>
+          <p style="font-size: 13px; color: #9ca3af; line-height: 1.5; margin-top: 4px;">
+            The astronomical statistical significance confirms that the high-confidence STRING v12 physical interactome faithfully preserves native cellular signaling pathways without introducing spurious cross-contamination.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real Screenshot of Pathways & ORA Tab -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Imatinib Pathway Enrichment Studio</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/crops/tight_pathways_studio.png" alt="Pathways Tab Real Platform View">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: Top Enriched Pathways Bar Chart (-log10 P-Value) &amp; Ranking Table</span>
+          <span class="badge-status pass">FDR &lt; 0.05</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Analysis &middot; Pathways</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 8: ANALYSIS (DISEASE MODULE PROXIMITY)                              -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-8">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Analysis &middot; Statistical Disease Module Proximity</div>
+        <h2 class="slide-title">Topological Proximity <span class="hl">Proves Specificity</span></h2>
+        <p class="slide-subtitle">1,000 degree-matched null permutations eliminate degree bias artifacts (Guney et al. 2016)</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 5 / 8 (CONT)</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            Disease Module Proximity Benchmark Summary
+          </h3>
+          <p class="card-text">
+            To evaluate whether drug targets reside closer to disease genes than expected by chance, closest distance &lang;d<sub>c</sub>(T,S)&rang; was tested against 1,000 degree-matched random node sets:
+          </p>
+
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Drug &rarr; Disease Pair</th>
+                <th>Observed d<sub>c</sub></th>
+                <th>Null Mean &plusmn; Std</th>
+                <th>Z-Score</th>
+                <th>P-Value</th>
+                <th>Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: var(--orange);">Metformin &rarr; T2D</strong></td>
+                <td>0.213</td>
+                <td>1.012 &plusmn; 0.044</td>
+                <td><strong style="color: var(--green);">-18.28</strong></td>
+                <td>0.0010</td>
+                <td><span class="badge-status pass">PROXIMATE</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--cyan);">Imatinib &rarr; CML</strong></td>
+                <td>0.400</td>
+                <td>1.228 &plusmn; 0.114</td>
+                <td><strong style="color: var(--green);">-7.25</strong></td>
+                <td>0.0010</td>
+                <td><span class="badge-status pass">PROXIMATE</span></td>
+              </tr>
+              <tr>
+                <td>Metformin &rarr; CML (Control)</td>
+                <td>1.951</td>
+                <td>1.097 &plusmn; 0.047</td>
+                <td style="color: var(--red);">+18.32</td>
+                <td>1.0000</td>
+                <td><span class="badge-status orange" style="color: var(--red); border-color: rgba(239,68,68,0.3);">NOT PROXIMATE</span></td>
+              </tr>
+              <tr>
+                <td>Imatinib &rarr; T2D (Control)</td>
+                <td>1.300</td>
+                <td>1.150 &plusmn; 0.127</td>
+                <td style="color: #9ca3af;">+1.18</td>
+                <td>0.9650</td>
+                <td><span class="badge-status orange" style="color: var(--red); border-color: rgba(239,68,68,0.3);">NOT PROXIMATE</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <ul class="bullet-list" style="margin-top: 4px;">
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <span><strong>Primary Indications Highly Significant:</strong> Both Metformin (z = -18.28) and Imatinib (z = -7.25) reside deep within their disease modules (z &le; -2.0, empirical p = 0.0010).</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot" style="background: var(--red);"></span>
+              <span><strong>Reciprocal Negative Controls Fail:</strong> Cross-disease pairs yielded positive z-scores, proving network localization is disease-specific and not a degree artifact.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Real Screenshot of Disease Proximity Tab -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Disease Proximity Null Permutations</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/crops/tight_proximity_studio.png" alt="Disease Proximity Real Platform View">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: Permutation Null vs. Observed Distance (0.400, z = -7.25, p = 0.0010)</span>
+          <span class="badge-status pass">1,000 PERMUTATIONS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Analysis &middot; Proximity</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 9: DISCUSSION (GNN & TARGET RECOVERY)                                -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-9">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Discussion &middot; Graph Neural Networks &amp; AI Discovery</div>
+        <h2 class="slide-title">Inductive AI Enables <span class="hl">Predictive Reach</span></h2>
+        <p class="slide-subtitle">Leakage-safe link prediction and leave-targets-out recovery generate testable hypotheses</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 6 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            Inductive Link Prediction Benchmark (Zero Data Leakage)
+          </h3>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Model Architecture</th>
+                <th>Test AUROC</th>
+                <th>Test Average Precision</th>
+                <th>Splits Barrier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Node2Vec + Logistic Regression</td>
+                <td>0.5000</td>
+                <td>0.5000</td>
+                <td>Transductive Baseline</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--orange);">GraphSAGE (Inductive GNN)</strong></td>
+                <td><strong style="color: var(--orange);">0.8865</strong></td>
+                <td><strong style="color: var(--orange);">0.9008</strong></td>
+                <td><span class="badge-status pass">Zero Edge Leakage</span></td>
+              </tr>
+              <tr>
+                <td>Graph Autoencoder (GAE)</td>
+                <td>0.8832</td>
+                <td>0.8958</td>
+                <td><span class="badge-status pass">Zero Edge Leakage</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="background: rgba(0,0,0,0.4); padding: 10px 12px; border-radius: 8px; margin-top: 4px;">
+            <strong style="font-size: 13.5px; color: var(--cyan);">Leave-Targets-Out Cross-Validation:</strong>
+            <p style="font-size: 13px; color: #d1d5db; margin-top: 3px;">
+              When holding out hidden ground-truth targets from training, GraphSAGE recovered <strong>NDUFS7 at Rank #15 / 15,882</strong> (Hits@20 = 50.0%) for Metformin, and <strong>CSF1R at Rank #85 / 15,882</strong> for Imatinib.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 16px; border-left: 3px solid var(--purple);">
+          <h4 style="font-size: 14.5px; color: #ffffff; font-weight: 700;">Top Novel Repurposing Hypotheses (PubMed Verified):</h4>
+          <ul class="bullet-list" style="font-size: 13px; gap: 6px; margin-top: 4px;">
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Metformin:</strong> NDC80 (Rank 1, kinetochore arrest in cancer), UQCR11 &amp; UQCRH (Complex III respiratory chain rewiring).</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot cyan"></span>
+              <span><strong>Imatinib:</strong> ATP5F1D (Rank 1, ATP synthase/metabolism), CHUK/IKK-&alpha; (Rank 2, NF-&kappa;B survival), NEDD8 (Rank 3, neddylation).</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Real Screenshot of GNN Link Predictions Tab -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; GNN Link Prediction Studio</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/crops/tight_gnn_studio.png" alt="GNN Studio Real Platform View">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: Inductive Benchmark, ROC/PR Curves, &amp; Top-20 Novel Candidate Hypotheses</span>
+          <span class="badge-status pass">INDUCTIVE AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Discussion &middot; GNN</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 10: DISCUSSION (COMBINATION PHARMACOLOGY)                           -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-10">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">Discussion &middot; Combination Pharmacology &amp; Synergy</div>
+        <h2 class="slide-title">Distinct Direct Targets, <span class="hl">Shared Therapeutic Logic</span></h2>
+        <p class="slide-subtitle">Menche separation s<sub>AB</sub> = +1.3503 paired with 347 shared interactome cross-talk hubs</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 6 / 8 (CONT)</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-orange">
+          <h3 class="card-title">
+            Interactome Separation vs. Cross-Talk Bridges
+          </h3>
+          <p class="card-text">
+            Metformin and Imatinib share <strong>0 direct targets</strong> and exhibit an interactome separation of <strong>s<sub>AB</sub> = +1.3503</strong> (Menche et al. 2015), confirming distinct primary mechanism modules.
+          </p>
+
+          <div class="metrics-row">
+            <div class="metric-chip">
+              <div class="val">+1.3503</div>
+              <div class="lbl">Menche Separation s_AB</div>
+            </div>
+            <div class="metric-chip">
+              <div class="val cyan">347</div>
+              <div class="lbl">Shared 2-Hop Nodes</div>
+            </div>
+            <div class="metric-chip">
+              <div class="val green">0.5314</div>
+              <div class="lbl">2-Hop Jaccard Overlap</div>
+            </div>
+          </div>
+
+          <p class="card-text" style="font-size: 14px;">
+            Despite distinct targets, their 2-hop neighborhoods intersect at <strong>347 shared proteins</strong> including 22 master signaling hubs: <strong style="color: var(--cyan);">AKT1 &middot; TP53 &middot; MAPK1 &middot; STAT3 &middot; SRC</strong>.
+          </p>
+        </div>
+
+        <div class="card accent-green" style="padding: 16px;">
+          <h4 style="font-size: 15px; color: var(--green); font-weight: 800;">Clinical Mechanism: Overcoming CML Resistance</h4>
+          <p style="font-size: 13.5px; color: #d1d5db; line-height: 1.5; margin-top: 4px;">
+            <strong>1. Eradication of Quiescent Leukemic Stem Cells (LSCs):</strong> Imatinib monotherapy eliminates dividing blast cells but spares dormant LSCs that rely on oxidative phosphorylation. Metformin selectively inhibits Complex I, depleting ATP pools and forcing dormant LSCs into apoptosis.
+          </p>
+          <p style="font-size: 13.5px; color: #d1d5db; line-height: 1.5; margin-top: 4px;">
+            <strong>2. Cardioprotective Synergy:</strong> Metformin's AMPK activation counters off-target cardiotoxicity induced by BCR-ABL kinase inhibitors.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real Screenshot of Two-Drug Comparison Tab -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Shared Cross-Talk &amp; Combination Report</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/crops/tight_comparison_studio.png" alt="Two Drug Synergy Platform View">
+        </div>
+        <div class="shot-caption">
+          <span>Real Platform View: Shared Cross-Talk Hubs (TP53, RPS27A, UBA52) &amp; Combination Mechanism</span>
+          <span class="badge-status pass">CLINICAL HYPOTHESIS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Discussion &middot; Synergy</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 11: CONCLUSION                                                      -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-11">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill green">Conclusion &middot; Synthesis &amp; Future Horizons</div>
+        <h2 class="slide-title">Summary of Findings &amp; <span class="hl-cyan">Impact</span></h2>
+        <p class="slide-subtitle">A validated, leak-free computational standard for biological database network pharmacology</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 7 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card accent-cyan">
+          <h3 class="card-title">
+            Key Project Deliverables &amp; Scientific Contributions
+          </h3>
+          <ul class="bullet-list" style="gap: 12px;">
+            <li class="bullet-item">
+              <span class="bullet-dot cyan"></span>
+              <div>
+                <strong>Seamless Biological Database Integration:</strong> Filtered and mapped 15,882 nodes and 236,712 STRING v12 edges with 0.0000% mapping loss, overlaying ChEMBL targets, LINCS expression, and Open Targets genetics.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <div>
+                <strong>Topological Specificity Over Degree Bias:</strong> 1,000 degree-matched permutations confirmed authentic disease localization for Metformin (z = -18.28) and Imatinib (z = -7.25) with negative control divergence.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <div>
+                <strong>Leak-Free Inductive Machine Learning:</strong> GraphSAGE achieved 0.8865 AUROC and successfully prioritized hidden targets (NDUFS7 #15) out of 15,882 candidates.
+              </div>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot" style="background: var(--purple);"></span>
+              <div>
+                <strong>Open Interactive Lab:</strong> Published an interactive discovery platform with Vis-Network canvases, Chart.js analytics, and automated PyTest validation.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding: 16px; border-left: 3px solid var(--orange);">
+          <h4 style="font-size: 15px; color: var(--orange); font-weight: 700;">Responsible-AI Caveat &amp; Future Directions:</h4>
+          <p style="font-size: 13.5px; color: #d1d5db; line-height: 1.5; margin-top: 4px;">
+            GNN link predictions are <em>topological hypotheses</em> and functional associations, not direct biochemical binding proofs. Next steps include integrating <strong>single-cell transcriptomics</strong>, patient-specific interactomes, and wet-lab surface plasmon resonance (SPR) validation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real Screenshot of Full Metformin Subnetwork -->
+      <div class="shot-container">
+        <div class="shot-header">
+          <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <span>PharmaPath Real Platform &mdash; Complete Research Discovery Suite</span>
+        </div>
+        <div class="shot-img-wrapper">
+          <img src="../ppt_assets/01_subnetwork_metformin.png" alt="PharmaPath Final Suite View">
+        </div>
+        <div class="shot-caption">
+          <span>Live Deployment: Reproducible Computational Discovery (pharmapath-website.vercel.app)</span>
+          <span class="badge-status pass">CAPSTONE COMPLETE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: Conclusion</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 12: REFERENCES                                                      -->
+  <!-- ========================================================================= -->
+  <div class="slide-wrapper" id="slide-12">
+    <div class="slide-header">
+      <div class="slide-meta-left">
+        <div class="topic-pill">References &middot; Literature &amp; Project Deliverables</div>
+        <h2 class="slide-title">References &amp; <span class="hl">Evidence Base</span></h2>
+        <p class="slide-subtitle">Primary scientific literature, genomic databases, and PharmaPath documentation</p>
+      </div>
+      <div class="slide-meta-right">
+        <span class="brand-tag">PHARMAPATH</span>
+        <span class="slide-num-badge">TOPIC 8 / 8</span>
+      </div>
+    </div>
+
+    <div class="slide-body grid-2col-50-50">
+      <div class="card accent-orange" style="justify-content: space-between;">
+        <div>
+          <h3 class="card-title">
+            Primary Peer-Reviewed Literature
+          </h3>
+          <ul class="bullet-list" style="font-size: 13px; gap: 9px; margin-top: 8px;">
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Guney, E. et al. (2016):</strong> Network-based in silico drug efficacy screening. <em>Nature Communications</em>, 7, 10331.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Menche, J. et al. (2015):</strong> Uncovering disease-disease relationships through the incomplete interactome. <em>Science</em>, 347(6224), 1257601.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Barab&aacute;si, A. L., Gulbahce, N., &amp; Loscalzo, J. (2011):</strong> Network medicine: a network-based approach to human disease. <em>Nat Rev Genet</em>, 12(1), 56&ndash;68.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Hamilton, W., Ying, Z., &amp; Leskovec, J. (2017):</strong> Inductive representation learning on large graphs. <em>NeurIPS 2017</em>, 1024&ndash;1034.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Szklarczyk, D. et al. (2023):</strong> The STRING database in 2023: protein networks with increased coverage. <em>Nucleic Acids Res</em>, 51(D1), D638&ndash;D646.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot"></span>
+              <span><strong>Subramanian, A. et al. (2017):</strong> A Next Generation Connectivity Map: L1000 Platform And The First 1,000,000 Profiles. <em>Cell</em>, 171(6), 1437&ndash;1452.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card accent-cyan" style="justify-content: space-between;">
+        <div>
+          <h3 class="card-title">
+            Database Repositories &amp; Project Deliverables
+          </h3>
+          <ul class="bullet-list" style="font-size: 13px; gap: 9px; margin-top: 8px;">
+            <li class="bullet-item">
+              <span class="bullet-dot cyan"></span>
+              <span><strong>STRING v12 &amp; ChEMBL 33:</strong> Physical protein-protein interaction scaffold &amp; curated drug target binding datasets.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot cyan"></span>
+              <span><strong>LINCS L1000 &amp; Open Targets Platform:</strong> Transcriptomic cellular perturbation signatures &amp; GraphQL disease genetics.</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <span><strong>PharmaPath Master Documentation:</strong> Technical &amp; Viva Documentation (PDF), Data Interpretation Guide (PDF), Website Architecture Guide (PDF).</span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <span><strong>Live Web Platform:</strong> Hosted interactive discovery application at <a href="https://pharmapath-website.vercel.app" target="_blank" style="color: var(--orange-light);">https://pharmapath-website.vercel.app</a></span>
+            </li>
+            <li class="bullet-item">
+              <span class="bullet-dot green"></span>
+              <span><strong>Reproducible Master Pipeline:</strong> <code style="font-family: var(--mono); color: var(--orange);">python scripts/run_all.py</code> reproducing phases 1 through 7 end-to-end.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.4); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13.5px; font-weight: 700; color: #fff;">Interactive Capstone Platform</span>
+            <span class="badge-status pass">READY FOR DEFENSE</span>
+          </div>
+          <p style="font-size: 12.5px; color: #9ca3af; margin-top: 3px;">
+            Thank you examination committee. Questions &amp; Interactive Live Demonstration.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>PharmaPath: Multi-Omics Biological Database for Network Pharmacology</span>
+      <span>Topic: References</span>
+    </div>
+  </div>
+
+  <script>
+    // Interactive keyboard navigation
+    const slides = document.querySelectorAll('.slide-wrapper');
+    let currentSlide = 0;
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+        currentSlide = Math.min(currentSlide + 1, slides.length - 1);
+        slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        currentSlide = Math.max(currentSlide - 1, 0);
+        slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
