@@ -30,6 +30,18 @@ Cross-modality comparative network pharmacology evaluating interactome overlap, 
 and combination therapy mechanisms connecting cellular metabolism to oncogenic signaling.
 """)
 
+with st.expander("💡 Concept Guide: Menche Separation $s_{AB}$ & Combination Pharmacology", expanded=False):
+    st.markdown("""
+    - **Menche Module Separation $s_{AB}$**:
+      $$s_{AB} = \\langle d_{AB} \\rangle - \\frac{\\langle d_{AA} \\rangle + \\langle d_{BB} \\rangle}{2}$$
+      * $s_{AB} < 0$: The drug modules overlap topologically in the interactome (shared downstream signaling cascades, potential direct competition or mechanistic synergy).
+      * $s_{AB} \\ge 0$: The drug modules are topologically separated, acting through distinct pathway neighborhoods.
+    - **Combination Therapy Rationale**:
+      * *Metformin*: Inhibits mitochondrial Complex I, elevates AMP/ATP ratio, activates AMPK, shuts down hepatic gluconeogenesis and inhibits mTORC1.
+      * *Imatinib*: Competitively inhibits BCR-ABL, KIT, and PDGFR tyrosine kinases in CML and GIST.
+      * *Synergy*: Cancer cells adapt metabolically via the Warburg effect. Metformin cuts off oxidative and glycolytic energy buffers while Imatinib suppresses proliferative oncogenic signals, overcoming secondary resistance.
+    """)
+
 st.markdown("---")
 
 tab_metrics, tab_figs, tab_shared, tab_rationale = st.tabs([

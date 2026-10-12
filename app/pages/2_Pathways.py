@@ -31,6 +31,15 @@ Systematic Over-Representation Analysis (ORA) across **KEGG 2021 Human** and **R
 benchmarking drug-perturbed subnetwork modules and LINCS L1000 chemical perturbation signatures.
 """)
 
+with st.expander("💡 Concept Guide: Over-Representation Analysis (ORA) & Hallmark Sanity Checks", expanded=False):
+    st.markdown("""
+    - **Over-Representation Analysis (ORA)**: Uses the hypergeometric / Fisher's exact test to evaluate whether known canonical pathway gene sets (Reactome & KEGG) occur in the drug subnetwork at a frequency significantly greater than expected by chance across the genome.
+    - **FDR Correction (Benjamini-Hochberg)**: Adjusts raw p-values ($q$-values) to prevent false positives when testing hundreds of pathways simultaneously.
+    - **Biological Sanity Audit**: Verifies that ground-truth pathways are recovered honestly:
+      * *Metformin*: Expected AMPK signaling, mTOR regulation, cellular senescence, and glucose homeostasis.
+      * *Imatinib*: Expected BCR-ABL signaling, receptor tyrosine kinases, PI3K/AKT, and cell cycle arrest.
+    """)
+
 # Persistent Filters Expander (mobile and desktop accessible)
 with render_filter_expander("⚙️ Enrichment Filters & Scope", "Configure drug, subnetwork scope & FDR threshold"):
     col1, col2 = st.columns(2)

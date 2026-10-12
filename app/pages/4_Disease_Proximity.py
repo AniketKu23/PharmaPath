@@ -34,6 +34,15 @@ $$\\langle d_c \\rangle = \\frac{1}{|T|} \\sum_{t \\in T} \\min_{s \\in S} d(t, 
 Significance is rigorously established against **1,000 degree-matched random node set permutations**, ensuring high-degree hub bias does not inflate statistical significance.
 """)
 
+with st.expander("💡 Concept Guide: Guney Closest-Distance $d_c$ & 1,000 Degree-Matched Permutations", expanded=False):
+    st.markdown("""
+    - **Closest Distance $\\langle d_c \\rangle$**: Measures the average shortest path distance from each drug target $t \\in T$ to the nearest disease gene $s \\in S$.
+    - **Why Degree-Matched Permutations?**: In scale-free interactomes, high-degree hubs sit close to all proteins simply due to connectivity. Testing against uniform random nodes causes **hub bias**. Degree matching ensures that the random null sets have the exact same connectivity profile as the real drug targets.
+    - **Z-Score & Specificity**:
+      $$z = \\frac{\\langle d_c \\rangle - \\mu_{\\text{null}}}{\\sigma_{\\text{null}}}$$
+      A large negative Z-score ($z < -2.0, p < 0.05$) demonstrates that the drug is genuinely situated inside the disease module. Positive Z-scores against negative-control indications prove high disease specificity.
+    """)
+
 st.markdown("---")
 
 # Summary Table

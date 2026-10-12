@@ -32,6 +32,14 @@ Quantify topological centrality roles across drug-perturbed interactome subnetwo
 - **Louvain Communities**: High-modularity functional clusters annotated with dominant biological pathways.
 """)
 
+with st.expander("💡 Concept Guide: Topological Hubs, Bottlenecks & Louvain Modularity", expanded=False):
+    st.markdown("""
+    - **Hubs (Top 5% Degree)**: Proteins with the highest direct physical connections in the interactome. Highly essential structural anchors whose disruption disrupts cellular viability.
+    - **Bottlenecks (Top 5% Betweenness)**: Proteins situated on the highest fraction of shortest paths across the interactome. Serve as essential communication bridges and frequently mediate drug resistance or toxicity.
+    - **Dual Hub-Bottleneck Bridges**: Rare proteins (top 5% of both degree and betweenness) that act as multi-functional master switches (e.g., `SRC`, `MAPK1`, `TP53`).
+    - **Louvain Community Modularity ($Q$)**: Greedy modularity maximization grouping tightly interacting proteins into functional topological communities, each audited for its dominant pathway.
+    """)
+
 # Persistent Filters Expander
 with render_filter_expander("⚙️ Subnetwork Scope & Filters", "Select drug and subnetwork extraction method"):
     fcol1, fcol2 = st.columns(2)

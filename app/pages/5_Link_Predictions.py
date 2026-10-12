@@ -32,6 +32,14 @@ Inductive Graph Neural Network (GNN) link prediction on the human PPI interactom
 - **Strict Leakage Prevention**: Split performed via PyG `RandomLinkSplit`. Zero test edges are utilized in message-passing or embedding construction.
 """)
 
+with st.expander("💡 Concept Guide: Inductive GNNs, Leakage Prevention & Target Recovery", expanded=False):
+    st.markdown("""
+    - **Inductive Message Passing (GraphSAGE)**: Learns neighborhood aggregation functions rather than static node embeddings. Can generalize inductively to unseen nodes and edges without retraining.
+    - **Zero Data Leakage Protocol**: Using PyTorch Geometric `RandomLinkSplit`, test edges are strictly quarantined. Test links are never present in the computation graph during message passing.
+    - **Leave-Targets-Out Cross-Validation**: True known drug targets are masked during inference. The GNN ranks all 15,882 human proteins by cosine similarity to determine target recovery rates (Hits@10, Hits@20, Hits@50).
+    - **Off-Target & Repurposing Hypotheses**: High-confidence predicted links represent proteins topologically and functionally coupled to the drug target subnetwork.
+    """)
+
 st.markdown("---")
 
 tab_bench, tab_recovery, tab_hypotheses = st.tabs([

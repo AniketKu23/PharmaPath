@@ -18,6 +18,7 @@ PAGES = [
     {"name": "Disease Proximity", "path": "/Disease_Proximity"},
     {"name": "Link Predictions", "path": "/Link_Predictions"},
     {"name": "Drug Comparison", "path": "/Drug_Comparison"},
+    {"name": "Methodology Guide", "path": "/Methodology_Guide"},
 ]
 
 

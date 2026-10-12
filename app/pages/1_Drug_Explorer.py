@@ -30,6 +30,14 @@ Extract and explore drug-perturbed human interactome subnetworks.
 - **Node Size**: Proportional to topological centrality.
 """)
 
+with st.expander("💡 Concept Guide: RWR vs. 2-Hop Neighborhood & Color Coding", expanded=False):
+    st.markdown("""
+    - **Random Walk with Restart (RWR, r=0.5)**: Simulates an imaginary random walker diffusing across the human interactome starting from drug seed targets. With probability $r=0.5$, it restarts at the seeds. It captures global multi-pathway diffusion and extracts the top 150 core functional proteins.
+    - **2-Hop Neighborhood**: Strictly local extraction including all direct binding partners (1-hop) and secondary signaling transducers (2-hop), pruned to top 500 nodes.
+    - **Node Colors**: 🌟 **Gold Star** = Seed Target | 🔴 **Red** = LINCS L1000 up-regulated ($z > +1.0$) | 🟢 **Green** = LINCS L1000 down-regulated ($z < -1.0$) | 🔵 **Blue** = Interactome Scaffold Neighbor.
+    - **Node Size**: Scaled dynamically by degree, betweenness, or eigenvector centrality.
+    """)
+
 # Persistent Filters Expander (accessible without needing sidebar on mobile)
 with render_filter_expander("⚙️ Subnetwork Controls & Filters", "Customize drug, extraction method & thresholds"):
     fcol1, fcol2 = st.columns(2)
