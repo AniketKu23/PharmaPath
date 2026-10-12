@@ -1,0 +1,364 @@
+/* ==========================================================================
+   PharmaPath Responsive & Mobile Optimization Stylesheet
+   Targets: Phones (360-430px), Tablets (768-1024px), Desktop (1280px+)
+   Version: 1.0.0 (Streamlit 1.65.0 pinned)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Root Variables & Typography
+   -------------------------------------------------------------------------- */
+:root {
+  --pp-touch-target-min: 44px;
+  --pp-font-base: 16px;
+  --pp-line-height: 1.55;
+  --pp-border-radius: 8px;
+  --pp-primary-orange: #FF8000;
+  --pp-primary-hover: #E67300;
+  --pp-safe-top: env(safe-area-inset-top, 0px);
+  --pp-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --pp-safe-left: env(safe-area-inset-left, 0px);
+  --pp-safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Mobile Base & Overflow Rules
+   -------------------------------------------------------------------------- */
+html, body {
+  font-size: var(--pp-font-base);
+  line-height: var(--pp-line-height);
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden !important;
+}
+
+/* Prevent horizontal page blowout while preserving inner scroll containers */
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+.main {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  box-sizing: border-box;
+}
+
+/* Safe-area insets for notched and home-bar devices */
+[data-testid="stAppViewContainer"] {
+  padding-top: var(--pp-safe-top) !important;
+  padding-bottom: var(--pp-safe-bottom) !important;
+  padding-left: var(--pp-safe-left) !important;
+  padding-right: var(--pp-safe-right) !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Mobile Tap Target Ergonomics (WCAG 2.5.5 / 2.5.8 >= 44x44px)
+   -------------------------------------------------------------------------- */
+
+/* Buttons */
+[data-testid="stButton"] button,
+button[kind="primary"],
+button[kind="secondary"] {
+  min-height: var(--pp-touch-target-min) !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+/* Form inputs: Prevent iOS auto-zoom by enforcing font-size >= 16px */
+input, select, textarea,
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input,
+[data-testid="stSelectbox"] select {
+  font-size: 16px !important;
+  min-height: var(--pp-touch-target-min) !important;
+  box-sizing: border-box;
+}
+
+/* Streamlit Selectbox clickable trigger container */
+[data-testid="stSelectbox"] > div[data-baseweb="select"] > div {
+  min-height: var(--pp-touch-target-min) !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Radio button options & checkboxes: expand touch hit area */
+[data-testid="stRadio"] label,
+[data-testid="stCheckbox"] label {
+  min-height: var(--pp-touch-target-min) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-bottom: 0.25rem !important;
+  padding: 0.35rem 0.5rem !important;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Slider touch thumb and track enhancement */
+[data-testid="stSlider"] [role="slider"] {
+  width: 24px !important;
+  height: 24px !important;
+  touch-action: pan-x;
+}
+[data-testid="stSlider"] > div {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* Tab buttons */
+[data-testid="stTabs"] button[role="tab"] {
+  min-height: var(--pp-touch-target-min) !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.95rem !important;
+  touch-action: manipulation;
+}
+
+/* Expander headers */
+[data-testid="stExpander"] details summary {
+  min-height: var(--pp-touch-target-min) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.6rem 0.85rem !important;
+  font-weight: 600;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* --------------------------------------------------------------------------
+   4. Responsive Metric Cards Grid (2-per-row on mobile)
+   -------------------------------------------------------------------------- */
+.pp-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.pp-metric-card {
+  background: var(--background-secondary, rgba(128, 128, 128, 0.08));
+  border: 1px solid var(--border-color, rgba(128, 128, 128, 0.2));
+  border-radius: var(--pp-border-radius);
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.pp-metric-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  margin-bottom: 0.25rem;
+}
+
+.pp-metric-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pp-metric-delta {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   5. Responsive Code / ASCII Blocks
+   -------------------------------------------------------------------------- */
+.pp-ascii-container {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--pp-border-radius);
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.03);
+  margin-bottom: 1rem;
+}
+
+.pp-ascii-container pre,
+.pp-ascii-container code {
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  white-space: pre !important;
+  word-break: normal !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Touch-Friendly Graph Canvas Overlay & Controls
+   -------------------------------------------------------------------------- */
+.pp-graph-container {
+  position: relative;
+  width: 100%;
+  border-radius: var(--pp-border-radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color, rgba(128, 128, 128, 0.2));
+  background: #0D1117;
+}
+
+.pp-graph-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: #F8FAFC;
+  font-size: 0.8rem;
+  pointer-events: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pp-graph-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: rgba(255, 128, 0, 0.1);
+  border-left: 3px solid var(--pp-primary-orange);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Back to Top Floating Pill Button
+   -------------------------------------------------------------------------- */
+.pp-back-to-top {
+  position: fixed;
+  bottom: calc(var(--pp-safe-bottom) + 16px);
+  right: calc(var(--pp-safe-right) + 16px);
+  z-index: 999;
+  background: var(--pp-primary-orange);
+  color: #FFFFFF !important;
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pp-back-to-top:hover,
+.pp-back-to-top:active {
+  background: var(--pp-primary-hover);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   8. Media Query: Mobile Devices (max-width: 640px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 640px) {
+  /* Tighten default excessive padding on small screens */
+  [data-testid="stAppViewContainer"] > .main .block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 4rem !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    max-width: 100vw !important;
+  }
+
+  /* Headings size scaling for mobile viewport */
+  h1 {
+    font-size: 1.6rem !important;
+    line-height: 1.25 !important;
+  }
+  h2 {
+    font-size: 1.35rem !important;
+    line-height: 1.3 !important;
+  }
+  h3 {
+    font-size: 1.15rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Force metric grids into strict 2x2 rows on phone */
+  .pp-metric-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Tables: allow horizontal swipe without layout break */
+  [data-testid="stDataFrame"] {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Make filter expanders stand out on mobile */
+  .pp-mobile-filter-header {
+    border: 1px solid var(--pp-primary-orange) !important;
+    border-radius: var(--pp-border-radius);
+    margin-bottom: 1rem;
+  }
+
+  /* Adjust plotly chart margin wrappers */
+  .js-plotly-plot {
+    max-width: 100% !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Media Query: Tablets (641px <= width <= 1024px)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  [data-testid="stAppViewContainer"] > .main .block-container {
+    padding-top: 2.5rem !important;
+    padding-bottom: 5rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .pp-metric-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Media Query: Desktop Reference (min-width: 1025px)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 1025px) {
+  .pp-metric-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Contrast & Theme Support (WCAG AA Compliance >= 4.5:1)
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #F3F4F6;
+  }
+  .pp-metric-card {
+    background: #1E293B;
+    border-color: #334155;
+    color: #F8FAFC;
+  }
+  .pp-ascii-container {
+    background: #0F172A;
+    border: 1px solid #334155;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #111827;
+  }
+  .pp-metric-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    color: #0F172A;
+  }
+  .pp-ascii-container {
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+  }
+}

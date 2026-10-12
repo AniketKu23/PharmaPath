@@ -23,6 +23,10 @@ subnetwork:
   rwr:
     restart_prob: 0.5
     top_n: 150
+  mobile:
+    max_nodes: 60
+    physics_stabilization_iterations: 100
+    height_vh: 60
 
 expression:
   source: "LINCS_L1000"

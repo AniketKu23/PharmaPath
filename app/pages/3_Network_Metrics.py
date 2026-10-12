@@ -8,15 +8,21 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(ROOT_DIR / "src"))
+sys.path.insert(0, str(ROOT_DIR))
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 import streamlit as st
 
-ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+from app.ui.layout import init_page, render_filter_expander, render_responsive_dataframe
+from app.ui.styles import render_back_to_top, render_metric_grid
+
 tables_dir = ROOT_DIR / "results" / "tables"
 
-st.set_page_config(page_title="Network Metrics | PharmaPath", page_icon="🕸️", layout="wide")
+init_page("Network Metrics", "🕸️")
 
 st.title("🕸️ Interactome Centrality & Modularity Analytics")
 st.markdown("""
@@ -26,10 +32,15 @@ Quantify topological centrality roles across drug-perturbed interactome subnetwo
 - **Louvain Communities**: High-modularity functional clusters annotated with dominant biological pathways.
 """)
 
-drug_choice = st.sidebar.selectbox("Select Drug:", ["Metformin", "Imatinib"], index=0)
-drug_id = drug_choice.lower()
-method_choice = st.sidebar.radio("Subnetwork Type:", ["RWR (Top 150)", "2-Hop Neighborhood (Top 500)"], index=0)
-method_id = "rwr" if "RWR" in method_choice else "2hop"
+# Persistent Filters Expander
+with render_filter_expander("⚙️ Subnetwork Scope & Filters", "Select drug and subnetwork extraction method"):
+    fcol1, fcol2 = st.columns(2)
+    with fcol1:
+        drug_choice = st.selectbox("Select Drug:", ["Metformin", "Imatinib"], index=0, key="nm_drug")
+        drug_id = drug_choice.lower()
+    with fcol2:
+        method_choice = st.radio("Subnetwork Type:", ["RWR (Top 150)", "2-Hop Neighborhood (Top 500)"], index=0, key="nm_method")
+        method_id = "rwr" if "RWR" in method_choice else "2hop"
 
 cent_file = tables_dir / f"centrality_{drug_id}_{method_id}.csv"
 comm_file = tables_dir / f"communities_{drug_id}_{method_id}.csv"
@@ -38,9 +49,17 @@ if not cent_file.exists():
     st.error(f"Centrality metrics file {cent_file} not found. Please run pipeline first.")
     st.stop()
 
-cent_df = pd.read_csv(cent_file)
 
-# Summary Counters
+@st.cache_data
+def load_cent_and_comm(c_path: str, m_path: str):
+    c_df = pd.read_csv(c_path)
+    m_df = pd.read_csv(m_path) if Path(m_path).exists() else None
+    return c_df, m_df
+
+
+cent_df, comm_df = load_cent_and_comm(str(cent_file), str(comm_file))
+
+# Summary KPI Grid (2x2 on mobile, 4x1 on desktop)
 hubs_count = cent_df["is_hub"].sum() if "is_hub" in cent_df.columns else 0
 bottlenecks_count = cent_df["is_bottleneck"].sum() if "is_bottleneck" in cent_df.columns else 0
 bridges_count = (
@@ -49,27 +68,25 @@ bridges_count = (
     else 0
 )
 
-m1, m2, m3, m4 = st.columns(4)
-with m1:
-    st.metric("Total Subnetwork Proteins", len(cent_df))
-with m2:
-    st.metric("Topological Hubs (Top 5%)", hubs_count)
-with m3:
-    st.metric("Bottlenecks (Top 5%)", bottlenecks_count)
-with m4:
-    st.metric("Dual Hub-Bottleneck Bridges", bridges_count)
+kpis = [
+    {"label": "Total Subnetwork Proteins", "value": f"{len(cent_df):,}"},
+    {"label": "Topological Hubs (Top 5%)", "value": str(hubs_count)},
+    {"label": "Bottlenecks (Top 5%)", "value": str(bottlenecks_count)},
+    {"label": "Dual Hub-Bottleneck Bridges", "value": str(bridges_count)},
+]
+render_metric_grid(kpis)
 
 st.markdown("---")
 
-# Visual: Degree vs Betweenness Centrality
+# Visual & Tabular Centrality Landscape
 st.subheader("Topological Landscape: Degree vs. Betweenness Centrality")
-col_plot, col_table = st.columns([3, 2])
 
-with col_plot:
-    fig, ax = plt.subplots(figsize=(8, 5))
+tab_scatter, tab_ranked = st.tabs(["📈 Scatter Profile", "📋 Top Bottleneck & Bridge Table"])
+
+with tab_scatter:
+    fig, ax = plt.subplots(figsize=(7, 4.5), dpi=120)
     sns.set_theme(style="whitegrid")
 
-    # Determine node category
     def assign_category(row: pd.Series) -> str:
         if row.get("is_hub_bottleneck_bridge", False):
             return "Dual Hub & Bottleneck"
@@ -83,7 +100,7 @@ with col_plot:
 
     palette = {
         "Dual Hub & Bottleneck": "#9B59B6",
-        "Hub (High Degree)": "#E67E22",
+        "Hub (High Degree)": "#FF8000",
         "Bottleneck (High Betweenness)": "#E74C3C",
         "Standard Node": "#3498DB",
     }
@@ -94,54 +111,53 @@ with col_plot:
         y="betweenness_centrality",
         hue="Topological Class",
         palette=palette,
-        s=60,
+        s=55,
         alpha=0.85,
         ax=ax,
     )
 
-    # Label top bridges/bottlenecks
-    top_labels = cent_df.sort_values(by="betweenness_centrality", ascending=False).head(5)
+    # Label top 4 bottlenecks
+    top_labels = cent_df.sort_values(by="betweenness_centrality", ascending=False).head(4)
     for _, r in top_labels.iterrows():
         ax.annotate(
             r["gene_symbol"],
             xy=(r["raw_degree"], r["betweenness_centrality"]),
             xytext=(4, 4),
             textcoords="offset points",
-            fontsize=9,
+            fontsize=8.5,
             fontweight="bold",
         )
 
     ax.set_title(f"{drug_choice} ({method_id.upper()}): Centrality Profile", fontsize=11, fontweight="bold")
-    ax.set_xlabel("Degree (Number of Connections)")
-    ax.set_ylabel("Betweenness Centrality")
+    ax.set_xlabel("Degree (Connections)", fontsize=10)
+    ax.set_ylabel("Betweenness Centrality", fontsize=10)
+    ax.legend(loc="upper left", fontsize=8, framealpha=0.9)
+    plt.tight_layout()
     st.pyplot(fig)
     plt.close()
 
-with col_table:
-    st.markdown("### Top Bottleneck & Bridge Proteins")
-    st.dataframe(
-        cent_df.sort_values(by="betweenness_centrality", ascending=False)[[
-            "gene_symbol", "raw_degree", "betweenness_centrality", "Topological Class"
-        ]].head(12),
-        use_container_width=True,
-        hide_index=True,
+with tab_ranked:
+    st.markdown("##### Top Bottlenecks Ranked by Betweenness Centrality")
+    ranked_bottlenecks = cent_df.sort_values(by="betweenness_centrality", ascending=False)
+    render_responsive_dataframe(
+        ranked_bottlenecks,
+        key_columns=["gene_symbol", "raw_degree", "betweenness_centrality", "Topological Class"],
+        download_filename=f"{drug_id}_{method_id}_bottlenecks.csv",
+        key_prefix="nm_bottlenecks",
     )
 
 st.markdown("---")
 
 # Louvain Community Analysis
 st.subheader("Louvain Community Detection & Dominant Functional Themes")
-if comm_file.exists():
-    comm_df = pd.read_csv(comm_file)
-    st.dataframe(
+if comm_df is not None:
+    render_responsive_dataframe(
         comm_df,
-        column_config={
-            "community_id": st.column_config.NumberColumn("Community ID"),
-            "size": st.column_config.NumberColumn("Proteins in Community"),
-            "dominant_pathway": st.column_config.TextColumn("Dominant Biological Pathway"),
-        },
-        use_container_width=True,
-        hide_index=True,
+        key_columns=["community_id", "size", "dominant_pathway"],
+        download_filename=f"{drug_id}_{method_id}_communities.csv",
+        key_prefix="nm_communities",
     )
 else:
     st.info("Community file not found.")
+
+render_back_to_top()

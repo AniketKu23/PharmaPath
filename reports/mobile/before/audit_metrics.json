@@ -1,0 +1,2182 @@
+[
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Overview",
+    "screenshot": "Overview_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "CODE",
+          "class": "",
+          "testid": "",
+          "width": 646,
+          "right": 678,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "testid": "",
+          "width": 630,
+          "right": 662,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1478,
+          "right": 1495,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1478,
+          "right": 1495,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 20,
+      "smallTargetCount": 20,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 328,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [
+        {
+          "width": 328,
+          "height": 670,
+          "src": "",
+          "title": "st.iframe"
+        }
+      ],
+      "tables": [
+        {
+          "width": 328,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Pathways",
+    "screenshot": "Pathways_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 32,
+      "smallTargetCount": 32,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 328,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 0,
+      "sampleOverflowingElements": [],
+      "totalInteractiveTargets": 12,
+      "smallTargetCount": 12,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": []
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 22,
+      "smallTargetCount": 21,
+      "smallTargetRatio": 0.9545454545454546,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 328,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 6,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 518,
+          "right": 535,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 518,
+          "right": 535,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1945,
+          "right": 1962,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 31,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 0.967741935483871,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 328,
+          "height": 142,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 328,
+          "height": 107,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 328,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 30,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 328,
+          "height": 247,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 328,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Overview",
+    "screenshot": "Overview_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "CODE",
+          "class": "",
+          "testid": "",
+          "width": 646,
+          "right": 678,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "testid": "",
+          "width": 630,
+          "right": 662,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1478,
+          "right": 1495,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1478,
+          "right": 1495,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 20,
+      "smallTargetCount": 20,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 358,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [
+        {
+          "width": 358,
+          "height": 670,
+          "src": "",
+          "title": "st.iframe"
+        }
+      ],
+      "tables": [
+        {
+          "width": 358,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Pathways",
+    "screenshot": "Pathways_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 32,
+      "smallTargetCount": 32,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 358,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 565,
+          "right": 582,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 565,
+          "right": 582,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1936,
+          "right": 1953,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1936,
+          "right": 1953,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 358,
+          "height": 408,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 358,
+          "height": 212,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 22,
+      "smallTargetCount": 21,
+      "smallTargetRatio": 0.9545454545454546,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 358,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 6,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 518,
+          "right": 535,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 518,
+          "right": 535,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1945,
+          "right": 1962,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 31,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 0.967741935483871,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 358,
+          "height": 142,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 358,
+          "height": 107,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 358,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 30,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 358,
+          "height": 247,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 358,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Overview",
+    "screenshot": "Overview_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "CODE",
+          "class": "",
+          "testid": "",
+          "width": 646,
+          "right": 678,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "testid": "",
+          "width": 630,
+          "right": 662,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1478,
+          "right": 1495,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1478,
+          "right": 1495,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 20,
+      "smallTargetCount": 20,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 398,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [
+        {
+          "width": 398,
+          "height": 670,
+          "src": "",
+          "title": "st.iframe"
+        }
+      ],
+      "tables": [
+        {
+          "width": 398,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Pathways",
+    "screenshot": "Pathways_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 32,
+      "smallTargetCount": 32,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 398,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 565,
+          "right": 582,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 565,
+          "right": 582,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1936,
+          "right": 1953,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1936,
+          "right": 1953,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 398,
+          "height": 408,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 398,
+          "height": 212,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 22,
+      "smallTargetCount": 21,
+      "smallTargetRatio": 0.9545454545454546,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 398,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 6,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 518,
+          "right": 535,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 518,
+          "right": 535,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1945,
+          "right": 1962,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 31,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 0.967741935483871,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 398,
+          "height": 142,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 398,
+          "height": 107,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 398,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 30,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 398,
+          "height": 247,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 398,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Overview",
+    "screenshot": "Overview_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 6,
+      "sampleOverflowingElements": [
+        {
+          "tag": "P",
+          "class": "",
+          "testid": "",
+          "width": 159,
+          "right": 814,
+          "text": "Disease Proximity (Z-Score)"
+        },
+        {
+          "tag": "P",
+          "class": "",
+          "testid": "",
+          "width": 161,
+          "right": 836,
+          "text": "Metformin \u2192 T2D (p = 0.001)"
+        },
+        {
+          "tag": "CODE",
+          "class": "",
+          "testid": "",
+          "width": 646,
+          "right": 978,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "testid": "",
+          "width": 630,
+          "right": 962,
+          "text": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1478,
+          "right": 1795,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 20,
+      "smallTargetCount": 20,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 436,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 886,
+          "right": 903,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [
+        {
+          "width": 736,
+          "height": 670,
+          "src": "",
+          "title": "st.iframe"
+        }
+      ],
+      "tables": [
+        {
+          "width": 736,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Pathways",
+    "screenshot": "Pathways_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1947,
+          "right": 1964,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 32,
+      "smallTargetCount": 32,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 736,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 565,
+          "right": 1032,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 565,
+          "right": 1032,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1936,
+          "right": 1953,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1936,
+          "right": 1953,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 286,
+          "height": 408,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 736,
+          "height": 212,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1498,
+          "right": 1515,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 22,
+      "smallTargetCount": 21,
+      "smallTargetRatio": 0.9545454545454546,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 736,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1087,
+          "right": 1104,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1945,
+          "right": 1962,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1945,
+          "right": 1962,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 31,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 0.967741935483871,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 736,
+          "height": 142,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 736,
+          "height": 107,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 736,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1074,
+          "right": 1091,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1219,
+          "right": 1236,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 30,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 736,
+          "height": 247,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 736,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Overview",
+    "screenshot": "Overview_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1478,
+          "right": 1859,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1478,
+          "right": 1859,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 20,
+      "smallTargetCount": 20,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 820,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 0,
+      "sampleOverflowingElements": [],
+      "totalInteractiveTargets": 28,
+      "smallTargetCount": 26,
+      "smallTargetRatio": 0.9285714285714286,
+      "iframes": [
+        {
+          "width": 820,
+          "height": 670,
+          "src": "",
+          "title": "st.iframe"
+        }
+      ],
+      "tables": [
+        {
+          "width": 820,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Pathways",
+    "screenshot": "Pathways_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1947,
+          "right": 2328,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1947,
+          "right": 2328,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 31,
+      "smallTargetCount": 30,
+      "smallTargetRatio": 0.967741935483871,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 820,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 565,
+          "right": 1446,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 565,
+          "right": 1446,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1936,
+          "right": 2317,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1936,
+          "right": 2317,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 28,
+      "smallTargetCount": 27,
+      "smallTargetRatio": 0.9642857142857143,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 320,
+          "height": 408,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 820,
+          "height": 212,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 2,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1498,
+          "right": 1879,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1498,
+          "right": 1879,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 21,
+      "smallTargetCount": 20,
+      "smallTargetRatio": 0.9523809523809523,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 820,
+          "height": 177,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1087,
+          "right": 1468,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1087,
+          "right": 1468,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1945,
+          "right": 2326,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1945,
+          "right": 2326,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 30,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 0.9666666666666667,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 820,
+          "height": 142,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 820,
+          "height": 107,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 820,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "overflowingElementCount": 4,
+      "sampleOverflowingElements": [
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1074,
+          "right": 1455,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1074,
+          "right": 1455,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "dvn-stack",
+          "testid": "",
+          "width": 1219,
+          "right": 1600,
+          "text": ""
+        },
+        {
+          "tag": "DIV",
+          "class": "",
+          "testid": "",
+          "width": 1219,
+          "right": 1600,
+          "text": ""
+        }
+      ],
+      "totalInteractiveTargets": 29,
+      "smallTargetCount": 29,
+      "smallTargetRatio": 1,
+      "iframes": [],
+      "tables": [
+        {
+          "width": 820,
+          "height": 247,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        },
+        {
+          "width": 820,
+          "height": 400,
+          "exceedsViewport": false
+        },
+        {
+          "width": 0,
+          "height": 0,
+          "exceedsViewport": false
+        }
+      ]
+    }
+  }
+]

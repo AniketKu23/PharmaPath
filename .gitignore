@@ -44,3 +44,5 @@ Thumbs.db
 
 # Scratch & local temporary files
 website/test_pyvis.html
+scratch_*.py
+scratch/

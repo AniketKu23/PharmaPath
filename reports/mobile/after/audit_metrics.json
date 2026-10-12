@@ -1,0 +1,587 @@
+[
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Overview",
+    "screenshot": "Overview_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 23,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 33,
+      "smallTargetCount": 27,
+      "iframes": [
+        {
+          "width": 328,
+          "height": 490
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Pathways",
+    "screenshot": "Pathways_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 26,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 12,
+      "smallTargetCount": 12,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_narrow",
+    "width": 360,
+    "height": 640,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_360x640.png",
+    "metrics": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 27,
+      "smallTargetCount": 22,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Overview",
+    "screenshot": "Overview_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 23,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 33,
+      "smallTargetCount": 27,
+      "iframes": [
+        {
+          "width": 358,
+          "height": 490
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Pathways",
+    "screenshot": "Pathways_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 26,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_iphone",
+    "width": 390,
+    "height": 844,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_390x844.png",
+    "metrics": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 27,
+      "smallTargetCount": 22,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Overview",
+    "screenshot": "Overview_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 23,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 33,
+      "smallTargetCount": 27,
+      "iframes": [
+        {
+          "width": 398,
+          "height": 490
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Pathways",
+    "screenshot": "Pathways_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 26,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "mobile_large",
+    "width": 430,
+    "height": 932,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_430x932.png",
+    "metrics": {
+      "scrollWidth": 430,
+      "innerWidth": 430,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 27,
+      "smallTargetCount": 22,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Overview",
+    "screenshot": "Overview_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 23,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 33,
+      "smallTargetCount": 27,
+      "iframes": [
+        {
+          "width": 736,
+          "height": 490
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Pathways",
+    "screenshot": "Pathways_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 26,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 24,
+      "smallTargetCount": 20,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "tablet",
+    "width": 768,
+    "height": 1024,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_768x1024.png",
+    "metrics": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 27,
+      "smallTargetCount": 22,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Overview",
+    "screenshot": "Overview_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 23,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Drug_Explorer",
+    "screenshot": "Drug_Explorer_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 33,
+      "smallTargetCount": 27,
+      "iframes": [
+        {
+          "width": 1120,
+          "height": 490
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Pathways",
+    "screenshot": "Pathways_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 25,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Network_Metrics",
+    "screenshot": "Network_Metrics_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 28,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Disease_Proximity",
+    "screenshot": "Disease_Proximity_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 25,
+      "smallTargetCount": 23,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Link_Predictions",
+    "screenshot": "Link_Predictions_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 24,
+      "smallTargetCount": 20,
+      "iframes": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "width": 1280,
+    "height": 800,
+    "page": "Drug_Comparison",
+    "screenshot": "Drug_Comparison_1280x800.png",
+    "metrics": {
+      "scrollWidth": 1280,
+      "innerWidth": 1280,
+      "hasHorizontalOverflow": false,
+      "overflowDiff": 0,
+      "totalTargets": 26,
+      "smallTargetCount": 21,
+      "iframes": []
+    }
+  }
+]

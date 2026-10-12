@@ -5,17 +5,24 @@ Guney et al. (2016) Closest-Distance Network Proximity Analytics against 1,000 D
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(ROOT_DIR / "src"))
+sys.path.insert(0, str(ROOT_DIR))
 
 import pandas as pd
 from PIL import Image
 import streamlit as st
 
-ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+from app.ui.layout import init_page, render_responsive_dataframe
+from app.ui.styles import render_back_to_top, render_metric_grid
+
 tables_dir = ROOT_DIR / "results" / "tables"
 figures_dir = ROOT_DIR / "results" / "figures"
 
-st.set_page_config(page_title="Disease Proximity | PharmaPath", page_icon="🎯", layout="wide")
+init_page("Disease Proximity", "🎯")
 
 st.title("🎯 Disease Module Network Proximity Analytics")
 st.markdown("""
@@ -33,22 +40,13 @@ st.markdown("---")
 prox_csv = tables_dir / "proximity_summary.csv"
 if prox_csv.exists():
     df_prox = pd.read_csv(prox_csv)
-
     st.subheader("Statistical Proximity Benchmark (Primary Context vs. Negative Controls)")
-    st.dataframe(
+    key_prox_cols = ["drug", "disease", "observed_d_c", "z_score", "p_value", "verdict"]
+    render_responsive_dataframe(
         df_prox,
-        column_config={
-            "drug": st.column_config.TextColumn("Drug"),
-            "disease": st.column_config.TextColumn("Disease Module"),
-            "is_primary_context": st.column_config.CheckboxColumn("Primary Indication?"),
-            "observed_d_c": st.column_config.NumberColumn("Observed d_c", format="%.3f"),
-            "mean_null_d_c": st.column_config.NumberColumn("Null Mean d_c", format="%.3f"),
-            "z_score": st.column_config.NumberColumn("Z-Score", format="%.2f"),
-            "p_value": st.column_config.NumberColumn("Empirical P-Value", format="%.4f"),
-            "verdict": st.column_config.TextColumn("Verdict"),
-        },
-        use_container_width=True,
-        hide_index=True,
+        key_columns=key_prox_cols,
+        download_filename="proximity_summary.csv",
+        key_prefix="prox_table",
     )
 else:
     st.error("Proximity summary file not found.")
@@ -57,7 +55,11 @@ st.markdown("---")
 
 # Detailed Pair Analysis & Permutation Histograms
 st.subheader("Null Permutation Distributions & Localization")
-drug_select = st.selectbox("Inspect Primary Disease Distribution:", ["Metformin → Type 2 Diabetes", "Imatinib → Chronic Myeloid Leukemia"])
+drug_select = st.selectbox(
+    "Inspect Disease Module Distribution:",
+    ["Metformin → Type 2 Diabetes", "Imatinib → Chronic Myeloid Leukemia"],
+    key="prox_select_drug",
+)
 
 if "Metformin" in drug_select:
     img_path = figures_dir / "proximity_metformin_t2d.png"
@@ -74,18 +76,19 @@ else:
     stat_p = "0.0010"
     interp = "Imatinib targets form a tight topological module directly proximate to the Chronic Myeloid Leukemia gene set (z = -7.25). Against Type 2 Diabetes, Imatinib has z = +1.18 (p = 0.965), confirming genuine on-target disease proximity."
 
-c1, c2, c3, c4 = st.columns(4)
-with c1:
-    st.metric("Observed Closest Distance (d_c)", stat_obs)
-with c2:
-    st.metric("Null Model Mean ± Std", stat_null)
-with c3:
-    st.metric("Proximity Z-Score", stat_z)
-with c4:
-    st.metric("Empirical P-Value", stat_p)
+# Responsive Metric Cards (2x2 on mobile, 4x1 on desktop)
+prox_kpis = [
+    {"label": "Observed Distance (d_c)", "value": stat_obs},
+    {"label": "Null Mean ± Std", "value": stat_null},
+    {"label": "Proximity Z-Score", "value": stat_z},
+    {"label": "Empirical P-Value", "value": stat_p},
+]
+render_metric_grid(prox_kpis)
 
 st.info(f"**Biological Interpretation**: {interp}")
 
 if img_path.exists():
     img = Image.open(img_path)
-    st.image(img, caption=f"Permutation Null Distribution (1,000 Degree-Matched Samples): {drug_select}", use_column_width=True)
+    st.image(img, caption=f"Permutation Null Distribution (1,000 Degree-Matched Samples): {drug_select}", width=None)
+
+render_back_to_top()

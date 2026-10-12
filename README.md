@@ -178,6 +178,7 @@ python scripts/test_website_playwright.py
 
 ```
 PharmaPath/
+├── PROJECT_CONTEXT.md                  # Master project context & knowledge base for AI/LLMs
 ├── README.md                           # Project documentation, results, and deployment guide
 ├── requirements.txt                    # Pinned Python package dependencies
 ├── vercel.json                         # Vercel deployment routing configuration
@@ -228,11 +229,17 @@ PharmaPath/
 │   ├── test_graph.py                   # Graph construction & LCC tests
 │   ├── test_mapping.py                 # ENSP gene symbol mapping tests
 │   ├── test_proximity.py               # Guney proximity & separation tests
-│   └── test_leakage.py                 # Verifies zero data leakage in GNN splits
+│   ├── test_leakage.py                 # Verifies zero data leakage in GNN splits
+│   └── test_mobile_ui.py               # Automated mobile UI regression test (Playwright)
 └── reports/
     ├── final_report.md                 # Full academic project report
     ├── presentation_outline.md         # Slide defense outline
-    └── validation_audit.md             # Pillar verification audit report
+    ├── validation_audit.md             # Pillar verification audit report
+    └── mobile/                         # Mobile UX optimization suite
+        ├── README.md                   # Comprehensive mobile delivery report
+        ├── audit.md                    # Phase 1 baseline audit findings
+        ├── before/                     # Baseline screenshots & metrics (35 captures)
+        └── after/                      # Verified post-optimization screenshots (35 captures)
 ```
 
 ---

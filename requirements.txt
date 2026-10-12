@@ -7,7 +7,7 @@ scipy>=1.11.0
 scikit-learn>=1.4.0
 gseapy>=1.1.0
 pyvis>=0.3.2
-streamlit>=1.35.0
+streamlit==1.65.0
 pyarrow>=15.0.0
 python-louvain>=0.16
 pytest>=8.0.0

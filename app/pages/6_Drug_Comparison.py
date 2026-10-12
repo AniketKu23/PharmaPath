@@ -5,17 +5,24 @@ Two-Drug Comparative Network Pharmacology, Menche Separation s_AB, and Combinati
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(ROOT_DIR / "src"))
+sys.path.insert(0, str(ROOT_DIR))
 
 import pandas as pd
 from PIL import Image
 import streamlit as st
 
-ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+from app.ui.layout import init_page, render_responsive_dataframe
+from app.ui.styles import render_back_to_top
+
 tables_dir = ROOT_DIR / "results" / "tables"
 figures_dir = ROOT_DIR / "results" / "figures"
 
-st.set_page_config(page_title="Drug Comparison | PharmaPath", page_icon="⚖️", layout="wide")
+init_page("Drug Comparison", "⚖️")
 
 st.title("⚖️ Two-Drug Comparison: Metformin vs. Imatinib")
 st.markdown("""
@@ -25,72 +32,56 @@ and combination therapy mechanisms connecting cellular metabolism to oncogenic s
 
 st.markdown("---")
 
-# Summary Comparison Metrics
-st.subheader("1. Modality Overlap & Topological Separation Benchmark")
-comp_summary_file = tables_dir / "two_drug_comparison_summary.csv"
-if comp_summary_file.exists():
-    df_comp = pd.read_csv(comp_summary_file)
-    st.dataframe(
-        df_comp,
-        column_config={
-            "Comparison Metric": st.column_config.TextColumn("Metric"),
-            "Metformin Count": st.column_config.NumberColumn("Metformin"),
-            "Imatinib Count": st.column_config.NumberColumn("Imatinib"),
-            "Shared Count": st.column_config.NumberColumn("Shared Count"),
-            "Jaccard Index": st.column_config.NumberColumn("Jaccard Index", format="%.4f"),
-            "Detail / Interpretation": st.column_config.TextColumn("Biological Interpretation"),
-        },
-        use_container_width=True,
-        hide_index=True,
-    )
+tab_metrics, tab_figs, tab_shared, tab_rationale = st.tabs([
+    "📊 Overlap & Separation",
+    "🖼️ Comparative Visualizations",
+    "🧬 Shared Cross-Talk Proteins",
+    "💊 Combination Therapy Rationale",
+])
 
-st.markdown("---")
+with tab_metrics:
+    st.subheader("1. Modality Overlap & Topological Separation Benchmark")
+    comp_summary_file = tables_dir / "two_drug_comparison_summary.csv"
+    if comp_summary_file.exists():
+        df_comp = pd.read_csv(comp_summary_file)
+        render_responsive_dataframe(
+            df_comp,
+            key_columns=["Comparison Metric", "Metformin Count", "Imatinib Count", "Shared Count", "Jaccard Index"],
+            download_filename="two_drug_comparison_summary.csv",
+            key_prefix="comp_summary",
+        )
 
-# Comparison Visualizations
-st.subheader("2. Comparative Figures & Cross-Talk Hubs")
-col_fig1, col_fig2 = st.columns(2)
-
-with col_fig1:
+with tab_figs:
+    st.subheader("2. Comparative Figures & Cross-Talk Hubs")
     fig1_path = figures_dir / "two_drug_jaccard_comparison.png"
     if fig1_path.exists():
-        st.image(Image.open(fig1_path), caption="Topological & Biological Overlap (Jaccard Index)", use_column_width=True)
+        st.image(Image.open(fig1_path), caption="Topological & Biological Overlap (Jaccard Index)", width=None)
 
-with col_fig2:
     fig2_path = figures_dir / "shared_cross_talk_proteins.png"
     if fig2_path.exists():
-        st.image(Image.open(fig2_path), caption="Top Shared Interactome Cross-Talk Proteins", use_column_width=True)
+        st.image(Image.open(fig2_path), caption="Top Shared Interactome Cross-Talk Proteins", width=None)
 
-st.markdown("---")
+with tab_shared:
+    st.subheader("3. Shared Subnetwork Cross-Talk Proteins")
+    shared_proteins_file = tables_dir / "shared_subnetwork_proteins_2hop.csv"
+    if not shared_proteins_file.exists():
+        shared_proteins_file = tables_dir / "shared_subnetwork_proteins.csv"
 
-# Shared Proteins Table
-st.subheader("3. Shared Subnetwork Cross-Talk Proteins")
-shared_proteins_file = tables_dir / "shared_subnetwork_proteins_2hop.csv"
-if not shared_proteins_file.exists():
-    shared_proteins_file = tables_dir / "shared_subnetwork_proteins.csv"
+    if shared_proteins_file.exists():
+        df_shared = pd.read_csv(shared_proteins_file)
+        st.write(f"Total Shared Interactome Nodes: **{len(df_shared)}** (within 2-hop interactome scaffold):")
+        key_shared_cols = ["gene_symbol", "metformin_degree", "imatinib_degree", "is_shared_hub", "is_shared_bottleneck"]
+        render_responsive_dataframe(
+            df_shared.head(50),
+            key_columns=[c for c in key_shared_cols if c in df_shared.columns],
+            download_filename="shared_cross_talk_proteins.csv",
+            key_prefix="comp_shared",
+        )
 
-if shared_proteins_file.exists():
-    df_shared = pd.read_csv(shared_proteins_file)
-    st.write(f"Total Shared Interactome Nodes: **{len(df_shared)}** (within 2-hop interactome scaffold):")
-    st.dataframe(
-        df_shared.head(25),
-        column_config={
-            "gene_symbol": st.column_config.TextColumn("Gene Symbol"),
-            "full_ppi_degree": st.column_config.NumberColumn("Full PPI Degree"),
-            "metformin_degree": st.column_config.NumberColumn("Metformin Subnetwork Degree"),
-            "imatinib_degree": st.column_config.NumberColumn("Imatinib Subnetwork Degree"),
-            "metformin_betweenness": st.column_config.NumberColumn("Metformin Betweenness", format="%.5f"),
-            "imatinib_betweenness": st.column_config.NumberColumn("Imatinib Betweenness", format="%.5f"),
-            "is_shared_hub": st.column_config.CheckboxColumn("Shared Hub?"),
-            "is_shared_bottleneck": st.column_config.CheckboxColumn("Shared Bottleneck?"),
-        },
-        use_container_width=True,
-        hide_index=True,
-    )
+with tab_rationale:
+    st.subheader("4. Combination Pharmacology & Clinical Rationale")
+    comb_rep_path = tables_dir / "combination_pharmacology_report.md"
+    if comb_rep_path.exists():
+        st.markdown(comb_rep_path.read_text(encoding="utf-8"))
 
-st.markdown("---")
-
-# Combination Pharmacology Report
-st.subheader("4. Combination Pharmacology & Clinical Rationale")
-comb_rep_path = tables_dir / "combination_pharmacology_report.md"
-if comb_rep_path.exists():
-    st.markdown(comb_rep_path.read_text(encoding="utf-8"))
+render_back_to_top()

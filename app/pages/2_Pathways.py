@@ -6,17 +6,24 @@ Over-Representation Analysis (ORA) in KEGG & Reactome and Biological Sanity Audi
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(ROOT_DIR / "src"))
+sys.path.insert(0, str(ROOT_DIR))
 
 import pandas as pd
 from PIL import Image
 import streamlit as st
 
-ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+from app.ui.layout import init_page, render_filter_expander, render_responsive_dataframe
+from app.ui.styles import render_back_to_top
+
 tables_dir = ROOT_DIR / "results" / "tables"
 figures_dir = ROOT_DIR / "results" / "figures"
 
-st.set_page_config(page_title="Pathways | PharmaPath", page_icon="📊", layout="wide")
+init_page("Pathways", "📊")
 
 st.title("📊 Pathway Enrichment & Biological Sanity Audit")
 st.markdown("""
@@ -24,25 +31,25 @@ Systematic Over-Representation Analysis (ORA) across **KEGG 2021 Human** and **R
 benchmarking drug-perturbed subnetwork modules and LINCS L1000 chemical perturbation signatures.
 """)
 
-col_left, col_right = st.columns([1, 2])
-
-with col_left:
-    st.sidebar.header("Enrichment Filters")
-    drug_choice = st.sidebar.selectbox("Select Drug:", ["Metformin", "Imatinib"], index=0)
-    drug_id = drug_choice.lower()
-
-    scope_choice = st.sidebar.radio(
-        "Enrichment Scope:",
-        [
-            ("rwr_subnetwork", "RWR Subnetwork (Top 150)"),
-            ("2hop_subnetwork", "2-Hop Subnetwork (Top 500)"),
-            ("lincs_perturbed", "LINCS L1000 Perturbed Genes"),
-        ],
-        format_func=lambda x: x[1],
-    )[0]
-
-    fdr_thresh = st.sidebar.slider("Adjusted P-Value (FDR) Threshold:", min_value=0.001, max_value=0.10, value=0.05, step=0.005)
-    db_filter = st.sidebar.multiselect("Pathway Databases:", ["Reactome_2022", "KEGG_2021_Human"], default=["Reactome_2022", "KEGG_2021_Human"])
+# Persistent Filters Expander (mobile and desktop accessible)
+with render_filter_expander("⚙️ Enrichment Filters & Scope", "Configure drug, subnetwork scope & FDR threshold"):
+    col1, col2 = st.columns(2)
+    with col1:
+        drug_choice = st.selectbox("Select Drug:", ["Metformin", "Imatinib"], index=0, key="pw_drug")
+        drug_id = drug_choice.lower()
+        scope_choice = st.radio(
+            "Enrichment Scope:",
+            [
+                ("rwr_subnetwork", "RWR Subnetwork (Top 150)"),
+                ("2hop_subnetwork", "2-Hop Subnetwork (Top 500)"),
+                ("lincs_perturbed", "LINCS L1000 Perturbed Genes"),
+            ],
+            format_func=lambda x: x[1],
+            key="pw_scope",
+        )[0]
+    with col2:
+        fdr_thresh = st.slider("Adjusted P-Value (FDR) Threshold:", min_value=0.001, max_value=0.10, value=0.05, step=0.005, key="pw_fdr")
+        db_filter = st.multiselect("Pathway Databases:", ["Reactome_2022", "KEGG_2021_Human"], default=["Reactome_2022", "KEGG_2021_Human"], key="pw_db")
 
 # Biological Sanity Check Card
 audit_json_path = tables_dir / "pathway_sanity_audit.json"
@@ -59,7 +66,7 @@ if audit_json_path.exists():
     else:
         st.warning(f"**Canonical Sanity Check**: {rwr_sanity.get('verdict', 'Investigating hallmarks.')}")
 
-    with st.expander("Inspect Hallmarks & Matched Pathways"):
+    with st.expander("🔍 Inspect Hallmarks & Matched Pathways", expanded=False):
         matched = rwr_sanity.get("matched_hallmarks", [])
         for m in matched:
             st.markdown(f"- **{m['keyword']}**: Matched *{', '.join(m['matched_terms'])}*")
@@ -74,7 +81,7 @@ st.subheader("Publication-Quality Enrichment Dot Plot")
 fig_path = figures_dir / f"pathways_{drug_id}_{scope_choice}.png"
 if fig_path.exists():
     img = Image.open(fig_path)
-    st.image(img, caption=f"Top Significant Pathways for {drug_choice} ({scope_choice})", use_column_width=True)
+    st.image(img, caption=f"Top Significant Pathways for {drug_choice} ({scope_choice})", width=None)
 else:
     st.info("Figure not found for the selected scope.")
 
@@ -86,7 +93,6 @@ csv_path = tables_dir / f"pathways_{drug_id}_{scope_choice}.csv"
 if csv_path.exists():
     df_path = pd.read_csv(csv_path)
 
-    # Standardize column naming
     col_rename = {
         "Library": "library", "Term": "term", "adj_p_value": "adj_p_value",
         "Overlap": "overlap", "odds_ratio": "odds_ratio", "combined_score": "combined_score",
@@ -104,15 +110,14 @@ if csv_path.exists():
 
     st.write(f"Showing **{len(df_filtered)}** pathways passing FDR $\\le {fdr_thresh}$:")
 
-    st.dataframe(
+    key_pw_cols = ["term", "library", "adj_p_value", "overlap", "odds_ratio"]
+    render_responsive_dataframe(
         df_filtered,
-        column_config={
-            "adj_p_value": st.column_config.NumberColumn("Adjusted P-Value", format="%.2e"),
-            "odds_ratio": st.column_config.NumberColumn("Odds Ratio", format="%.2f"),
-            "combined_score": st.column_config.NumberColumn("Combined Score", format="%.2f"),
-        },
-        use_container_width=True,
-        hide_index=True,
+        key_columns=key_pw_cols,
+        download_filename=f"pathways_{drug_id}_{scope_choice}.csv",
+        key_prefix="pw_data",
     )
 else:
     st.info(f"Pathway table {csv_path.name} not found.")
+
+render_back_to_top()
